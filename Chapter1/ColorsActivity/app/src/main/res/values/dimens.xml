@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="color_creator_layout_margin_parent">24dp</dimen>
+    <dimen name="color_creator_layout_margin">8dp</dimen>
+    <dimen name="color_creator_display_panel">40dp</dimen>
+</resources>
