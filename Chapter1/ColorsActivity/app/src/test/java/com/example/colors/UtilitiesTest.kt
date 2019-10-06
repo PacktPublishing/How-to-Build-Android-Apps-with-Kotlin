@@ -15,6 +15,14 @@ class UtilitiesTest {
     }
 
     @Test
+    fun `given string passed in, when all valid lower case hexadecimal letters, then returns true`() {
+
+        val colorString = "aaffcc"
+
+        assertTrue(hasValidHexadecimalCharacters(colorString))
+    }
+
+    @Test
     fun `given string passed in, when there are some none hexadecimal characters, then returns false`() {
 
         val colorString = "0LFFY9"
