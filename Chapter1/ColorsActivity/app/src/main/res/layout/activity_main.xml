@@ -42,7 +42,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/red_channel"
             android:inputType="textCapCharacters"
-            android:digits="ABCDEF0123456789"
+            android:digits="ABCDEFabcdef0123456789"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLength="2" />
@@ -62,7 +62,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/green_channel"
             android:inputType="textCapCharacters"
-            android:digits="ABCDEF0123456789"
+            android:digits="ABCDEFabcdef0123456789"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLength="2"/>
@@ -82,7 +82,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/blue_channel"
             android:inputType="textCapCharacters"
-            android:digits="ABCDEF0123456789"
+            android:digits="ABCDEFabcdef0123456789"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLength="2" />
