@@ -3,6 +3,7 @@
     <string name="header_text">Enter your name and email for a discount code at Your Favourite Restaurant!</string>
     <string name="name_label">Name:</string>
     <string name="email_label">Email:</string>
+    <string name="age_label">Age:</string>
     <string name="discount_code_button">GET DISCOUNT</string>
     <string name="discount_code_confirmation">Your discount code is below, Enjoy!</string>
 
