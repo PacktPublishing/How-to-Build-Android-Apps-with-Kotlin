@@ -16,37 +16,42 @@
         android:text="@string/header_text"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Enter your name and email for a discount code at Your Favourite Restaurant!"/>
 
-    <!-- android:inputType="textEmailAddress" is not enforced, but is a hint to the IME (Input Method Editor)
-    usually a keyboard to configure the display for an email - typically by showing the '@' symbol -->
     <EditText
         android:id="@+id/name_text"
-        android:autoSizeTextType="uniform"
+        android:textSize="18sp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="@string/name_label"
         android:inputType="text"
-        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintTop_toBottomOf="@id/header_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Name:"/>
 
     <EditText
-        android:autoSizeTextType="uniform"
+        android:id="@+id/age"
+        android:textSize="18sp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="@string/age_label"
-        android:inputType="text"
+        android:inputType="number"
+        android:maxLength="3"
         app:layout_constraintTop_toBottomOf="@id/header_text"
         app:layout_constraintStart_toEndOf="@id/name_text"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="Age:"/>
+
+    <!-- android:inputType="textEmailAddress" is not enforced, but is a hint to the IME (Input Method Editor)
+usually a keyboard to configure the display for an email - typically by showing the '@' symbol -->
     <EditText
         android:id="@+id/email_text"
+        android:textSize="18sp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_width="match_parent"
@@ -55,11 +60,12 @@
         android:inputType="textEmailAddress"
         app:layout_constraintTop_toBottomOf="@id/name_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Email:"/>
 
     <Button
         android:id="@+id/discount_button"
-        android:autoSizeTextType="uniform"
+        android:textSize="16sp"
         android:layout_marginTop="16dp"
         android:gravity="center"
         android:layout_width="wrap_content"
@@ -71,9 +77,9 @@
 
     <TextView
         android:id="@+id/discount_code_confirmation"
-        android:layout_marginTop="12dp"
         android:gravity="center"
         android:textSize="20sp"
+        android:layout_marginTop="12dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/discount_button"
@@ -84,8 +90,8 @@
     <TextView
         android:id="@+id/discount_code"
         android:gravity="center"
-        android:layout_marginTop="12dp"
         android:textSize="20sp"
+        android:layout_marginTop="12dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/discount_code_confirmation"
