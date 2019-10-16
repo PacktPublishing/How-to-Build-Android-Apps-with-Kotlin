@@ -62,9 +62,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun clearInputFields() {
-        first_name.getText().clear()
-        last_name.getText().clear()
-        email.getText().clear()
+        first_name.text.clear()
+        last_name.text.clear()
+        email.text.clear()
     }
 
     private fun setDiscountConfirmationMessage(confirmationMessage: String?) {
