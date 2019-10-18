@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">IntentsIntroduction</string>
+    <string name="app_name">Intents Introduction</string>
     <string name="title_activity_welcome">WelcomeActivity</string>
     <string name="get_started_string">Please enter your name and then we\'ll get started!</string>
     <string name="enter_full_name">Enter Full Name</string>
