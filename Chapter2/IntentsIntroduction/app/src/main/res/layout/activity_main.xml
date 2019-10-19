@@ -4,25 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/grid_4"
+    android:layout_marginTop="@dimen/grid_4"
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/get_started_message"
+        android:id="@+id/header_text"
+        style="@style/header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/get_started_string"
-        style="@style/main_activity_title"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="@string/header_text"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Please enter your name and then we\'ll get started!"/>
 
     <EditText
+        android:id="@+id/full_name"
+        style="@style/full_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/main_activity_enter_text"
-        android:hint="@string/enter_full_name"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/get_started_message" />
+        android:hint="@string/full_name_label"
+        app:layout_constraintTop_toBottomOf="@id/header_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="Enter your full name:"/>
+
+    <Button
+        android:id="@+id/submit_button"
+        style="@style/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/submit_button_text"
+        app:layout_constraintTop_toBottomOf="@id/full_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="SUBMIT"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
