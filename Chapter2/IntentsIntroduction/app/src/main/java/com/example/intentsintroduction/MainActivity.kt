@@ -23,13 +23,14 @@ class MainActivity : AppCompatActivity() {
             if (fullName.isNotBlank()) {
 
                 //Set the name of the activity to launch
-                val intent = Intent(this, WelcomeActivity::class.java)
-                //Add the data
-                intent.putExtra(FULL_NAME_KEY, fullName)
-                //Launch
-                startActivity(intent)
-            }
-            else {
+                Intent(this, WelcomeActivity::class.java).also { welcomeIntent ->
+                    //Add the data
+                    welcomeIntent.putExtra(FULL_NAME_KEY, fullName)
+                    //Launch
+                    startActivity(welcomeIntent)
+                }
+
+            } else {
                 Toast.makeText(this, getString(R.string.full_name_label), Toast.LENGTH_LONG).show()
             }
 
