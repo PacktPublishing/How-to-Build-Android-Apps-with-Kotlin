@@ -28,5 +28,9 @@
         <item name="android:textSize">20sp</item>
     </style>
 
+    <style name="page">
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:padding">8dp</item>
+    </style>
 
 </resources>

@@ -8,7 +8,7 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
-internal const val FULL_NAME_KEY = "FULL_NAME_KEY"
+const val FULL_NAME_KEY = "FULL_NAME_KEY"
 
 class MainActivity : AppCompatActivity() {
 
