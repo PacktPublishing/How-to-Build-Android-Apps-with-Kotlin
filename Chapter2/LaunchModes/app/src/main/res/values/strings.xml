@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Launch Modes</string>
+    <string name="letter_a">A</string>
+    <string name="letter_b">B</string>
+    <string name="letter_c">C</string>
+    <string name="number_1">1</string>
+    <string name="number_2">2</string>
+    <string name="number_3">3</string>
+    <string name="standard_launch_mode">Standard</string>
+    <string name="single_top_launch_mode">Single Top</string>
+</resources>
