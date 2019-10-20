@@ -4,6 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivityThree">
+    tools:context=".ActivityOne">
+
+    <TextView
+        android:id="@+id/launch_mode_single_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/launch_mode_header"
+        android:text="@string/single_top_launch_mode"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/single_letter_number"
+        android:text="@string/number_3"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/launch_mode_single_top"
+        tools:text="3"/>
+
+    <include layout="@layout/numbers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/number"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

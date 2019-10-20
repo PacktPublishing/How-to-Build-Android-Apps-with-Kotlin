@@ -4,6 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivityA">
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/launch_mode_standard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/launch_mode_header_single"
+        android:text="@string/standard_launch_mode"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Standard"/>
+
+    <TextView
+        android:id="@+id/letter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/single_letter_number"
+        android:text="@string/letter_a"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/launch_mode_standard"
+        tools:text="A"/>
+
+    <include layout="@layout/letters"
+        android:id="@+id/letters_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/letter"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
