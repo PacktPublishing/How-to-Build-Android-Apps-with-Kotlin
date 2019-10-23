@@ -5,7 +5,6 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content">
 
-    <!---This would probably be better implemented as a recyclerview, but using this for simplicity -->
     <LinearLayout
         style="@style/page"
         android:layout_width="match_parent"
