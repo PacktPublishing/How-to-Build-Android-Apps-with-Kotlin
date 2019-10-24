@@ -17,7 +17,6 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Standard"/>
 
-
     <include layout="@layout/letters"
         android:id="@+id/letters_layout"
         android:layout_width="wrap_content"

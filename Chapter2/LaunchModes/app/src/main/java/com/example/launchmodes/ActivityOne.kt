@@ -15,6 +15,7 @@ class ActivityOne : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_one)
+        Log.d(TAG, "onCreate")
 
         val buttonClickListener = View.OnClickListener { view ->
 
