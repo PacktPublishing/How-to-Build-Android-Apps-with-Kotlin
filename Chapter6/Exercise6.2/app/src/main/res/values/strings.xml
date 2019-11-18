@@ -1,4 +1,5 @@
 <resources>
-    <string name="app_name">My RecyclerView App</string>
-    <string name="item_cat_photo">Photo</string>
+    <string name="app_name">SCA - Secret Cat Agents</string>
+    <string name="item_cat_photo">Cat photo</string>
+    <string name="main_title">Our Agents</string>
 </resources>
