@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ViewModelLiveData</string>
+    <string name="press_me">Press Me</string>
+    <string name="total">Total %d</string>
+</resources>
