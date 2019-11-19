@@ -28,6 +28,11 @@ class ListItemsAdapter(
         notifyDataSetChanged()
     }
 
+    fun addItem(position: Int, item: ListItemUiModel) {
+        listData.add(position, item)
+        notifyItemInserted(position)
+    }
+
     fun removeItem(position: Int) {
         listData.removeAt(position)
         notifyItemRemoved(position)
