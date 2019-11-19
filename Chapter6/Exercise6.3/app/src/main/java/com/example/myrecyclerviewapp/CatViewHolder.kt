@@ -23,9 +23,11 @@ private const val UNKNOWN_SYMBOL = "?"
 
 class CatViewHolder(
     override val containerView: View,
-    private val imageLoader: ImageLoader
+    private val imageLoader: ImageLoader,
+    private val onClickListener: OnClickListener
 ) : ViewHolder(containerView), LayoutContainer {
     fun bindData(catData: CatUiModel) {
+        containerView.setOnClickListener { onClickListener.onClick(catData) }
         imageLoader.loadImage(catData.imageUrl, catPhotoView)
         catNameView.text = catData.name
         catBreedView.text = when (catData.breed) {
