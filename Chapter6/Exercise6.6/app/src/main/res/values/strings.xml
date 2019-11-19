@@ -2,4 +2,5 @@
     <string name="app_name">SCA - Secret Cat Agents</string>
     <string name="item_cat_photo">Cat photo</string>
     <string name="main_title">Our Agents</string>
+    <string name="add_button_label">Add A Cat</string>
 </resources>
