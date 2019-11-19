@@ -8,6 +8,9 @@ import com.example.myrecyclerviewapp.model.ListItemUiModel
 import com.example.myrecyclerviewapp.viewholder.CatViewHolder
 import com.example.myrecyclerviewapp.viewholder.ListItemViewHolder
 
+private const val VIEW_TYPE_TITLE = 0
+private const val VIEW_TYPE_CAT = 1
+
 class ListItemsAdapter(
     private val layoutInflater: LayoutInflater,
     private val imageLoader: ImageLoader,
@@ -32,6 +35,11 @@ class ListItemsAdapter(
     }
 
     override fun getItemCount() = listData.size
+
+    override fun getItemViewType(position: Int) = when (listData[position]) {
+        is ListItemUiModel.Title -> VIEW_TYPE_TITLE
+        is ListItemUiModel.Cat -> VIEW_TYPE_CAT
+    }
 
     override fun onBindViewHolder(holder: ListItemViewHolder, position: Int) {
         holder.bindData(listData[position])
