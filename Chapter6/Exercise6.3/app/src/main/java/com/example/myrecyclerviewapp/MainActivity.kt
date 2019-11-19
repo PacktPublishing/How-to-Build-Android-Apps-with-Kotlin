@@ -1,6 +1,7 @@
 package com.example.myrecyclerviewapp
 
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myrecyclerviewapp.model.CatBreed
@@ -9,7 +10,15 @@ import com.example.myrecyclerviewapp.model.Gender
 import kotlinx.android.synthetic.main.activity_main.recycler_view as recyclerView
 
 class MainActivity : AppCompatActivity() {
-    private val catsAdapter by lazy { CatsAdapter(layoutInflater, GlideImageLoader(this)) }
+    private val catsAdapter by lazy {
+        CatsAdapter(
+            layoutInflater,
+            GlideImageLoader(this),
+            object : CatsAdapter.OnClickListener {
+                override fun onItemClick(catData: CatUiModel) = showSelectionDialog(catData)
+            }
+        )
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,5 +51,13 @@ class MainActivity : AppCompatActivity() {
                 )
             )
         )
+    }
+
+    private fun showSelectionDialog(catData: CatUiModel) {
+        AlertDialog.Builder(this)
+            .setTitle("Agent Selected")
+            .setMessage("You have selected agent ${catData.name}")
+            .setPositiveButton("OK") { _, _ -> }
+            .show()
     }
 }
