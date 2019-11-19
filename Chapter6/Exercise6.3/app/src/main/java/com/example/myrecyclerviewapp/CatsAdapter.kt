@@ -27,4 +27,8 @@ class CatsAdapter(
     override fun onBindViewHolder(holder: CatViewHolder, position: Int) {
         holder.bindData(catsData[position])
     }
+
+    interface OnClickListener {
+        fun onItemClick(catData: CatUiModel)
+    }
 }
