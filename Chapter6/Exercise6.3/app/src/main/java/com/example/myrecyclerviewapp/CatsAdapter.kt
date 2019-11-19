@@ -7,7 +7,8 @@ import com.example.myrecyclerviewapp.model.CatUiModel
 
 class CatsAdapter(
     private val layoutInflater: LayoutInflater,
-    private val imageLoader: ImageLoader
+    private val imageLoader: ImageLoader,
+    private val onClickListener: OnClickListener
 ) : RecyclerView.Adapter<CatViewHolder>() {
     private val catsData = mutableListOf<CatUiModel>()
 
@@ -19,7 +20,9 @@ class CatsAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CatViewHolder {
         val view = layoutInflater.inflate(R.layout.item_cat, parent, false)
-        return CatViewHolder(view, imageLoader)
+        return CatViewHolder(view, imageLoader, object : CatViewHolder.OnClickListener {
+            override fun onClick(catData: CatUiModel) = onClickListener.onItemClick(catData)
+        })
     }
 
     override fun getItemCount() = catsData.size
