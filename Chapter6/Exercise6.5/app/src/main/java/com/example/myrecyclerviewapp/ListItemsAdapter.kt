@@ -18,6 +18,8 @@ class ListItemsAdapter(
     private val imageLoader: ImageLoader,
     private val onClickListener: OnClickListener
 ) : RecyclerView.Adapter<ListItemViewHolder>() {
+    val swipeToDeleteCallback = SwipeToDeleteCallback()
+
     private val listData = mutableListOf<ListItemUiModel>()
 
     fun setData(listData: List<ListItemUiModel>) {
