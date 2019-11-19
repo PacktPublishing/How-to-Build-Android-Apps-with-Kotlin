@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">NotesApplication</string>
+    <string name="add_note">Add Note</string>
+    <string name="total">Total %d</string>
+</resources>
