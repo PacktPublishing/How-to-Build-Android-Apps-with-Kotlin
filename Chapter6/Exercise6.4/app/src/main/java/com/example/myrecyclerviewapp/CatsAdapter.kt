@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myrecyclerviewapp.model.CatUiModel
+import com.example.myrecyclerviewapp.viewholder.CatViewHolder
 
 class CatsAdapter(
     private val layoutInflater: LayoutInflater,
@@ -20,9 +21,12 @@ class CatsAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CatViewHolder {
         val view = layoutInflater.inflate(R.layout.item_cat, parent, false)
-        return CatViewHolder(view, imageLoader, object : CatViewHolder.OnClickListener {
-            override fun onClick(catData: CatUiModel) = onClickListener.onItemClick(catData)
-        })
+        return CatViewHolder(
+            view,
+            imageLoader,
+            object : CatViewHolder.OnClickListener {
+                override fun onClick(catData: CatUiModel) = onClickListener.onItemClick(catData)
+            })
     }
 
     override fun getItemCount() = catsData.size

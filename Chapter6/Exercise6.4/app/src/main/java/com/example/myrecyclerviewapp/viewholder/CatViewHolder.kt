@@ -1,7 +1,8 @@
-package com.example.myrecyclerviewapp
+package com.example.myrecyclerviewapp.viewholder
 
 import android.view.View
 import androidx.core.text.HtmlCompat
+import com.example.myrecyclerviewapp.ImageLoader
 import com.example.myrecyclerviewapp.model.CatBreed
 import com.example.myrecyclerviewapp.model.CatUiModel
 import com.example.myrecyclerviewapp.model.Gender
