@@ -40,4 +40,8 @@ class CatViewHolder(
             else -> UNKNOWN_SYMBOL
         }
     }
+
+    interface OnClickListener {
+        fun onClick(catData: CatUiModel)
+    }
 }
