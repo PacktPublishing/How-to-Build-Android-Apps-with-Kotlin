@@ -4,18 +4,20 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myrecyclerviewapp.model.CatUiModel
+import com.example.myrecyclerviewapp.model.ListItemUiModel
 import com.example.myrecyclerviewapp.viewholder.CatViewHolder
+import com.example.myrecyclerviewapp.viewholder.ListItemViewHolder
 
-class CatsAdapter(
+class ListItemsAdapter(
     private val layoutInflater: LayoutInflater,
     private val imageLoader: ImageLoader,
     private val onClickListener: OnClickListener
-) : RecyclerView.Adapter<CatViewHolder>() {
-    private val catsData = mutableListOf<CatUiModel>()
+) : RecyclerView.Adapter<ListItemViewHolder>() {
+    private val listData = mutableListOf<ListItemUiModel>()
 
-    fun setData(catsData: List<CatUiModel>) {
-        this.catsData.clear()
-        this.catsData.addAll(catsData)
+    fun setData(listData: List<ListItemUiModel>) {
+        this.listData.clear()
+        this.listData.addAll(listData)
         notifyDataSetChanged()
     }
 
@@ -29,10 +31,10 @@ class CatsAdapter(
             })
     }
 
-    override fun getItemCount() = catsData.size
+    override fun getItemCount() = listData.size
 
-    override fun onBindViewHolder(holder: CatViewHolder, position: Int) {
-        holder.bindData(catsData[position])
+    override fun onBindViewHolder(holder: ListItemViewHolder, position: Int) {
+        holder.bindData(listData[position])
     }
 
     interface OnClickListener {
