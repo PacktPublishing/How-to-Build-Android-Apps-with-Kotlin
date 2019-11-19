@@ -2,11 +2,10 @@ package com.example.myrecyclerviewapp
 
 import android.view.View
 import androidx.core.text.HtmlCompat
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.myrecyclerviewapp.model.CatBreed
 import com.example.myrecyclerviewapp.model.CatUiModel
 import com.example.myrecyclerviewapp.model.Gender
-import kotlinx.android.extensions.LayoutContainer
+import com.example.myrecyclerviewapp.model.ListItemUiModel
 import kotlinx.android.synthetic.main.item_cat.item_cat_biography as catBioView
 import kotlinx.android.synthetic.main.item_cat.item_cat_breed as catBreedView
 import kotlinx.android.synthetic.main.item_cat.item_cat_gender as catGenderView
@@ -25,8 +24,11 @@ class CatViewHolder(
     override val containerView: View,
     private val imageLoader: ImageLoader,
     private val onClickListener: OnClickListener
-) : ViewHolder(containerView), LayoutContainer {
-    fun bindData(catData: CatUiModel) {
+) : ListItemViewHolder(containerView) {
+    override fun bindData(listItem: ListItemUiModel) {
+        require(listItem is ListItemUiModel.Cat) { "Expected ListItemUiModel.Cat" }
+        val catData = listItem.data
+
         containerView.setOnClickListener { onClickListener.onClick(catData) }
         imageLoader.loadImage(catData.imageUrl, catPhotoView)
         catNameView.text = catData.name
