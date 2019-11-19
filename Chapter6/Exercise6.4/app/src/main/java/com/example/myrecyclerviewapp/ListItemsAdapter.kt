@@ -7,6 +7,7 @@ import com.example.myrecyclerviewapp.model.CatUiModel
 import com.example.myrecyclerviewapp.model.ListItemUiModel
 import com.example.myrecyclerviewapp.viewholder.CatViewHolder
 import com.example.myrecyclerviewapp.viewholder.ListItemViewHolder
+import com.example.myrecyclerviewapp.viewholder.TitleViewHolder
 
 private const val VIEW_TYPE_TITLE = 0
 private const val VIEW_TYPE_CAT = 1
@@ -24,14 +25,22 @@ class ListItemsAdapter(
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CatViewHolder {
-        val view = layoutInflater.inflate(R.layout.item_cat, parent, false)
-        return CatViewHolder(
-            view,
-            imageLoader,
-            object : CatViewHolder.OnClickListener {
-                override fun onClick(catData: CatUiModel) = onClickListener.onItemClick(catData)
-            })
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = when (viewType) {
+        VIEW_TYPE_TITLE -> {
+            val view = layoutInflater.inflate(R.layout.item_title, parent, false)
+            TitleViewHolder(view)
+        }
+        VIEW_TYPE_CAT -> {
+            val view = layoutInflater.inflate(R.layout.item_cat, parent, false)
+            CatViewHolder(
+                view,
+                imageLoader,
+                object : CatViewHolder.OnClickListener {
+                    override fun onClick(catData: CatUiModel) =
+                        onClickListener.onItemClick(catData)
+                })
+        }
+        else -> throw IllegalArgumentException("Unknown view type requested: $viewType")
     }
 
     override fun getItemCount() = listData.size
