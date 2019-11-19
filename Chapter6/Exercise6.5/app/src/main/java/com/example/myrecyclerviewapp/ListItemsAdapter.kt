@@ -25,6 +25,11 @@ class ListItemsAdapter(
         notifyDataSetChanged()
     }
 
+    fun removeItem(position: Int) {
+        listData.removeAt(position)
+        notifyItemRemoved(position)
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = when (viewType) {
         VIEW_TYPE_TITLE -> {
             val view = layoutInflater.inflate(R.layout.item_title, parent, false)
