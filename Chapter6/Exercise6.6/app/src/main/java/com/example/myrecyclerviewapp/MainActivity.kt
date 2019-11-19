@@ -10,6 +10,7 @@ import com.example.myrecyclerviewapp.model.CatUiModel
 import com.example.myrecyclerviewapp.model.Gender
 import com.example.myrecyclerviewapp.model.ListItemUiModel
 import kotlinx.android.synthetic.main.activity_main.recycler_view as recyclerView
+import kotlinx.android.synthetic.main.activity_main.main_add_item_button as addItemButton
 
 class MainActivity : AppCompatActivity() {
     private val listItemsAdapter by lazy {
@@ -30,6 +31,20 @@ class MainActivity : AppCompatActivity() {
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         val itemTouchHelper = ItemTouchHelper(listItemsAdapter.swipeToDeleteCallback)
         itemTouchHelper.attachToRecyclerView(recyclerView)
+        addItemButton.setOnClickListener {
+            listItemsAdapter.addItem(
+                1,
+                ListItemUiModel.Cat(
+                    CatUiModel(
+                        Gender.Female,
+                        CatBreed.BalineseJavanese,
+                        "Anonymous",
+                        "Unknown",
+                        "https://cdn2.thecatapi.com/images/zJkeHza2K.jpg"
+                    )
+                )
+            )
+        }
         listItemsAdapter.setData(
             listOf(
                 ListItemUiModel.Title("Sleeper Agents"),
