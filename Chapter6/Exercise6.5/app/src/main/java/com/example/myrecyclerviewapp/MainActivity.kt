@@ -3,6 +3,7 @@ package com.example.myrecyclerviewapp
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myrecyclerviewapp.model.CatBreed
 import com.example.myrecyclerviewapp.model.CatUiModel
@@ -27,6 +28,8 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = listItemsAdapter
         recyclerView.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        val itemTouchHelper = ItemTouchHelper(listItemsAdapter.swipeToDeleteCallback)
+        itemTouchHelper.attachToRecyclerView(recyclerView)
         listItemsAdapter.setData(
             listOf(
                 ListItemUiModel.Title("Sleeper Agents"),
