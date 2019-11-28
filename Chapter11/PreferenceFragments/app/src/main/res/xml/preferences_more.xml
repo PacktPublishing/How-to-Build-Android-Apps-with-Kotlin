@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <SwitchPreferenceCompat
+        app:key="@string/key_mobile_data"
+        app:title="@string/mobile_data" />
+
+    <Preference
+        app:selectable="false"
+        app:summary="@string/manage_data_wisely" />
+
+</PreferenceScreen>

@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">PreferenceFragments</string>
+
+    <string name="mobile_data">Mobile data</string>
+    <string name="manage_data_wisely">Manage your data wisely</string>
+
+    <string name="connectivity">Connectivity</string>
+    <string name="network_scan">Network scan</string>
+    <string name="frequency">Frequency</string>
+    <string name="configuration">Configuration</string>
+    <string name="ip_address">IP Address</string>
+    <string name="domain">Domain</string>
+    <string name="more">More</string>
+
+
+</resources>
