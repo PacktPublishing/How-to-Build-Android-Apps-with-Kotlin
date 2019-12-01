@@ -6,7 +6,7 @@ import android.util.Log
 import com.example.catagentprofile.api.TheCatApiService
 import com.example.catagentprofile.model.ImageResultData
 import kotlinx.android.synthetic.main.activity_main.main_profile_image as profileImageView
-import kotlinx.android.synthetic.main.activity_main.main_server_response as serverResponseView
+import kotlinx.android.synthetic.main.activity_main.main_agent_breed_value as agentBreedView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -51,7 +51,8 @@ class MainActivity : AppCompatActivity() {
                     } else {
                         Log.d("MainActivity", "Missing image URL")
                     }
-                    serverResponseView.text = "Image URL: $firstImageUrl"
+                    agentBreedView.text =
+                        imageResults?.firstOrNull()?.breeds?.firstOrNull()?.name ?: "Unknown"
                 } else {
                     Log.e(
                         "MainActivity",
