@@ -23,6 +23,8 @@ class MainActivity : AppCompatActivity() {
 
     private val theCatApiService by lazy { retrofit.create(TheCatApiService::class.java) }
 
+    private val imageLoader: ImageLoader by lazy { GlideImageLoader(this) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
