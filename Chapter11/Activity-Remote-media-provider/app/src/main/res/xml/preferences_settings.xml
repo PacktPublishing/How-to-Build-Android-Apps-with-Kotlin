@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <EditTextPreference
+        app:key="@string/preference_key_nr_results"
+        app:title="@string/number_of_items" />
+
+</PreferenceScreen>
