@@ -45,7 +45,12 @@ class MainActivity : AppCompatActivity() {
             ) {
                 if (response.isSuccessful) {
                     val imageResults = response.body()
-                    val firstImageUrl = imageResults?.firstOrNull()?.imageUrl ?: "No URL"
+                    val firstImageUrl = imageResults?.firstOrNull()?.imageUrl ?: ""
+                    if (!firstImageUrl.isBlank()) {
+                        imageLoader.loadImage(firstImageUrl, profileImageView)
+                    } else {
+                        Log.d("MainActivity", "Missing image URL")
+                    }
                     serverResponseView.text = "Image URL: $firstImageUrl"
                 } else {
                     Log.e(
