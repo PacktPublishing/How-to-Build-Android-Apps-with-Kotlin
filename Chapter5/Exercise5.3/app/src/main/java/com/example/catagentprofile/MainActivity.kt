@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import com.example.catagentprofile.api.TheCatApiService
 import com.example.catagentprofile.model.ImageResultData
+import kotlinx.android.synthetic.main.activity_main.main_profile_image as profileImageView
 import kotlinx.android.synthetic.main.activity_main.main_server_response as serverResponseView
 import retrofit2.Call
 import retrofit2.Callback
