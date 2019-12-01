@@ -8,22 +8,28 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/main_server_response"
+        android:id="@+id/main_agent_breed_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toTopOf="@+id/main_profile_image"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:padding="16dp"
+        android:text="Agent breed:"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/main_agent_breed_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/main_agent_breed_label"
+        app:layout_constraintTop_toTopOf="@+id/main_agent_breed_label" />
 
     <ImageView
         android:id="@+id/main_profile_image"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_server_response" />
+        app:layout_constraintTop_toBottomOf="@+id/main_agent_breed_label" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
