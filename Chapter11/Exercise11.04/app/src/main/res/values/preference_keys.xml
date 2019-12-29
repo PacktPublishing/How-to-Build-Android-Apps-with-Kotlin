@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="key_mobile_data" translatable="false">mobile_data</string>
+
+    <string name="key_network_scan" translatable="false">network_scan</string>
+    <string name="key_frequency" translatable="false">frequency</string>
+    <string name="key_ip_address" translatable="false">ip_address</string>
+    <string name="key_domain" translatable="false">domain</string>
+
+</resources>

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Files</string>
+    <string name="file_provider">FileProvider</string>
+    <string name="saf">SAF</string>
+</resources>

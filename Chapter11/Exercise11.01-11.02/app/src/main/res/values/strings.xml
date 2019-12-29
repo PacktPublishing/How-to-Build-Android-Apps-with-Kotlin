@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Repository</string>
+    <string name="error_message">Something went wrong</string>
+</resources>
