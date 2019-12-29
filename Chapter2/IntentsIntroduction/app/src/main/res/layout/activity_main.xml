@@ -20,14 +20,11 @@
 
     <EditText
         android:id="@+id/full_name"
-        style="@style/full_name"
+        style="@style/TextAppearance.AppCompat.Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/full_name_label"
-        app:layout_constraintTop_toBottomOf="@id/header_text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:text="Enter your full name:"/>
+        android:hint="@string/first_name"
+        tools:text="First Name:"/>
 
     <Button
         android:id="@+id/submit_button"
