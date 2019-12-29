@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Intents Introduction</string>
+    <string name="header_text">Please enter your name and then we\'ll get started!</string>
+    <string name="welcome_text">Hello %s, we hope you enjoy using the app!</string>
+    <string name="full_name_label">Enter your full name:</string>
+    <string name="first_name">First Name:</string>
+    <string name="submit_button_text">SUBMIT</string>
+</resources>
