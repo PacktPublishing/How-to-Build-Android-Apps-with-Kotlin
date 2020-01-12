@@ -9,6 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <!-- When the commented out change below is added you have to handle rotation changes yourself
+        <activity android:name=".MainActivity" android:configChanges="orientation|screenSize">-->
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
