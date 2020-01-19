@@ -13,6 +13,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
@@ -125,7 +126,17 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 7f))
     }
 
-    private fun addMarkerAtLocation(location: LatLng, title: String) {
-        mMap.addMarker(MarkerOptions().title(title).position(location))
-    }
+    private fun addMarkerAtLocation(
+        location: LatLng,
+        title: String,
+        markerIcon: BitmapDescriptor? = null
+    ) = mMap.addMarker(
+        MarkerOptions()
+            .title(title)
+            .position(location)
+            .apply {
+                markerIcon?.let { icon(markerIcon) }
+            }
+    )
+
 }
