@@ -2,18 +2,24 @@ package com.example.catagentdeployer
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Color
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.DrawableCompat
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptor
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
@@ -139,4 +145,26 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             }
     )
 
+    private fun getBitmapDescriptorFromVector(@DrawableRes vectorDrawableResourceId: Int): BitmapDescriptor? {
+        val bitmap =
+            ContextCompat.getDrawable(this, vectorDrawableResourceId)?.let { vectorDrawable ->
+                vectorDrawable
+                    .setBounds(0, 0, vectorDrawable.intrinsicWidth, vectorDrawable.intrinsicHeight)
+
+                val drawableWithTint = DrawableCompat.wrap(vectorDrawable)
+                DrawableCompat.setTint(drawableWithTint, Color.RED)
+
+                val bitmap = Bitmap.createBitmap(
+                    vectorDrawable.intrinsicWidth,
+                    vectorDrawable.intrinsicHeight,
+                    Bitmap.Config.ARGB_8888
+                )
+                val canvas = Canvas(bitmap)
+                drawableWithTint.draw(canvas)
+                bitmap
+            }
+        return BitmapDescriptorFactory.fromBitmap(bitmap).also {
+            bitmap?.recycle()
+        }
+    }
 }
