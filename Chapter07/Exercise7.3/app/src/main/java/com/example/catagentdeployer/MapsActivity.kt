@@ -167,4 +167,16 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             bitmap?.recycle()
         }
     }
+
+    private fun addOrMoveSelectedPositionMarker(latLng: LatLng) {
+        if (marker == null) {
+            marker = addMarkerAtLocation(
+                latLng, "Deploy here", getBitmapDescriptorFromVector(R.drawable.target_icon)
+            )
+        } else {
+            marker?.apply {
+                position = latLng
+            }
+        }
+    }
 }
