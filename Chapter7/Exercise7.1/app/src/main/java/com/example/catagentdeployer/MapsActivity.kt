@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -69,6 +70,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             PERMISSION_CODE_REQUEST_LOCATION
         )
     }
+
+    private fun hasLocationPermission() =
+        ContextCompat.checkSelfPermission(
+            this, Manifest.permission.ACCESS_FINE_LOCATION
+        ) == PackageManager.PERMISSION_GRANTED
 
     private fun requestPermissionWithRationaleIfNeeded() = if (
         ActivityCompat.shouldShowRequestPermissionRationale(
