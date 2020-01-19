@@ -2,6 +2,7 @@ package com.example.catagentdeployer
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
@@ -107,6 +108,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun getLastLocation() {
+        fusedLocationProviderClient.lastLocation
+            .addOnSuccessListener { location: Location? ->
+                location?.let {
+                    val userLocation = LatLng(location.latitude, location.longitude)
+                    updateMapLocation(userLocation)
+                    addMarkerAtLocation(userLocation, "You")
+                }
+            }
     }
 
     private fun updateMapLocation(location: LatLng) {
