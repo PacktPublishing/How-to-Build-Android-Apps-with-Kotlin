@@ -14,6 +14,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 
 private const val PERMISSION_CODE_REQUEST_LOCATION = 1
@@ -24,6 +25,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private lateinit var mMap: GoogleMap
+
+    private var marker: Marker? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
