@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -68,6 +69,17 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
             PERMISSION_CODE_REQUEST_LOCATION
         )
+    }
+
+    private fun showPermissionRationale(positiveAction: () -> Unit) {
+        AlertDialog.Builder(this)
+            .setTitle("Location permission")
+            .setMessage("This app will not work without knowing your current location")
+            .setPositiveButton(
+                "OK"
+            ) { _, _ -> positiveAction() }
+            .create()
+            .show()
     }
 
     private fun getLastLocation() {
