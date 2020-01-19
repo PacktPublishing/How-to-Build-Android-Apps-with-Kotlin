@@ -54,7 +54,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      * installed Google Play services and returned to the app.
      */
     override fun onMapReady(googleMap: GoogleMap) {
-        mMap = googleMap
+        mMap = googleMap.apply {
+            setOnMapClickListener { latLng ->
+                addOrMoveSelectedPositionMarker(latLng)
+            }
+        }
 
         if (hasLocationPermission()) {
             getLastLocation()
@@ -62,6 +66,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             requestPermissionWithRationaleIfNeeded()
         }
     }
+
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
