@@ -57,6 +57,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 grantResults[0] == PackageManager.PERMISSION_GRANTED
             ) {
                 getLastLocation()
+            } else {
+                requestPermissionWithRationaleIfNeeded()
             }
         }
     }
