@@ -6,7 +6,6 @@
     <string name="color_chosen_message">%s is your favorite color!</string>
     <string name="submit_button_text">CHOOSE COLOR</string>
 
-    <!--Colors of the Rainbow in hex-->
     <string name="red">RED</string>
     <string name="orange">ORANGE</string>
     <string name="yellow">YELLOW</string>

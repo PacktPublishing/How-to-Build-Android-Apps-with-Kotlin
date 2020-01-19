@@ -36,6 +36,6 @@
         app:layout_constraintTop_toBottomOf="@id/submit_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:text="This is your favourite color of the rainbow"/>
+        tools:text="This is your favorite color of the rainbow"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
