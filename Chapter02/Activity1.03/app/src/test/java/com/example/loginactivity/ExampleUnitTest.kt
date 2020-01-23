@@ -1,4 +1,4 @@
-package com.example.loginactivity01
+package com.example.loginactivity
 
 import org.junit.Test
 
