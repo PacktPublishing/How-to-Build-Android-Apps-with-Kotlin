@@ -23,9 +23,6 @@ const val PASSWORD_CORRECT_VALUE = "somepassword"
 
 class MainActivity : AppCompatActivity() {
 
-    var isLoggedIn = false
-    var loggedInUser = ""
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -33,19 +30,24 @@ class MainActivity : AppCompatActivity() {
         submit_button.setOnClickListener {
 
             val userName = (user_name as EditText).text.toString()
-            val password = (password as EditText).text.toString()
+            val passWord = (password as EditText).text.toString()
 
             hideKeyboard()
 
-            if (userName.isNotBlank() && password.isNotBlank()) {
+            if (userName.isNotBlank() && passWord.isNotBlank()) {
 
                 //Set the name of the activity to launch
-                Intent(this, MainActivity::class.java).also { loginIntent ->
+                Intent(this, WelcomeActivity::class.java).also { welcomeIntent ->
                     //Add the data
-                    loginIntent.putExtra(USER_NAME_KEY, userName)
-                    loginIntent.putExtra(PASSWORD_KEY, password)
+                    welcomeIntent.putExtra(USER_NAME_KEY, userName)
+                    welcomeIntent.putExtra(PASSWORD_KEY, passWord)
+
+                    //Reset text fields to blank
+                    user_name.text.clear()
+                    password.text.clear()
+
                     //Launch
-                    startActivity(loginIntent)
+                    startActivity(welcomeIntent)
                 }
 
             } else {
@@ -55,69 +57,6 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
-    }
-
-    override fun onNewIntent(intent: Intent?) {
-        super.onNewIntent(intent)
-
-        //Set the new Intent to the one to process
-        setIntent(intent)
-
-        //Get the intent which started this activity
-        intent.let { loginIntent ->
-
-            val userNameForm = loginIntent?.getStringExtra(USER_NAME_KEY) ?: ""
-            val passwordForm = loginIntent?.getStringExtra(PASSWORD_KEY) ?: ""
-
-            val loggedInCorrectly =
-                hasEnteredCorrectCredentials(userNameForm.trim(), passwordForm.trim())
-
-            if (loggedInCorrectly) {
-                setLoggedIn(userNameForm)
-                isLoggedIn = true
-            } else {
-                val toast = Toast.makeText(this, getString(R.string.login_error), Toast.LENGTH_LONG)
-                toast.setGravity(Gravity.CENTER, 0, 0)
-                toast.show()
-            }
-        }
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-
-        outState.putBoolean(IS_LOGGED_IN, isLoggedIn)
-        outState.putString(LOGGED_IN_USERNAME, loggedInUser)
-    }
-
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        super.onRestoreInstanceState(savedInstanceState)
-
-        isLoggedIn = savedInstanceState.getBoolean(IS_LOGGED_IN, false)
-        loggedInUser = savedInstanceState.getString(LOGGED_IN_USERNAME, "")
-
-        if (isLoggedIn && loggedInUser.isNotBlank()) {
-            setLoggedIn(loggedInUser)
-        }
-    }
-
-
-    private fun setLoggedIn(userName: String) {
-        loggedInUser = userName
-        val welcomeMessage = getString(R.string.welcome_text, userName)
-        user_name.isVisible = false
-        password.isVisible = false
-        submit_button.isVisible = false
-        header.text = welcomeMessage
-    }
-
-    private fun hasEnteredCorrectCredentials(
-        userNameForm: String,
-        passwordForm: String
-    ): Boolean {
-        return userNameForm.contentEquals(USER_NAME_CORRECT_VALUE) && passwordForm.contentEquals(
-            PASSWORD_CORRECT_VALUE
-        )
     }
 
     private fun hideKeyboard() {

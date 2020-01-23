@@ -1,13 +1,14 @@
 package com.example.loginactivity
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -17,14 +18,11 @@ const val PASSWORD_KEY = "PASSWORD_KEY"
 const val IS_LOGGED_IN = "IS_LOGGED_IN"
 const val LOGGED_IN_USERNAME = "LOGGED_IN_USERNAME"
 
-//This is done as an example for simplicity and user/pwd credentials should never be stored in an app
-const val USER_NAME_CORRECT_VALUE = "someusername"
-const val PASSWORD_CORRECT_VALUE = "somepassword"
-
 class MainActivity : AppCompatActivity() {
 
     var isLoggedIn = false
     var loggedInUser = ""
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,53 +31,36 @@ class MainActivity : AppCompatActivity() {
         submit_button.setOnClickListener {
 
             val userName = (user_name as EditText).text.toString()
-            val password = (password as EditText).text.toString()
+            val passWord = (password as EditText).text.toString()
 
             hideKeyboard()
 
-            if (userName.isNotBlank() && password.isNotBlank()) {
+            if (userName.isNotBlank() && passWord.isNotBlank()) {
 
                 //Set the name of the activity to launch
-                Intent(this, MainActivity::class.java).also { loginIntent ->
+                Intent(this, WelcomeActivity::class.java).also { welcomeIntent ->
                     //Add the data
-                    loginIntent.putExtra(USER_NAME_KEY, userName)
-                    loginIntent.putExtra(PASSWORD_KEY, password)
+                    welcomeIntent.putExtra(USER_NAME_KEY, userName)
+                    welcomeIntent.putExtra(PASSWORD_KEY, passWord)
+
+                    //Reset text fields to blank
+                    user_name.text.clear()
+                    password.text.clear()
+
                     //Launch
-                    startActivity(loginIntent)
+                    startActivityForResult(welcomeIntent, LOGIN_REQUEST_CODE)
                 }
 
             } else {
-                val toast = Toast.makeText(this, getString(R.string.login_form_entry_error), Toast.LENGTH_LONG)
+                val toast = Toast.makeText(
+                    this,
+                    getString(R.string.login_form_entry_error),
+                    Toast.LENGTH_LONG
+                )
                 toast.setGravity(Gravity.CENTER, 0, 0)
                 toast.show()
             }
 
-        }
-    }
-
-    override fun onNewIntent(intent: Intent?) {
-        super.onNewIntent(intent)
-
-        //Set the new Intent to the one to process
-        setIntent(intent)
-
-        //Get the intent which started this activity
-        intent.let { loginIntent ->
-
-            val userNameForm = loginIntent?.getStringExtra(USER_NAME_KEY) ?: ""
-            val passwordForm = loginIntent?.getStringExtra(PASSWORD_KEY) ?: ""
-
-            val loggedInCorrectly =
-                hasEnteredCorrectCredentials(userNameForm.trim(), passwordForm.trim())
-
-            if (loggedInCorrectly) {
-                setLoggedIn(userNameForm)
-                isLoggedIn = true
-            } else {
-                val toast = Toast.makeText(this, getString(R.string.login_error), Toast.LENGTH_LONG)
-                toast.setGravity(Gravity.CENTER, 0, 0)
-                toast.show()
-            }
         }
     }
 
@@ -101,6 +82,23 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == LOGIN_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+
+            val userNameForm = data?.getStringExtra(USER_NAME_KEY) ?: ""
+
+            setLoggedIn(userNameForm)
+            isLoggedIn = true
+
+        } else if (requestCode == LOGIN_REQUEST_CODE && resultCode == Activity.RESULT_CANCELED){
+            val toast = Toast.makeText(this, getString(R.string.login_error), Toast.LENGTH_LONG)
+            toast.setGravity(Gravity.CENTER, 0, 0)
+            toast.show()
+        }
+
+    }
 
     private fun setLoggedIn(userName: String) {
         loggedInUser = userName
@@ -111,14 +109,6 @@ class MainActivity : AppCompatActivity() {
         header.text = welcomeMessage
     }
 
-    private fun hasEnteredCorrectCredentials(
-        userNameForm: String,
-        passwordForm: String
-    ): Boolean {
-        return userNameForm.contentEquals(USER_NAME_CORRECT_VALUE) && passwordForm.contentEquals(
-            PASSWORD_CORRECT_VALUE
-        )
-    }
 
     private fun hideKeyboard() {
         if (currentFocus != null) {
