@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name='Exercise2.02'
+rootProject.name='SaveAndRestore'
