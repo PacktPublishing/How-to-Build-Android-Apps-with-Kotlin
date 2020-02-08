@@ -2,6 +2,7 @@ package com.example.newyorkweather
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.newyorkweather.api.OpenWeatherMapService
 import com.example.newyorkweather.model.OpenWeatherMapResponseData
@@ -34,6 +35,7 @@ class MainActivity : AppCompatActivity() {
             .getWeather("New York", "[YOUR TOKEN]")
             .enqueue(object : Callback<OpenWeatherMapResponseData> {
                 override fun onFailure(call: Call<OpenWeatherMapResponseData>, t: Throwable) {
+                    showError("Response failed: ${t.message}")
                 }
 
                 override fun onResponse(
@@ -49,6 +51,7 @@ class MainActivity : AppCompatActivity() {
                 handleValidResponse(validResponse)
             } ?: Unit
         } else {
+            showError("Response was unsuccessful: ${response.errorBody()}")
         }
 
     private fun handleValidResponse(response: OpenWeatherMapResponseData) {
@@ -62,4 +65,8 @@ class MainActivity : AppCompatActivity() {
                 .into(weatherIconView)
         }
     }
+
+    private fun showError(message: String) =
+        Toast.makeText(this, message, Toast.LENGTH_SHORT)
+            .show()
 }
