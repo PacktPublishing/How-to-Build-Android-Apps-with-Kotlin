@@ -2,8 +2,13 @@ package com.example.newyorkweather
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.bumptech.glide.Glide
 import com.example.newyorkweather.api.OpenWeatherMapService
 import com.example.newyorkweather.model.OpenWeatherMapResponseData
+import kotlinx.android.synthetic.main.activity_main.main_description as descriptionView
+import kotlinx.android.synthetic.main.activity_main.main_status as statusView
+import kotlinx.android.synthetic.main.activity_main.main_title as titleView
+import kotlinx.android.synthetic.main.activity_main.main_weather_icon as weatherIconView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -34,8 +39,27 @@ class MainActivity : AppCompatActivity() {
                 override fun onResponse(
                     call: Call<OpenWeatherMapResponseData>,
                     response: Response<OpenWeatherMapResponseData>
-                ) {
-                }
+                ) = handleResponse(response)
             })
+    }
+
+    private fun handleResponse(response: Response<OpenWeatherMapResponseData>) =
+        if (response.isSuccessful) {
+            response.body()?.let { validResponse ->
+                handleValidResponse(validResponse)
+            } ?: Unit
+        } else {
+        }
+
+    private fun handleValidResponse(response: OpenWeatherMapResponseData) {
+        titleView.text = response.locationName
+        response.weather.firstOrNull()?.let { weather ->
+            statusView.text = weather.status
+            descriptionView.text = weather.description
+            Glide.with(this)
+                .load("https://openweathermap.org/img/wn/${weather.icon}@2x.png")
+                .centerInside()
+                .into(weatherIconView)
+        }
     }
 }
