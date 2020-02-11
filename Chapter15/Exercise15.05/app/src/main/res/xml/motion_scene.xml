@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ConstraintSet android:id="@+id/start_constraint">
+        <Constraint
+            android:id="@+id/text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end_constraint">
+        <Constraint
+            android:id="@+id/text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </ConstraintSet>
+
+    <Transition
+        app:constraintSetEnd="@id/end_constraint"
+        app:constraintSetStart="@id/start_constraint"
+        app:duration="2000">
+        <OnClick
+            app:clickAction="toggle"
+            app:targetId="@id/text_view" />
+        <KeyFrameSet >
+            <KeyPosition
+                app:motionTarget="@+id/text_view"
+                app:framePosition="50"
+                app:keyPositionType="parentRelative"
+                app:percentX="1" />
+        </KeyFrameSet>
+    </Transition>
+</MotionScene>

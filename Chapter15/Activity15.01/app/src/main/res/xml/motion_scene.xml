@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <Transition
+        app:constraintSetEnd="@layout/activity_login"
+        app:constraintSetStart="@layout/activity_splash"
+        app:duration="5000">
+        <OnClick
+            app:clickAction="transitionToEnd"
+            app:targetId="@id/button" />
+    </Transition>
+</MotionScene>
