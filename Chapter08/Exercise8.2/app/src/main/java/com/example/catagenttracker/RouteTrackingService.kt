@@ -65,6 +65,14 @@ class RouteTrackingService : Service() {
     private fun getPendingIntent() =
         PendingIntent.getActivity(this, 0, Intent(this, MainActivity::class.java), 0)
 
+    private fun trackToDestination(notificationBuilder: NotificationCompat.Builder) {
+        for (i in 10 downTo 0) {
+            Thread.sleep(1000L)
+            notificationBuilder.setContentText("$i seconds to destination")
+            startForeground(NOTIFICATION_ID, notificationBuilder.build())
+        }
+    }
+
     companion object {
         const val NOTIFICATION_ID = 0xCA7
         const val EXTRA_SECRET_CAT_AGENT_ID = "scaId"
