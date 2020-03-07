@@ -6,12 +6,14 @@ import androidx.work.Constraints
 import androidx.work.Data
 import androidx.work.NetworkType
 import androidx.work.OneTimeWorkRequest
+import androidx.work.WorkManager
 import com.example.catagenttracker.worker.CatFurGroomingWorker
 import com.example.catagenttracker.worker.CatLitterBoxSittingWorker
 import com.example.catagenttracker.worker.CatStretchingWorker
 import com.example.catagenttracker.worker.CatSuitUpWorker
 
 class MainActivity : AppCompatActivity() {
+    private val workManager = WorkManager.getInstance(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
