@@ -1,5 +1,6 @@
 package com.example.catagenttracker
 
+import android.app.PendingIntent
 import android.app.Service
 import android.content.Intent
 import android.os.IBinder
@@ -8,6 +9,9 @@ import androidx.lifecycle.MutableLiveData
 
 class RouteTrackingService : Service() {
     override fun onBind(intent: Intent): IBinder? = null
+
+    private fun getPendingIntent() =
+        PendingIntent.getActivity(this, 0, Intent(this, MainActivity::class.java), 0)
 
     companion object {
         const val NOTIFICATION_ID = 0xCA7
