@@ -2,6 +2,8 @@ package com.example.catagenttracker
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import android.widget.Toast.LENGTH_SHORT
 import androidx.work.Constraints
 import androidx.work.Data
 import androidx.work.NetworkType
@@ -53,6 +55,10 @@ class MainActivity : AppCompatActivity() {
             .then(catLitterBoxSittingRequest)
             .then(catSuitUpRequest)
             .enqueue()
+    }
+
+    private fun showResult(message: String) {
+        Toast.makeText(this, message, LENGTH_SHORT).show()
     }
 
     private fun getCatAgentIdInputData(catAgentIdKey: String, catAgentIdValue: String) =
