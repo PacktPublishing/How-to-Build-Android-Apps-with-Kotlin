@@ -9,11 +9,20 @@ import android.content.Intent
 import android.os.Build
 import android.os.IBinder
 import androidx.annotation.RequiresApi
+import androidx.core.app.NotificationCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
 class RouteTrackingService : Service() {
     override fun onBind(intent: Intent): IBinder? = null
+
+    private fun getNotificationBuilder(pendingIntent: PendingIntent, channelId: String) =
+        NotificationCompat.Builder(this, channelId)
+            .setContentTitle("Agent approaching destination")
+            .setContentText("Agent dispatched")
+            .setSmallIcon(R.drawable.ic_launcher_foreground)
+            .setContentIntent(pendingIntent)
+            .setTicker("Agent dispatched, tracking movement")
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun createNotificationChannel(): String {
