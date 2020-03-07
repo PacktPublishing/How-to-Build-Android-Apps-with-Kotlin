@@ -47,6 +47,12 @@ class MainActivity : AppCompatActivity() {
             .setInputData(
                 getCatAgentIdInputData(CatSuitUpWorker.INPUT_DATA_CAT_AGENT_ID, catAgentId)
             ).build()
+
+        workManager.beginWith(catStretchingRequest)
+            .then(catFurGroomingRequest)
+            .then(catLitterBoxSittingRequest)
+            .then(catSuitUpRequest)
+            .enqueue()
     }
 
     private fun getCatAgentIdInputData(catAgentIdKey: String, catAgentIdValue: String) =
