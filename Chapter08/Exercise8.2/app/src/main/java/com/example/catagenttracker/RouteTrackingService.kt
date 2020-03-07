@@ -7,6 +7,7 @@ import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.os.Build
+import android.os.Handler
 import android.os.IBinder
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
@@ -14,6 +15,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
 class RouteTrackingService : Service() {
+    private lateinit var notificationBuilder: NotificationCompat.Builder
+    private lateinit var serviceHandler: Handler
+
     override fun onBind(intent: Intent): IBinder? = null
 
     private fun startForegroundService(): NotificationCompat.Builder {
