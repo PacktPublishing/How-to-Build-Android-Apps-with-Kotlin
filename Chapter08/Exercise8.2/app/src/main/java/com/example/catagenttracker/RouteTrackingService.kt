@@ -10,6 +10,7 @@ import android.os.Build
 import android.os.Handler
 import android.os.HandlerThread
 import android.os.IBinder
+import android.os.Looper
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.lifecycle.LiveData
@@ -70,6 +71,12 @@ class RouteTrackingService : Service() {
             Thread.sleep(1000L)
             notificationBuilder.setContentText("$i seconds to destination")
             startForeground(NOTIFICATION_ID, notificationBuilder.build())
+        }
+    }
+
+    private fun notifyCompletion(agentId: String) {
+        Handler(Looper.getMainLooper()).post {
+            mutableTrackingCompletion.value = agentId
         }
     }
 
