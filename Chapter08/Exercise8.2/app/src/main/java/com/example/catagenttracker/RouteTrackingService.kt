@@ -28,6 +28,21 @@ class RouteTrackingService : Service() {
         serviceHandler = Handler(handlerThread.looper)
     }
 
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        val returnValue = super.onStartCommand(intent, flags, startId)
+
+        val agentId = intent?.getStringExtra(EXTRA_SECRET_CAT_AGENT_ID)
+            ?: throw IllegalStateException("Agent ID must be provided")
+        serviceHandler.post {
+            trackToDestination(notificationBuilder)
+            notifyCompletion(agentId)
+            stopForeground(true)
+            stopSelf()
+        }
+
+        return returnValue
+    }
+
     override fun onBind(intent: Intent): IBinder? = null
 
     private fun startForegroundService(): NotificationCompat.Builder {
