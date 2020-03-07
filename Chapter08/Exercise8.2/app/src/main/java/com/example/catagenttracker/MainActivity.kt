@@ -79,6 +79,7 @@ class MainActivity : AppCompatActivity() {
             .observe(this, Observer { info ->
                 if (info.state.isFinished) {
                     showResult("Agent done suiting up. Ready to go!")
+                    launchTrackingService()
                 }
             })
 
