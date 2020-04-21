@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Fragment Lifecycle</string>
+    <string name="hello_main_fragment">Hello Main Fragment</string>
+</resources>

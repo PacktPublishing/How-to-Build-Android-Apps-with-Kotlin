@@ -1,0 +1,2 @@
+rootProject.name='Jetpack Navigation Fragments'
+include ':app'

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AnswersFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/header_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            style="@style/HeaderText"
+            tools:text="Question Text" />
+
+        <Button
+            android:id="@+id/mercury"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            style="@style/ButtonText"
+            android:text="@string/mercury" />
+
+        <Button
+            android:id="@+id/venus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            style="@style/ButtonText"
+            android:text="@string/venus" />
+
+        <Button
+            android:id="@+id/earth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            style="@style/ButtonText"
+            android:text="@string/earth" />
+
+        <Button
+            android:id="@+id/mars"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            style="@style/ButtonText"
+            android:text="@string/mars" />
+
+        <Button
+            android:id="@+id/jupiter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            style="@style/ButtonText"
+            android:text="@string/jupiter" />
+
+        <Button
+            android:id="@+id/saturn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            style="@style/ButtonText"
+            android:text="@string/saturn" />
+
+        <Button
+            android:id="@+id/uranus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/ButtonText"
+            android:text="@string/uranus" />
+
+        <Button
+            android:id="@+id/neptune"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/ButtonText"
+            android:text="@string/neptune" />
+
+        <TextView
+            android:id="@+id/answer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/AnswerText"
+            tools:text="Planet"/>
+
+    </LinearLayout>
+
+</ScrollView>

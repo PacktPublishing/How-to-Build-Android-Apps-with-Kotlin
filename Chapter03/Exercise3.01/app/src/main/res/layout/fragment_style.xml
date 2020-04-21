@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="false"
+    tools:context=".StyleFragment">
+
+    <TextView
+        android:id="@+id/hello_world"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:textSize="38sp"
+        android:padding="14dp"
+        android:text="@string/hello_world"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Hello world" />
+
+    <Button
+        android:id="@+id/bold_button"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:textSize="26sp"
+        android:text="@string/bold_text"
+        app:layout_constraintEnd_toStartOf="@+id/italic_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/hello_world"
+        tools:text="Bold" />
+
+    <Button
+        android:id="@+id/italic_button"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:textSize="26sp"
+        android:text="@string/italic_text"
+        app:layout_constraintEnd_toStartOf="@+id/reset_button"
+        app:layout_constraintStart_toEndOf="@+id/bold_button"
+        app:layout_constraintTop_toBottomOf="@id/hello_world"
+        tools:text="Italic" />
+
+    <Button
+        android:id="@+id/reset_button"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:textSize="26sp"
+        android:text="@string/reset"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/italic_button"
+        app:layout_constraintTop_toBottomOf="@id/hello_world"
+        tools:text="Reset" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
