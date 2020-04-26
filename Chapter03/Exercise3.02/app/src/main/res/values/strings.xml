@@ -1,4 +1,16 @@
 <resources>
-    <string name="app_name">Fragment Lifecycle</string>
-    <string name="hello_main_fragment">Hello Main Fragment</string>
+    <string name="app_name">Fragment Intro</string>
+
+    <string name="hello_world">Hello World</string>
+    <string name="bold_text">Bold</string>
+    <string name="italic_text">Italic</string>
+    <string name="reset">Reset</string>
+
+    <string name="zero">0</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+    <string name="counter_text">Counter</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

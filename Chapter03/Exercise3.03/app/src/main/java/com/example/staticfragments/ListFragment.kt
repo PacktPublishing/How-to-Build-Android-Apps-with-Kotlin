@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.fragment_list.view.*
+import kotlinx.android.synthetic.main.fragment_list.*
 
 /**
  * A simple [Fragment] subclass.
@@ -15,32 +15,40 @@ class ListFragment : Fragment(), View.OnClickListener {
 
     private lateinit var starSignListener: StarSignListener
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        starSignListener = context as StarSignListener
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        val layout = inflater.inflate(R.layout.fragment_list, container, false)
-
-        layout.aquarius.setOnClickListener(this)
-        layout.pisces.setOnClickListener(this)
-        layout.aries.setOnClickListener(this)
-        layout.taurus.setOnClickListener(this)
-        layout.gemini.setOnClickListener(this)
-        layout.cancer.setOnClickListener(this)
-        layout.leo.setOnClickListener(this)
-        layout.virgo.setOnClickListener(this)
-        layout.libra.setOnClickListener(this)
-        layout.scorpio.setOnClickListener(this)
-        layout.sagittarius.setOnClickListener(this)
-        layout.capricorn.setOnClickListener(this)
-
-        return layout
+        return inflater.inflate(R.layout.fragment_list, container, false)
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        starSignListener = context as StarSignListener
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val starSigns = listOf(
+            aquarius,
+            pisces,
+            aries,
+            taurus,
+            gemini,
+            cancer,
+            leo,
+            virgo,
+            libra,
+            scorpio,
+            sagittarius,
+            capricorn
+        )
+
+        starSigns.forEach {
+            it.setOnClickListener(this)
+        }
     }
 
     override fun onClick(view: View?) {

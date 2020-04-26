@@ -14,19 +14,9 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "onCreate")
     }
 
-    override fun onRestart() {
-        super.onRestart()
-        Log.d(TAG, "onRestart")
-    }
-
     override fun onStart() {
         super.onStart()
         Log.d(TAG, "onStart")
-    }
-
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        super.onRestoreInstanceState(savedInstanceState)
-        Log.d(TAG, "onRestoreInstanceState")
     }
 
     override fun onResume() {
@@ -42,11 +32,6 @@ class MainActivity : AppCompatActivity() {
     override fun onStop() {
         super.onStop()
         Log.d(TAG, "onStop")
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        Log.d(TAG, "onSaveInstanceState")
     }
 
     override fun onDestroy() {
