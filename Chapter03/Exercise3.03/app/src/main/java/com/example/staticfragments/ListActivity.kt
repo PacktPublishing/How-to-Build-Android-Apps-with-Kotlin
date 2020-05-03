@@ -7,10 +7,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 const val STAR_SIGN_ID = "STAR_SIGN_ID"
 
-interface StarSignListener {
-    fun onSelected(id: Int)
-}
-
 class MainActivity : AppCompatActivity(), StarSignListener {
 
     var isDualPane: Boolean = false
@@ -30,11 +26,9 @@ class MainActivity : AppCompatActivity(), StarSignListener {
                 supportFragmentManager.findFragmentById(R.id.star_sign_detail) as DetailFragment
             detailFragment.setStarSignData(id)
         } else {
-
             val detailIntent = Intent(this, DetailActivity::class.java)
             detailIntent.putExtra(STAR_SIGN_ID, id)
             startActivity(detailIntent)
         }
     }
-
 }
