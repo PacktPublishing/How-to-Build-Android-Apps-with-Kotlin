@@ -7,10 +7,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 const val STAR_SIGN_ID = "STAR_SIGN_ID"
 
-interface StarSignListener {
-    fun onSelected(starSignId: Int)
-}
-
 class MainActivity : AppCompatActivity(), StarSignListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +19,6 @@ class MainActivity : AppCompatActivity(), StarSignListener {
 
             supportFragmentManager.beginTransaction()
                 .add(frameLayout.id, listFragment).commit()
-
         }
     }
 
@@ -39,5 +34,4 @@ class MainActivity : AppCompatActivity(), StarSignListener {
                 .commit()
         }
     }
-
 }

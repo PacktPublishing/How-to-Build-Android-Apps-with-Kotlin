@@ -11,6 +11,10 @@ import kotlinx.android.synthetic.main.fragment_list.*
 /**
  * A simple [Fragment] subclass.
  */
+interface StarSignListener {
+    fun onSelected(starSignId: Int)
+}
+
 class ListFragment : Fragment(), View.OnClickListener {
 
     private lateinit var starSignListener: StarSignListener
