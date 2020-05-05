@@ -12,13 +12,10 @@
         tools:layout="@layout/fragment_list">
 
         <action
-            android:id="@+id/action_starSignList_to_starSign"
+            android:id="@+id/star_sign_id_action"
             app:destination="@id/starSign">
-            <argument
-                android:name="starSignId"
-                android:defaultValue="0"
-                app:argType="integer" />
         </action>
+
     </fragment>
 
     <fragment
