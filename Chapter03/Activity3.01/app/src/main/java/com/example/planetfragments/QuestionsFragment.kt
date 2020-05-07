@@ -8,6 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_questions.*
 
+interface AnswersListener {
+    fun onSelected(questionId: Int)
+}
+
 class QuestionsFragment : Fragment(), View.OnClickListener {
 
     private lateinit var answersListener: AnswersListener

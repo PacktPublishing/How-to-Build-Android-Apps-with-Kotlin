@@ -4,13 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
 
-
-const val QUESTION_ID = "QUESTION_ID"
-
-interface AnswersListener {
-    fun onSelected(questionId: Int)
-}
-
 class MainActivity : AppCompatActivity(), AnswersListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +16,6 @@ class MainActivity : AppCompatActivity(), AnswersListener {
 
             supportFragmentManager.beginTransaction()
                 .add(frameLayout.id, questionsFragment).commit()
-
         }
     }
 
@@ -39,6 +31,4 @@ class MainActivity : AppCompatActivity(), AnswersListener {
                 .commit()
         }
     }
-
-
 }
