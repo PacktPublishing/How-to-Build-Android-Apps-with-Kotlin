@@ -23,20 +23,32 @@
         tools:layout="@layout/fragment_content" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.navigationdrawer.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_recent"
+        android:name="com.example.navigationdrawer.RecentFragment"
+        android:label="@string/menu_recent"
+        tools:layout="@layout/fragment_recent" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.navigationdrawer.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_favorites"
+        android:name="com.example.navigationdrawer.FavoritesFragment"
+        android:label="@string/menu_favorites"
+        tools:layout="@layout/fragment_favorites" />
+
+    <fragment
+        android:id="@+id/nav_archive"
+        android:name="com.example.navigationdrawer.ArchiveFragment"
+        android:label="@string/menu_archive"
+        tools:layout="@layout/fragment_archive" />
+
+    <fragment
+        android:id="@+id/nav_bin"
+        android:name="com.example.navigationdrawer.BinFragment"
+        android:label="@string/menu_bin"
+        tools:layout="@layout/fragment_archive" />
 
     <fragment
         android:id="@+id/nav_settings"
-        android:name="com.example.navigationdrawer.SettingsFragment"
+        android:name="com.example.navigationdrawer.FavoritesFragment"
         android:label="@string/menu_settings"
         tools:layout="@layout/fragment_settings" />
 </navigation>

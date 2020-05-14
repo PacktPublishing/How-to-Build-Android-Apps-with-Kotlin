@@ -1,15 +1,22 @@
 <resources>
     <string name="app_name">Navigation Drawer</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
 
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
     <string name="menu_settings">Settings</string>
     <string name="menu_content">Content</string>
+    <string name="menu_archive">Archive</string>
+    <string name="menu_recent">Recent</string>
+    <string name="menu_favorites">Favorites</string>
+    <string name="menu_bin">Bin</string>
+
+    <string name="home_fragment">Home Fragment</string>
+    <string name="settings_fragment">Settings Fragment</string>
+    <string name="content_fragment">Content Fragment</string>
+    <string name="archive_fragment">Archive Fragment</string>
+    <string name="recent_fragment">Recent Fragment</string>
+    <string name="favorites_fragment">Favorites Fragment</string>
+    <string name="bin_fragment">Bin Fragment</string>
+
+
 </resources>
