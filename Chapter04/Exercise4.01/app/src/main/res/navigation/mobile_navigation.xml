@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.navigationdrawer.HomeFragment"
-        android:label="@string/menu_home"
+        android:label="@string/home"
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/nav_home_to_content"
@@ -19,36 +19,36 @@
     <fragment
         android:id="@+id/nav_content"
         android:name="com.example.navigationdrawer.ContentFragment"
-        android:label="@string/menu_content"
+        android:label="@string/content"
         tools:layout="@layout/fragment_content" />
 
     <fragment
         android:id="@+id/nav_recent"
         android:name="com.example.navigationdrawer.RecentFragment"
-        android:label="@string/menu_recent"
+        android:label="@string/recent"
         tools:layout="@layout/fragment_recent" />
 
     <fragment
         android:id="@+id/nav_favorites"
         android:name="com.example.navigationdrawer.FavoritesFragment"
-        android:label="@string/menu_favorites"
+        android:label="@string/favorites"
         tools:layout="@layout/fragment_favorites" />
 
     <fragment
         android:id="@+id/nav_archive"
         android:name="com.example.navigationdrawer.ArchiveFragment"
-        android:label="@string/menu_archive"
+        android:label="@string/archive"
         tools:layout="@layout/fragment_archive" />
 
     <fragment
         android:id="@+id/nav_bin"
         android:name="com.example.navigationdrawer.BinFragment"
-        android:label="@string/menu_bin"
+        android:label="@string/bin"
         tools:layout="@layout/fragment_archive" />
 
     <fragment
         android:id="@+id/nav_settings"
-        android:name="com.example.navigationdrawer.FavoritesFragment"
-        android:label="@string/menu_settings"
+        android:name="com.example.navigationdrawer.SettingsFragment"
+        android:label="@string/settings"
         tools:layout="@layout/fragment_settings" />
 </navigation>

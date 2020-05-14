@@ -7,22 +7,22 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/home"
-            android:title="@string/menu_home" />
+            android:title="@string/home" />
         <item
             android:id="@+id/nav_recent"
             android:icon="@drawable/recent"
-            android:title="@string/menu_recent" />
+            android:title="@string/recent" />
         <item
             android:id="@+id/nav_favorites"
             android:icon="@drawable/favorites"
-            android:title="@string/menu_favorites" />
+            android:title="@string/favorites" />
         <item
             android:id="@+id/nav_archive"
             android:icon="@drawable/archive"
-            android:title="@string/menu_archive" />
+            android:title="@string/archive" />
         <item
             android:id="@+id/nav_bin"
             android:icon="@drawable/bin"
-            android:title="@string/menu_bin" />
+            android:title="@string/bin" />
     </group>
 </menu>

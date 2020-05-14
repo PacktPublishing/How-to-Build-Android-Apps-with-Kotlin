@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.bottomnavigation.HomeFragment"
+        android:label="@string/home"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/nav_home_to_content"
+            app:destination="@id/nav_content"
+            app:popUpTo="@id/nav_home" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_content"
+        android:name="com.example.bottomnavigation.ContentFragment"
+        android:label="@string/content"
+        tools:layout="@layout/fragment_content" />
+
+    <fragment
+        android:id="@+id/nav_tickets"
+        android:name="com.example.bottomnavigation.TicketsFragment"
+        android:label="@string/tickets"
+        tools:layout="@layout/fragment_tickets" />
+
+    <fragment
+        android:id="@+id/nav_offers"
+        android:name="com.example.bottomnavigation.OffersFragment"
+        android:label="@string/offers"
+        tools:layout="@layout/fragment_offers" />
+
+    <fragment
+        android:id="@+id/nav_rewards"
+        android:name="com.example.bottomnavigation.RewardsFragment"
+        android:label="@string/rewards"
+        tools:layout="@layout/fragment_rewards" />
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.example.bottomnavigation.SettingsFragment"
+        android:label="@string/settings"
+        tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/nav_cart"
+        android:name="com.example.bottomnavigation.CartFragment"
+        android:label="@string/cart"
+        tools:layout="@layout/fragment_cart" />
+
+</navigation>
