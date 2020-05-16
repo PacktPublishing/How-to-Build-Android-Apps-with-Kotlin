@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.content.ContextCompat
 import com.example.mywatterttracker.WaterTrackingService.Companion.EXTRA_INTAKE_AMOUNT_MILLILITERS
-import kotlinx.android.synthetic.main.activity_main.main_water_button
+import kotlinx.android.synthetic.main.activity_main.main_water_button as waterButton
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
 
         launchTrackingService()
 
-        main_water_button.setOnClickListener {
+        waterButton.setOnClickListener {
             launchTrackingService(250f)
         }
     }
