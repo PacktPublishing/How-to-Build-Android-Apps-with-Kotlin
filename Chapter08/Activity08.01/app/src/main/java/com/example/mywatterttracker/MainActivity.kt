@@ -11,6 +11,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        launchTrackingService()
     }
 
     private fun launchTrackingService(intakeAmount: Float = 0f) {
