@@ -33,6 +33,12 @@ class WaterTrackingService : Service() {
         return notificationBuilder
     }
 
+    private fun addToFluidBalance(amountMilliliters: Float) {
+        synchronized(this) {
+            fluidBalanceMilliliters += amountMilliliters
+        }
+    }
+
     private fun getPendingIntent() =
         PendingIntent.getActivity(this, 0, Intent(this, MainActivity::class.java), 0)
 
