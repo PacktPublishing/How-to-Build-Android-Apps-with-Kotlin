@@ -19,6 +19,20 @@ class WaterTrackingService : Service() {
 
     override fun onBind(intent: Intent?): IBinder? = null
 
+    private fun startForegroundService(): NotificationCompat.Builder {
+        val pendingIntent = getPendingIntent()
+
+        val channelId = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            createNotificationChannel()
+        } else {
+            ""
+        }
+
+        val notificationBuilder = getNotificationBuilder(pendingIntent, channelId)
+        startForeground(NOTIFICATION_ID, notificationBuilder.build())
+        return notificationBuilder
+    }
+
     private fun getPendingIntent() =
         PendingIntent.getActivity(this, 0, Intent(this, MainActivity::class.java), 0)
 
