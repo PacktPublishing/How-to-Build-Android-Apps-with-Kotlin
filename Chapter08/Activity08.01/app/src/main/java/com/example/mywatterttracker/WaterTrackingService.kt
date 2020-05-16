@@ -12,5 +12,9 @@ class WaterTrackingService : Service() {
     private lateinit var serviceHandler: Handler
 
     override fun onBind(intent: Intent?): IBinder? = null
-}
 
+    companion object {
+        const val EXTRA_INTAKE_AMOUNT_MILLILITERS = "intake"
+        private const val NOTIFICATION_ID = 0x3A7A
+    }
+}
