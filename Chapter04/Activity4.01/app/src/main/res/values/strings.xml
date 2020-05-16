@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Navigation Activity</string>
+
+    <!-- Bottom Navigation -->
+    <string name="home">Home</string>
+    <string name="account">Account</string>
+    <string name="mysports">My Sports</string>
+    <string name="profile">Profile</string>
+
+    <string name="home_fragment">Home Fragment</string>
+    <string name="account_fragment">Account Fragment</string>
+    <string name="mysports_fragment">My Sports Fragment</string>
+    <string name="profile_fragment">Profile Fragment</string>
+
+</resources>
