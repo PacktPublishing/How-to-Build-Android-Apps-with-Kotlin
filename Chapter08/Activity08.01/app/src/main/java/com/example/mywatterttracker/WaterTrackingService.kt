@@ -29,6 +29,17 @@ class WaterTrackingService : Service() {
         updateFluidBalance()
     }
 
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        val returnValue = super.onStartCommand(intent, flags, startId)
+
+        val intakeAmountMilliliters = intent?.getFloatExtra(EXTRA_INTAKE_AMOUNT_MILLILITERS, 0f)
+        intakeAmountMilliliters?.let {
+            addToFluidBalance(it)
+        }
+
+        return returnValue
+    }
+
     private fun startForegroundService(): NotificationCompat.Builder {
         val pendingIntent = getPendingIntent()
 
