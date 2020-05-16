@@ -40,6 +40,10 @@ class WaterTrackingService : Service() {
         return returnValue
     }
 
+    override fun onDestroy() {
+        serviceHandler.removeCallbacksAndMessages(null)
+    }
+
     private fun startForegroundService(): NotificationCompat.Builder {
         val pendingIntent = getPendingIntent()
 
