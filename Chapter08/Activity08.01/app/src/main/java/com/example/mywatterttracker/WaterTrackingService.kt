@@ -39,6 +39,17 @@ class WaterTrackingService : Service() {
         }
     }
 
+    private fun updateFluidBalance() {
+        serviceHandler.postDelayed({
+            updateFluidBalance()
+            addToFluidBalance(-0.144f)
+            notificationBuilder.setContentText(
+                "Your fluid balance: %.2f".format(fluidBalanceMilliliters)
+            )
+            startForeground(NOTIFICATION_ID, notificationBuilder.build())
+        }, 5000L)
+    }
+
     private fun getPendingIntent() =
         PendingIntent.getActivity(this, 0, Intent(this, MainActivity::class.java), 0)
 
