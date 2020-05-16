@@ -8,6 +8,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Handler
+import android.os.HandlerThread
 import android.os.IBinder
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
@@ -18,6 +19,15 @@ class WaterTrackingService : Service() {
     private lateinit var serviceHandler: Handler
 
     override fun onBind(intent: Intent?): IBinder? = null
+
+    override fun onCreate() {
+        super.onCreate()
+
+        notificationBuilder = startForegroundService()
+        val handlerThread = HandlerThread("RouteTracking").apply { start() }
+        serviceHandler = Handler(handlerThread.looper)
+        updateFluidBalance()
+    }
 
     private fun startForegroundService(): NotificationCompat.Builder {
         val pendingIntent = getPendingIntent()
