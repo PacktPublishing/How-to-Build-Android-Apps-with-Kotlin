@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Navigation Drawer</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="home">Home</string>
+    <string name="settings">Settings</string>
+    <string name="content">Content</string>
+    <string name="archive">Archive</string>
+    <string name="recent">Recent</string>
+    <string name="favorites">Favorites</string>
+    <string name="bin">Bin</string>
+
+    <string name="home_fragment">Home Fragment</string>
+    <string name="settings_fragment">Settings Fragment</string>
+    <string name="content_fragment">Content Fragment</string>
+    <string name="archive_fragment">Archive Fragment</string>
+    <string name="recent_fragment">Recent Fragment</string>
+    <string name="favorites_fragment">Favorites Fragment</string>
+    <string name="bin_fragment">Bin Fragment</string>
+
+    <string name="link_to_content_button">Link to Content Button</string>
+
+
+</resources>

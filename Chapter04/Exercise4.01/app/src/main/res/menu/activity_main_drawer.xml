@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/home"
+            android:title="@string/home" />
+        <item
+            android:id="@+id/nav_recent"
+            android:icon="@drawable/recent"
+            android:title="@string/recent" />
+        <item
+            android:id="@+id/nav_favorites"
+            android:icon="@drawable/favorites"
+            android:title="@string/favorites" />
+        <item
+            android:id="@+id/nav_archive"
+            android:icon="@drawable/archive"
+            android:title="@string/archive" />
+        <item
+            android:id="@+id/nav_bin"
+            android:icon="@drawable/bin"
+            android:title="@string/bin" />
+    </group>
+</menu>
