@@ -4,19 +4,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/mysports_fragment"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/football"
+        style="@style/button_card"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/football"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/basketball"
+        style="@style/button_card"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/basketball"
+        app:layout_constraintStart_toEndOf="@id/football"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/hockey"
+        style="@style/button_card"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/hockey"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/football" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

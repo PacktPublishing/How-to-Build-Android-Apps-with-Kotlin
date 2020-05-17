@@ -11,5 +11,11 @@
     <string name="account_fragment">Account Fragment</string>
     <string name="mysports_fragment">My Sports Fragment</string>
     <string name="profile_fragment">Profile Fragment</string>
+    <string name="football">Football</string>
+    <string name="basketball">Basketball</string>
+    <string name="hockey">Hockey</string>
+    <string name="football_fragment">Football Fragment</string>
+    <string name="basketball_fragment">Basketball Fragment</string>
+    <string name="hockey_fragment">Hockey Fragment</string>
 
 </resources>

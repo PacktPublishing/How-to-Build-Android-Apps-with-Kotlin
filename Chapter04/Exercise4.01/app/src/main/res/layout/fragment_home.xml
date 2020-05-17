@@ -9,9 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/home_fragment"
         android:textAlignment="center"
         android:textSize="20sp"
@@ -20,15 +19,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/button_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/link_to_content_button"
+        style="@style/button_card"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
         android:layout_marginTop="16dp"
+        android:text="@string/link_to_content_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_home" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
