@@ -22,15 +22,23 @@ class MainActivity : AppCompatActivity() {
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
-        val navController = findNavController(R.id.nav_host_fragment)
+        val navHost = findNavController(R.id.nav_host_fragment)
 
         //Creating top level destinations and adding them to the draw
-        appBarConfiguration = AppBarConfiguration(setOf(
-                R.id.nav_home, R.id.nav_recent, R.id.nav_favorites, R.id.nav_archive, R.id.nav_bin), drawerLayout)
+        appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.nav_home, R.id.nav_recent, R.id.nav_favorites, R.id.nav_archive, R.id.nav_bin
+            ), drawerLayout
+        )
 
-        setupActionBarWithNavController(navController, appBarConfiguration)
+        setupActionBarWithNavController(navHost, appBarConfiguration)
 
-        navView.setupWithNavController(navController)
+        navView.setupWithNavController(navHost)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.nav_host_fragment)
+        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -43,8 +51,4 @@ class MainActivity : AppCompatActivity() {
         return item.onNavDestinationSelected(findNavController(R.id.nav_host_fragment))
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment)
-        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
-    }
 }

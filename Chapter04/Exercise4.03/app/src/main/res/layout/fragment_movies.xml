@@ -7,15 +7,12 @@
     tools:context=".MoviesFragment">
 
     <TextView
-        android:id="@+id/movie_type"
+        android:id="@+id/movie_genre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
         style="@style/title"
-        android:layout_marginStart="@dimen/movie_type_margin"
-        android:layout_marginTop="@dimen/movie_type_margin"
-        android:layout_marginEnd="@dimen/movie_type_margin"
-        android:layout_marginBottom="@dimen/movie_type_margin"
+        android:layout_margin="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,9 +21,9 @@
         android:layout_height="wrap_content"
         style="@style/body"
         android:text="@string/dummy_text"
-        android:padding="@dimen/movie_type_body_padding"
+        android:padding="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/movie_type"
+        app:layout_constraintTop_toBottomOf="@id/movie_genre"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
