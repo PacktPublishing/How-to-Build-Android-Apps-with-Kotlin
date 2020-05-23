@@ -13,23 +13,23 @@ class MoviesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.fragment_main, container, false)
+        val root = inflater.inflate(R.layout.fragment_movies, container, false)
 
-        val movieType: TextView = root.findViewById(R.id.movie_type)
-        movieType.text = arguments?.getString(MOVIE_TYPE) ?: "Undefined Type"
+        val movieGenre: TextView = root.findViewById(R.id.movie_genre)
+        movieGenre.text = arguments?.getString(MOVIE_GENRE) ?: "Undefined Genre"
 
         return root
     }
 
     companion object {
 
-        private const val MOVIE_TYPE = "MOVIE_TYPE"
+        private const val MOVIE_GENRE = "MOVIE_TYPE"
 
         @JvmStatic
-        fun newInstance(movieType: String): MoviesFragment {
+        fun newInstance(movieGenre: String): MoviesFragment {
             return MoviesFragment().apply {
                 arguments = Bundle().apply {
-                    putString(MOVIE_TYPE, movieType)
+                    putString(MOVIE_GENRE, movieGenre)
                 }
             }
         }
