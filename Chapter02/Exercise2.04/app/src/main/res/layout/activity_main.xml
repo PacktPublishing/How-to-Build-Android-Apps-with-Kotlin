@@ -20,10 +20,10 @@
 
     <EditText
         android:id="@+id/full_name"
-        style="@style/TextAppearance.AppCompat.Title"
+        style="@style/full_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/first_name"
+        android:hint="@string/full_name_label"
         tools:text="First Name:"
         app:layout_constraintTop_toBottomOf="@id/header_text"
         app:layout_constraintEnd_toEndOf="parent"
