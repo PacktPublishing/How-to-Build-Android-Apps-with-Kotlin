@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- Style for page header on launch screen -->
     <style name="header" parent="TextAppearance.AppCompat.Title">
         <item name="android:gravity">center</item>
         <item name="android:layout_marginStart">24dp</item>
@@ -15,11 +16,13 @@
         <item name="android:textSize">20sp</item>
     </style>
 
+    <!-- Style for page header on rainbow color selection screen -->
     <style name="header.rainbows" parent="header">
         <item name="android:textSize">22sp</item>
         <item name="android:textAllCaps">true</item>
     </style>
 
+    <!-- Instruction text style for choosing rainbow color -->
     <style name="body" parent="TextAppearance.AppCompat.Body1">
         <item name="android:layout_marginTop">16dp</item>
         <item name="android:layout_marginBottom">8dp</item>
@@ -29,6 +32,7 @@
         <item name="android:textSize">18sp</item>
     </style>
 
+    <!-- Style for displaying chosen rainbow color -->
     <style name="color_block" parent="TextAppearance.AppCompat.Body1">
         <item name="android:layout_marginTop">16dp</item>
         <item name="android:gravity">center</item>
@@ -39,6 +43,7 @@
         <item name="android:layout_width">340dp</item>
     </style>
 
+    <!-- Adds style to all submit buttons -->
     <style name="button" parent="TextAppearance.AppCompat.Button">
         <item name="android:minWidth">160dp</item>
         <item name="android:gravity">center</item>
@@ -47,6 +52,7 @@
         <item name="android:padding">16dp</item>
     </style>
 
+    <!-- General page formatting style -->
     <style name="page">
         <item name="android:layout_margin">8dp</item>
         <item name="android:padding">8dp</item>
