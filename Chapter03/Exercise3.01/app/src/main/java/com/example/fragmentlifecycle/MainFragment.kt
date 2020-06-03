@@ -37,7 +37,7 @@ class MainFragment : Fragment() {
     
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d(TAG, "onActivityCreated")
+        Log.d(TAG, "onViewCreated")
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
