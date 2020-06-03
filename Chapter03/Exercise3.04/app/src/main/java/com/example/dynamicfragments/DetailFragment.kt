@@ -98,7 +98,6 @@ class DetailFragment : Fragment() {
 
     companion object {
 
-        @JvmStatic
         fun newInstance(starSignId: Int) =
             DetailFragment().apply {
                 arguments = Bundle().apply {
