@@ -1,35 +1,23 @@
 package com.android.testable.myapplication
 
 import android.app.Application
-import org.koin.android.ext.koin.androidContext
-import org.koin.android.ext.koin.androidLogger
-import org.koin.core.context.startKoin
-import org.koin.dsl.module
-import java.util.*
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasAndroidInjector
+import javax.inject.Inject
 
-class MyApplication : Application() {
+class MyApplication : Application(), HasAndroidInjector {
 
-    private val appModule = module {
-        single {
-            Random()
-        }
-        single {
-            Randomizer(get())
-        }
-    }
+    @Inject
+    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>
 
-    private val mainActivityModule = module {
-        factory {
-            NumberReversal()
-        }
-    }
+    private lateinit var applicationComponent: ApplicationComponent
 
     override fun onCreate() {
         super.onCreate()
-        startKoin {
-            androidLogger()
-            androidContext(this@MyApplication)
-            modules(listOf(appModule, mainActivityModule))
-        }
+        applicationComponent = DaggerApplicationComponent.create()
+        applicationComponent.inject(this)
     }
+
+    override fun androidInjector(): AndroidInjector<Any> = dispatchingAndroidInjector
 }

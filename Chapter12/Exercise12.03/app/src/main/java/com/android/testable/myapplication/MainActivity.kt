@@ -2,19 +2,24 @@ package com.android.testable.myapplication
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_main.*
-import org.koin.android.ext.android.inject
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
-    private val numberReversal: NumberReversal by inject()
-    private val randomizer: Randomizer by inject()
+    @Inject
+    lateinit var randomizer: Randomizer
+    @Inject
+    lateinit var numberReversal: NumberReversal
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         activity_main_button.setOnClickListener {
-            activity_main_text_view.text = numberReversal.reverseNumber(randomizer.generateNumber()).toString()
+            activity_main_text_view.text =
+                numberReversal.reverseNumber(randomizer.generateNumber()).toString()
         }
     }
 }
