@@ -28,11 +28,11 @@
         <OnClick
             app:clickAction="toggle"
             app:targetId="@id/text_view" />
-        <KeyFrameSet >
+        <KeyFrameSet>
             <KeyPosition
-                app:motionTarget="@+id/text_view"
                 app:framePosition="50"
                 app:keyPositionType="parentRelative"
+                app:motionTarget="@+id/text_view"
                 app:percentX="1" />
         </KeyFrameSet>
     </Transition>
