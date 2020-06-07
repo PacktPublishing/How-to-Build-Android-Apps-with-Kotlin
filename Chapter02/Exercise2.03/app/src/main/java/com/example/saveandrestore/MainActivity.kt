@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
@@ -21,18 +22,27 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         Log.d(TAG, "onCreate")
 
+        // here we handle the Button onClick event
         discount_button.setOnClickListener {
 
             val firstName = (first_name as EditText).text.toString()
             val lastName = (last_name as EditText).text.toString()
+            val email = (email as EditText).text.toString()
 
-            val fullName = firstName.plus(" ").plus(lastName)
+            if (firstName.isBlank() || lastName.isBlank() || email.isEmpty()){
+                Toast.makeText(this, getString(R.string.add_text_validation), Toast.LENGTH_LONG).show()
+            }
+            else {
+                val fullName = firstName.plus(" ").plus(lastName)
 
-            discount_code_confirmation.text = getString(R.string.discount_code_confirmation, fullName)
-            discount_code.text = UUID.randomUUID().toString().take(8).toUpperCase()
+                discount_code_confirmation.text =
+                    getString(R.string.discount_code_confirmation, fullName)
+                // Generates discount code
+                discount_code.text = UUID.randomUUID().toString().take(8).toUpperCase()
 
-            hideKeyboard()
-            clearInputFields()
+                hideKeyboard()
+                clearInputFields()
+            }
         }
     }
 

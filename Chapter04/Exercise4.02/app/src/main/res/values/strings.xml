@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Bottom Navigation</string>
+
+    <!-- Bottom Navigation -->
+    <string name="home">Home</string>
+    <string name="tickets">Tickets</string>
+    <string name="offers">Offers</string>
+    <string name="rewards">Rewards</string>
+
+    <!-- Action Bar -->
+    <string name="settings">Settings</string>
+    <string name="cart">Shopping Cart</string>
+
+    <string name="content">Content</string>
+
+    <string name="home_fragment">Home Fragment</string>
+    <string name="tickets_fragment">Tickets Fragment</string>
+    <string name="offers_fragment">Offers Fragment</string>
+    <string name="rewards_fragment">Rewards Fragment</string>
+
+    <string name="settings_fragment">Settings Fragment</string>
+    <string name="cart_fragment">Shopping Cart Fragment</string>
+
+    <string name="content_fragment">Content Fragment</string>
+    <string name="link_to_content_button">Link to Content Button</string>
+
+</resources>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".QuestionsFragment">
+
+    <TextView
+        style="@style/HeaderText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/app_name"
+        tools:text="Planet Quiz" />
+
+    <Button
+        android:id="@+id/largest_planet"
+        style="@style/ButtonText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/largest_planet"
+        tools:text="What is the largest planet?" />
+
+    <Button
+        android:id="@+id/most_moons"
+        style="@style/ButtonText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/most_moons"
+        tools:text="Which planet has the most moons?" />
+
+    <Button
+        android:id="@+id/side_spinning"
+        style="@style/ButtonText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/side_spinning"
+        tools:text="Which planet spins on its side?" />
+</LinearLayout>

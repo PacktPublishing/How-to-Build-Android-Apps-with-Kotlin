@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.navigationdrawer.HomeFragment"
+        android:label="@string/home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/nav_home_to_content"
+            app:destination="@id/nav_content"
+            app:popUpTo="@id/nav_home" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_content"
+        android:name="com.example.navigationdrawer.ContentFragment"
+        android:label="@string/content"
+        tools:layout="@layout/fragment_content" />
+
+    <fragment
+        android:id="@+id/nav_recent"
+        android:name="com.example.navigationdrawer.RecentFragment"
+        android:label="@string/recent"
+        tools:layout="@layout/fragment_recent" />
+
+    <fragment
+        android:id="@+id/nav_favorites"
+        android:name="com.example.navigationdrawer.FavoritesFragment"
+        android:label="@string/favorites"
+        tools:layout="@layout/fragment_favorites" />
+
+    <fragment
+        android:id="@+id/nav_archive"
+        android:name="com.example.navigationdrawer.ArchiveFragment"
+        android:label="@string/archive"
+        tools:layout="@layout/fragment_archive" />
+
+    <fragment
+        android:id="@+id/nav_bin"
+        android:name="com.example.navigationdrawer.BinFragment"
+        android:label="@string/bin"
+        tools:layout="@layout/fragment_archive" />
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.example.navigationdrawer.SettingsFragment"
+        android:label="@string/settings"
+        tools:layout="@layout/fragment_settings" />
+</navigation>
