@@ -1,4 +1,4 @@
-package com.example.activitytransition
+package com.example.tipcalculator
 
 import org.junit.Test
 
