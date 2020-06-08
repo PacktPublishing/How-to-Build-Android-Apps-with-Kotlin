@@ -1,4 +1,4 @@
-package com.example.motionlayout
+package com.example.tipcalculator
 
 import org.junit.Test
 
