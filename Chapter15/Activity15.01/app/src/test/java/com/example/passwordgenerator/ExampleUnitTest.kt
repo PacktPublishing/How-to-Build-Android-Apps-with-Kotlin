@@ -1,4 +1,4 @@
-package com.example.motionlayout
+package com.example.passwordgenerator
 
 import org.junit.Test
 
