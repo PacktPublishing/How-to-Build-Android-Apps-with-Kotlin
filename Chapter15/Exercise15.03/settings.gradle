@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "Motion Layout"
+rootProject.name = "Tip Calculator"
