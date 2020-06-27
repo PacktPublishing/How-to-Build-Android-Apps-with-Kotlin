@@ -1,4 +1,4 @@
-package com.example.exercisedemo
+package com.example.exercisedemo.top_rated
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.exercisedemo.R
 import com.example.exercisedemo.model.Movie
 
 class MovieAdapter internal constructor(context: Context, private val movies: ArrayList<Movie>) :

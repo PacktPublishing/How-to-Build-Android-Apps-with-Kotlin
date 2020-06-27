@@ -1,4 +1,4 @@
-package com.example.exercisedemo
+package com.example.exercisedemo.top_rated
 
 import android.app.Application
 import android.util.Log
@@ -58,7 +58,11 @@ class MovieViewModel(
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(MovieViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
-                return MovieViewModel(application, retrofit, db) as T
+                return MovieViewModel(
+                    application,
+                    retrofit,
+                    db
+                ) as T
             }
             throw IllegalArgumentException("Unable to construct viewmodel")
         }

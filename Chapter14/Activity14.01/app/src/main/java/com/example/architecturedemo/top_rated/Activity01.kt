@@ -1,16 +1,17 @@
-package com.example.exercisedemo
+package com.example.architecturedemo.top_rated
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.exercisedemo.database.MovieDatabase
-import com.example.exercisedemo.model.Movie
-import com.example.exercisedemo.network.RetrofitClient
+import com.example.architecturedemo.R
+import com.example.architecturedemo.database.MovieDatabase
+import com.example.architecturedemo.model.Movie
+import com.example.architecturedemo.network.RetrofitClient
 import kotlinx.android.synthetic.main.activity_main.*
 
-class Exercise03 : AppCompatActivity() {
+class Activity01 : AppCompatActivity() {
 
     private lateinit var movieAdapter: MovieAdapter
     private val movies = arrayListOf<Movie>()
@@ -25,8 +26,10 @@ class Exercise03 : AppCompatActivity() {
                 this,
                 MovieViewModel.Factory(
                     application,
-                    RetrofitClient.getRetrofitClient(),
-                    MovieDatabase.getInstance(application)
+                    MovieRepository(
+                        RetrofitClient.getRetrofitClient(),
+                        MovieDatabase.getInstance(application)
+                    )
                 )
             ).get(
                 MovieViewModel::class.java
