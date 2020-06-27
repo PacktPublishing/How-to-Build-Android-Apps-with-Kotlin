@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Activity02Skeleton</string>
+    <string name="title">Title : %1s</string>
+    <string name="overview">Overview : %1s</string>
+    <string name="release_date">Release Data : %1s</string>
+    <string name="popularity">Popularity : %1s</string>
+    <string name="language">Language : %1s</string>
+</resources>
