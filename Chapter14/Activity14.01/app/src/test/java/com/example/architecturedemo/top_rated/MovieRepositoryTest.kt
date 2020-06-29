@@ -27,11 +27,13 @@ import retrofit2.Retrofit
 @RunWith(MockitoJUnitRunner::class)
 class MovieRepositoryTest {
     private lateinit var sut: MovieRepository
+
     @get:Rule
     var rule: TestRule = InstantTaskExecutorRule()
 
     @Mock
     lateinit var retrofit: Retrofit
+
     @Mock
     lateinit var db: MovieDatabase
 
@@ -79,11 +81,9 @@ class MovieRepositoryTest {
             //whenever(dbDao.getAll()).thenReturn(cachedMovies)
             val movieLiveData = sut.getMovies()
 
-
             sut.fetchMovies()
 
             assertEquals(movieLiveData.value, cachedMovies.mapToMovie())
-
         }
 
     @Test
@@ -93,7 +93,6 @@ class MovieRepositoryTest {
             whenever(db.movieDao()).thenReturn(emptyDbDao)
             whenever(retrofit.create(MovieApi::class.java)).thenReturn(movieApi)
             val movieLiveData = sut.getMovies()
-
 
             sut.fetchMovies()
 
