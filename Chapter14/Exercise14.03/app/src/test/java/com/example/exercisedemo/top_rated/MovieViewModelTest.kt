@@ -1,32 +1,31 @@
-package com.example.architecturedemo.top_rated
+package com.example.exercisedemo.top_rated
 
+import android.app.Application
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.example.architecturedemo.database.DBMovie
-import com.example.architecturedemo.database.MovieDao
-import com.example.architecturedemo.database.MovieDatabase
-import com.example.architecturedemo.ext.mapToMovie
-import com.example.architecturedemo.model.Movie
-import com.example.architecturedemo.model.MovieListResponse
-import com.example.architecturedemo.network.MovieApi
+import com.example.exercisedemo.database.DBMovie
+import com.example.exercisedemo.database.MovieDao
+import com.example.exercisedemo.database.MovieDatabase
+import com.example.exercisedemo.ext.mapToMovie
+import com.example.exercisedemo.model.Movie
+import com.example.exercisedemo.model.MovieListResponse
+import com.example.exercisedemo.network.MovieApi
 import com.nhaarman.mockitokotlin2.whenever
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.TestCoroutineDispatcher
-import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runBlockingTest
-import kotlinx.coroutines.test.setMain
-import org.junit.Assert.assertEquals
+import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
 import org.junit.runner.RunWith
 import org.mockito.Mock
-import org.mockito.MockitoAnnotations
 import org.mockito.junit.MockitoJUnitRunner
 import retrofit2.Retrofit
 
 @RunWith(MockitoJUnitRunner::class)
-class MovieRepositoryTest {
-    private lateinit var sut: MovieRepository
+class MovieViewModelTest {
+    private lateinit var sut: MovieViewModel
 
     @get:Rule
     var rule: TestRule = InstantTaskExecutorRule()
@@ -37,13 +36,15 @@ class MovieRepositoryTest {
     @Mock
     lateinit var db: MovieDatabase
 
+    @Mock
+    lateinit var application: Application
+
     lateinit var dbDao: MovieDao
     lateinit var emptyDbDao: MovieDao
     lateinit var movieApi: MovieApi
     val cachedMovies = listOf(DBMovie(1, "22", 2.2))
     val movieResponse = MovieListResponse("1", arrayListOf(Movie(1, "22", 2.2)))
     private val mainTestThread = TestCoroutineDispatcher()
-
 
     @Before
     fun setUp() {
@@ -74,31 +75,26 @@ class MovieRepositoryTest {
     }
 
     @Test
-    fun `when fetchMovies is called then return movies from cache if cache is not empty`() =
-        runBlockingTest {
-            sut = MovieRepository(retrofit, db)
-            whenever(db.movieDao()).thenReturn(dbDao)
-            //whenever(dbDao.getAll()).thenReturn(cachedMovies)
-            val movieLiveData = sut.getMovies()
+    fun `when fetchMovies is called then return movies from cache if cache is not empty`() = runBlocking{
+        sut = MovieViewModel(application, retrofit, db)
+        whenever(db.movieDao()).thenReturn(dbDao)
+        val movieLiveData = sut.getMovies()
 
-            sut.fetchMovies()
+        sut.fetchMovies().await()
 
-            assertEquals(movieLiveData.value, cachedMovies.mapToMovie())
-        }
+        assertEquals(movieLiveData.value, cachedMovies.mapToMovie())
+    }
 
     @Test
-    fun `when fetchMovies is called then return movies from API call response if cache is empty`() =
-        runBlockingTest {
-            sut = MovieRepository(retrofit, db)
-            whenever(db.movieDao()).thenReturn(emptyDbDao)
-            whenever(retrofit.create(MovieApi::class.java)).thenReturn(movieApi)
-            val movieLiveData = sut.getMovies()
+    fun `when fetchMovies is called then return movies from API call response if cache is empty`() = runBlocking {
+        sut = MovieViewModel(application, retrofit, db)
+        whenever(db.movieDao()).thenReturn(emptyDbDao)
+        whenever(retrofit.create(MovieApi::class.java)).thenReturn(movieApi)
+        val movieLiveData = sut.getMovies()
 
+        sut.fetchMovies().await()
 
-            sut.fetchMovies()
+        assertEquals(movieLiveData.value, movieResponse.results)
 
-            assertEquals(movieLiveData.value, movieResponse.results)
-
-        }
-
+    }
 }

@@ -11,7 +11,9 @@ import com.example.exercisedemo.ext.mapToMovie
 import com.example.exercisedemo.model.Movie
 import com.example.exercisedemo.network.MovieApi
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 
@@ -26,8 +28,8 @@ class MovieViewModel(
         return movieResponseLiveData
     }
 
-    fun fetchMovies() {
-        CoroutineScope(IO).launch {
+    fun fetchMovies(): Deferred<Unit> {
+        return CoroutineScope(IO).async {
             //If movies available in cache the return from cache
             val cachedMovies = db.movieDao().getAll()
             if (cachedMovies.isNotEmpty()) {
