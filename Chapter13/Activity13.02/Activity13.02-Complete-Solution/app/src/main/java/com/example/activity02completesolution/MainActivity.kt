@@ -46,17 +46,22 @@ class MainActivity : AppCompatActivity(), MovieAdapter.MovieClickedListener {
 
     private fun getMovieList(
         movieApi: MovieApi,
-        observer: Observer<MovieListResponse>
+        observer: Observer<Movie>
     ) {
         movieApi.getPopularMovies(
             "1d9a4704d81b27085f142914119d38fe"
         ).subscribeOn(Schedulers.newThread())
             .observeOn(AndroidSchedulers.mainThread())
+            .flatMap {
+                Observable.fromIterable(it.results)
+            }.filter {
+                it.original_language == "en"
+            }
             .subscribe(observer)
     }
 
-    private fun getMovieListObserver(): Observer<MovieListResponse> {
-        return object : Observer<MovieListResponse> {
+    private fun getMovieListObserver(): Observer<Movie> {
+        return object : Observer<Movie> {
 
             override fun onComplete() {
                 Log.d("RxJava logs", "onComplete")
@@ -67,8 +72,8 @@ class MainActivity : AppCompatActivity(), MovieAdapter.MovieClickedListener {
                 Log.d("RxJava logs", "onSubscribe")
             }
 
-            override fun onNext(t: MovieListResponse) {
-                movies.addAll(filterByLanguage(t.results))
+            override fun onNext(movie: Movie) {
+                movies.add(movie)
                 movieAdapter.notifyDataSetChanged()
             }
 
@@ -76,17 +81,6 @@ class MainActivity : AppCompatActivity(), MovieAdapter.MovieClickedListener {
                 Log.d("RxJava logs", "onError ${e.localizedMessage}")
             }
         }
-    }
-
-    private fun filterByLanguage(allMovies: List<Movie>): ArrayList<Movie> {
-        val filteredList = arrayListOf<Movie>()
-        Observable.fromIterable(allMovies).filter {
-            it.original_language == "en"
-        }.subscribe{
-            filteredList.add(it)
-        }
-
-        return filteredList
     }
 
     override fun onDestroy() {
