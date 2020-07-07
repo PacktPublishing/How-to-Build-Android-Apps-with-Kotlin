@@ -9,10 +9,7 @@ import kotlinx.coroutines.launch
 
 class UserViewModel(application: Application) : AndroidViewModel(application) {
 
-    var db: UserDatabase = Room.databaseBuilder(
-        getApplication(),
-        UserDatabase::class.java, "database-user"
-    ).build()
+    private val db: UserDatabase = UserDatabase.getInstance(application)
 
     private val userLiveData = MutableLiveData<List<User>>()
 
