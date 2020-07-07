@@ -21,11 +21,11 @@ class Exercise03 : AppCompatActivity() {
         ).get(
             UserViewModel::class.java
         )
-        userViewModel.getAllUserName().observe(this, Observer { usenames ->
+        userViewModel.userNames.observe(this, Observer { usenames ->
             Log.d("Coroutine logs", usenames.toString())
         })
 
-        userViewModel.addUser(User(Random.nextInt(), "d", "Morris"))
+        userViewModel.addUser(User(Random.nextInt(), "don", "Morris"))
         userViewModel.getUsers()
     }
 }

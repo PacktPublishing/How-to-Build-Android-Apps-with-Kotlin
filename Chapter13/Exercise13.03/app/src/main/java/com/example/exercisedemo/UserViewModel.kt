@@ -20,9 +20,8 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
         it.map { user -> user.firstName + user.lastName }
     }
 
-    fun getAllUserName(): LiveData<List<String>> {
-        return userNameLiveData
-    }
+    val userNames: LiveData<List<String>>
+        get() = userNameLiveData
 
     fun addUser(user: User) {
         CoroutineScope(IO).launch {
