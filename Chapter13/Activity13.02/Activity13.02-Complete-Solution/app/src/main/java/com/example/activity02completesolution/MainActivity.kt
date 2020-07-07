@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity(), MovieAdapter.MovieClickedListener {
         }
     }
 
-    private fun filterByLanguage(allMovies: ArrayList<Movie>): ArrayList<Movie> {
+    private fun filterByLanguage(allMovies: List<Movie>): ArrayList<Movie> {
         val filteredList = arrayListOf<Movie>()
         Observable.fromIterable(allMovies).filter {
             it.original_language == "en"
