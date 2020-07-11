@@ -8,44 +8,44 @@
     android:padding="8dp">
 
     <ImageView
-        android:id="@+id/item_employee_photo"
+        android:id="@+id/item_cat_photo"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:contentDescription="@string/item_employee_photo"
+        android:contentDescription="@string/item_cat_photo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:background="@color/colorPrimary" />
 
     <TextView
-        android:id="@+id/item_employee_name"
+        android:id="@+id/item_cat_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/item_employee_photo"
+        app:layout_constraintStart_toEndOf="@+id/item_cat_photo"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Oliver" />
 
     <TextView
-        android:id="@+id/item_employee_role"
+        android:id="@+id/item_cat_breed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/colorAccent"
-        app:layout_constraintStart_toStartOf="@+id/item_employee_name"
-        app:layout_constraintTop_toBottomOf="@+id/item_employee_name"
+        app:layout_constraintStart_toStartOf="@+id/item_cat_name"
+        app:layout_constraintTop_toBottomOf="@+id/item_cat_name"
         tools:text="Exotic Shorthair" />
 
     <TextView
-        android:id="@+id/item_employee_biography"
+        android:id="@+id/item_cat_biography"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@+id/item_employee_role"
-        app:layout_constraintTop_toBottomOf="@+id/item_employee_role"
+        app:layout_constraintStart_toStartOf="@+id/item_cat_breed"
+        app:layout_constraintTop_toBottomOf="@+id/item_cat_breed"
         tools:text="Stealthy and witty. Better avoid in dark alleys." />
 
     <TextView
-        android:id="@+id/item_employee_gender"
+        android:id="@+id/item_cat_gender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30sp"
