@@ -34,8 +34,8 @@ class MainActivity : AppCompatActivity() {
                     CatUiModel(
                         Gender.Male,
                         CatBreed.ExoticShorthair,
-                        "Garfield",
-                        "Garfield is as a lazy, fat, and cynical orange cat.",
+                        "Garvey",
+                        "Garvey is as a lazy, fat, and cynical orange cat.",
                         "https://cdn2.thecatapi.com/images/FZpeiLi4n.jpg"
                     )
                 ),
@@ -71,8 +71,8 @@ class MainActivity : AppCompatActivity() {
                     CatUiModel(
                         Gender.Male,
                         CatBreed.ExoticShorthair,
-                        "Tom",
-                        "Tom, AKA Jasper, is very energetic, determined yet somewhat... Slow.",
+                        "Tim",
+                        "Tim, AKA Jasper, is very energetic, determined yet somewhat... Slow.",
                         "https://cdn2.thecatapi.com/images/y61B6bFCh.jpg"
                     )
                 )
