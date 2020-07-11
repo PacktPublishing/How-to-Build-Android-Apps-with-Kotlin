@@ -2,6 +2,7 @@ package com.example.recipebook
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recipebook.model.Flavor
 import com.example.recipebook.model.ListItem
@@ -15,6 +16,8 @@ class RecipesAdapter(
     private val layoutInflater: LayoutInflater,
     private val onClickListener: OnClickListener
 ) : RecyclerView.Adapter<BaseViewHolder>() {
+    val swipeToDeleteCallback = SwipeToDeleteCallback()
+
     private val savoryTitle = TitleUiModel("Savory")
     private val sweetTitle = TitleUiModel("Sweet")
     private val listItems = mutableListOf<ListItem>(savoryTitle, sweetTitle)
@@ -57,5 +60,35 @@ class RecipesAdapter(
 
     interface OnClickListener {
         fun onItemClick(recipe: RecipeUiModel)
+    }
+
+    inner class SwipeToDeleteCallback :
+        ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
+        override fun onMove(
+            recyclerView: RecyclerView,
+            viewHolder: RecyclerView.ViewHolder,
+            target: RecyclerView.ViewHolder
+        ): Boolean = false
+
+        override fun getMovementFlags(
+            recyclerView: RecyclerView,
+            viewHolder: RecyclerView.ViewHolder
+        ) = if (viewHolder is RecipeViewHolder) {
+            makeMovementFlags(
+                ItemTouchHelper.ACTION_STATE_IDLE,
+                ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+            ) or makeMovementFlags(
+                ItemTouchHelper.ACTION_STATE_SWIPE,
+                ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+            )
+        } else {
+            0
+        }
+
+        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+            val position = viewHolder.adapterPosition
+            listItems.removeAt(position)
+            notifyItemRemoved(position)
+        }
     }
 }
