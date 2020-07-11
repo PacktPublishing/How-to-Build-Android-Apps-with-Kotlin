@@ -3,6 +3,7 @@ package com.example.recipebook
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.recipebook.model.Flavor
 import com.example.recipebook.model.ListItem
 import com.example.recipebook.model.RecipeUiModel
 import com.example.recipebook.model.TitleUiModel
@@ -17,6 +18,15 @@ class RecipesAdapter(
     private val savoryTitle = TitleUiModel("Savory")
     private val sweetTitle = TitleUiModel("Sweet")
     private val listItems = mutableListOf<ListItem>(savoryTitle, sweetTitle)
+
+    fun addRecipe(recipe: RecipeUiModel) {
+        val insertionIndex = listItems.indexOf(when (recipe.flavor) {
+            Flavor.SAVORY -> savoryTitle
+            Flavor.SWEET -> sweetTitle
+        }) + 1
+        listItems.add(insertionIndex, recipe)
+        notifyItemInserted(insertionIndex)
+    }
 
     override fun getItemViewType(position: Int) = when (listItems[position]) {
         is TitleUiModel -> VIEW_TYPE_TITLE
