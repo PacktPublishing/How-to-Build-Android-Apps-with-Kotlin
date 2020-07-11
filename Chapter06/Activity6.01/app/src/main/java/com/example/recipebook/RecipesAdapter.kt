@@ -44,4 +44,8 @@ class RecipesAdapter(
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) =
         holder.bindData(listItems[position])
+
+    interface OnClickListener {
+        fun onItemClick(recipe: RecipeUiModel)
+    }
 }
