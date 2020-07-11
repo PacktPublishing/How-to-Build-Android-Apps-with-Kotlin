@@ -6,8 +6,8 @@ import com.example.recipebook.model.ListItem
 import com.example.recipebook.model.RecipeUiModel
 import com.example.recipebook.model.TitleUiModel
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.item_recipe.view.recipe_title
-import kotlinx.android.synthetic.main.item_title.view.title_label
+import kotlinx.android.synthetic.main.item_recipe.view.*
+import kotlinx.android.synthetic.main.item_title.view.*
 
 abstract class BaseViewHolder(
     override val containerView: View
@@ -22,9 +22,19 @@ class TitleViewHolder(override val containerView: View) : BaseViewHolder(contain
     }
 }
 
-class RecipeViewHolder(override val containerView: View) : BaseViewHolder(containerView) {
+class RecipeViewHolder(
+    override val containerView: View,
+    private val onClickListener: OnClickListener
+) : BaseViewHolder(containerView) {
     private val titleView by lazy { containerView.recipe_title }
     override fun bindData(listItem: ListItem) {
         titleView.text = (listItem as RecipeUiModel).title
+        titleView.setOnClickListener {
+            onClickListener.onClick(listItem)
+        }
+    }
+
+    interface OnClickListener {
+        fun onClick(recipe: RecipeUiModel)
     }
 }
