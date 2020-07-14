@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:text="Please enter your name and then we\'ll get started!"/>
+        tools:text="Please enter your name and then we'll get started!"/>
 
     <EditText
         android:id="@+id/full_name"
