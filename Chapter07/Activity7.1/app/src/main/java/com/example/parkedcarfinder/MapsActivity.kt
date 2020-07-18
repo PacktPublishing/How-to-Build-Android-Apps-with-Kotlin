@@ -3,20 +3,28 @@ package com.example.parkedcarfinder
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Color
 import android.location.Location
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.DrawableCompat
 import com.google.android.gms.location.LocationServices
-
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptor
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import kotlinx.android.synthetic.main.activity_maps.maps_mark_location_button
 
 private const val PERMISSION_CODE_REQUEST_LOCATION = 1
 
@@ -27,6 +35,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
 
+    private var userMarker: Marker? = null
+    private var carMarker: Marker? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
@@ -34,6 +45,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+        maps_mark_location_button.setOnClickListener {
+            if (getHasLocationPermission()) {
+                markParkedCar()
+            }
+        }
     }
 
     override fun onResume() {
@@ -41,7 +58,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val hasLocationPermissions = getHasLocationPermission()
         if (hasLocationPermissions) {
-            getLastLocation()
+            getLastLocation { location ->
+                val userLocation = LatLng(location.latitude, location.longitude)
+                updateMapLocation(userLocation)
+                userMarker = addMarkerAtLocation(userLocation, "You")
+            }
         }
     }
 
@@ -83,14 +104,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     @SuppressLint("MissingPermission")
-    private fun getLastLocation() {
+    private fun getLastLocation(onLocation: (location: Location) -> Unit) {
         fusedLocationProviderClient.lastLocation
             .addOnSuccessListener { location: Location? ->
-                location?.let {
-                    val userLocation = LatLng(location.latitude, location.longitude)
-                    updateMapLocation(userLocation)
-                    addMarkerAtLocation(userLocation, "You")
-                }
+                location?.let { onLocation(it) }
             }
     }
 
@@ -98,8 +115,55 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 7f))
     }
 
-    private fun addMarkerAtLocation(location: LatLng, title: String) {
-        mMap.addMarker(MarkerOptions().title(title).position(location))
+    private fun addMarkerAtLocation(
+        location: LatLng,
+        title: String,
+        markerIcon: BitmapDescriptor? = null
+    ) = mMap.addMarker(
+        MarkerOptions()
+            .title(title)
+            .position(location)
+            .apply {
+                markerIcon?.let { icon(markerIcon) }
+            }
+    )
+
+    private fun markParkedCar() {
+        getLastLocation { location ->
+            val userLocation = LatLng(location.latitude, location.longitude)
+            userMarker?.remove()
+            carMarker?.remove()
+            updateMapLocation(userLocation)
+            carMarker = addMarkerAtLocation(
+                userLocation,
+                "Your Car",
+                getBitmapDescriptorFromVector(R.drawable.ic_baseline_directions_car_24)
+            )
+            userMarker = addMarkerAtLocation(userLocation, "You")
+        }
+    }
+
+    private fun getBitmapDescriptorFromVector(@DrawableRes vectorDrawableResourceId: Int): BitmapDescriptor? {
+        val bitmap =
+            ContextCompat.getDrawable(this, vectorDrawableResourceId)?.let { vectorDrawable ->
+                vectorDrawable
+                    .setBounds(0, 0, vectorDrawable.intrinsicWidth, vectorDrawable.intrinsicHeight)
+
+                val drawableWithTint = DrawableCompat.wrap(vectorDrawable)
+                DrawableCompat.setTint(drawableWithTint, Color.RED)
+
+                val bitmap = Bitmap.createBitmap(
+                    vectorDrawable.intrinsicWidth,
+                    vectorDrawable.intrinsicHeight,
+                    Bitmap.Config.ARGB_8888
+                )
+                val canvas = Canvas(bitmap)
+                drawableWithTint.draw(canvas)
+                bitmap
+            }
+        return BitmapDescriptorFactory.fromBitmap(bitmap).also {
+            bitmap?.recycle()
+        }
     }
 
     override fun onRequestPermissionsResult(
@@ -110,7 +174,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
         when (requestCode) {
-            PERMISSION_CODE_REQUEST_LOCATION -> getLastLocation()
+            PERMISSION_CODE_REQUEST_LOCATION -> getLastLocation { location ->
+                val userLocation = LatLng(location.latitude, location.longitude)
+                updateMapLocation(userLocation)
+                userMarker = addMarkerAtLocation(userLocation, "You")
+            }
         }
     }
 
