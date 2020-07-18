@@ -1,12 +1,15 @@
 package com.example.parkedcarfinder
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.pm.PackageManager
+import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.google.android.gms.location.LocationServices
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -18,6 +21,9 @@ import com.google.android.gms.maps.model.MarkerOptions
 private const val PERMISSION_CODE_REQUEST_LOCATION = 1
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
+    private val fusedLocationProviderClient by lazy {
+        LocationServices.getFusedLocationProviderClient(this)
+    }
 
     private lateinit var mMap: GoogleMap
 
@@ -34,6 +40,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         super.onResume()
 
         val hasLocationPermissions = getHasLocationPermission()
+        if (hasLocationPermissions) {
+            getLastLocation()
+        }
     }
 
     private fun getHasLocationPermission() = if (
@@ -71,6 +80,38 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
             PERMISSION_CODE_REQUEST_LOCATION
         )
+    }
+
+    @SuppressLint("MissingPermission")
+    private fun getLastLocation() {
+        fusedLocationProviderClient.lastLocation
+            .addOnSuccessListener { location: Location? ->
+                location?.let {
+                    val userLocation = LatLng(location.latitude, location.longitude)
+                    updateMapLocation(userLocation)
+                    addMarkerAtLocation(userLocation, "You")
+                }
+            }
+    }
+
+    private fun updateMapLocation(location: LatLng) {
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 7f))
+    }
+
+    private fun addMarkerAtLocation(location: LatLng, title: String) {
+        mMap.addMarker(MarkerOptions().title(title).position(location))
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        when (requestCode) {
+            PERMISSION_CODE_REQUEST_LOCATION -> getLastLocation()
+        }
     }
 
     /**
