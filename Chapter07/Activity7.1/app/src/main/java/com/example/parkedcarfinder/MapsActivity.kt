@@ -2,6 +2,7 @@ package com.example.parkedcarfinder
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
@@ -64,6 +65,15 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 userMarker = addMarkerAtLocation(userLocation, "You")
             }
         }
+
+        restoreLocation()?.let { userLocation ->
+            carMarker = addMarkerAtLocation(
+                userLocation,
+                "Your Car",
+                getBitmapDescriptorFromVector(R.drawable.ic_baseline_directions_car_24)
+            )
+            userMarker = addMarkerAtLocation(userLocation, "You")
+        }
     }
 
     private fun getHasLocationPermission() = if (
@@ -107,7 +117,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun getLastLocation(onLocation: (location: Location) -> Unit) {
         fusedLocationProviderClient.lastLocation
             .addOnSuccessListener { location: Location? ->
-                location?.let { onLocation(it) }
+                location?.let {
+                    onLocation(it)
+                }
             }
     }
 
@@ -140,6 +152,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 getBitmapDescriptorFromVector(R.drawable.ic_baseline_directions_car_24)
             )
             userMarker = addMarkerAtLocation(userLocation, "You")
+            saveLocation(userLocation)
         }
     }
 
@@ -199,4 +212,20 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
     }
+
+    private fun saveLocation(latLng: LatLng) =
+        getPreferences(MODE_PRIVATE)?.edit()?.apply {
+            putString("latitude", latLng.latitude.toString())
+            putString("longitude", latLng.longitude.toString())
+            apply()
+        }
+
+    private fun restoreLocation() =
+        getPreferences(Context.MODE_PRIVATE)?.let { sharedPreferences ->
+            val latitude =
+                sharedPreferences.getString("latitude", null)?.toDoubleOrNull() ?: return null
+            val longitude =
+                sharedPreferences.getString("longitude", null)?.toDoubleOrNull() ?: return null
+            LatLng(latitude, longitude)
+        }
 }
