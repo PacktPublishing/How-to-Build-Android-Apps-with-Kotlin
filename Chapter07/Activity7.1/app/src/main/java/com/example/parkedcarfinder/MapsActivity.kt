@@ -1,7 +1,12 @@
 package com.example.parkedcarfinder
 
+import android.Manifest
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -9,6 +14,8 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+
+private const val PERMISSION_CODE_REQUEST_LOCATION = 1
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -21,6 +28,49 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        val hasLocationPermissions = getHasLocationPermission()
+    }
+
+    private fun getHasLocationPermission() = if (
+        ContextCompat.checkSelfPermission(
+            this, Manifest.permission.ACCESS_FINE_LOCATION
+        ) == PackageManager.PERMISSION_GRANTED
+    ) {
+        true
+    } else {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(
+                this, Manifest.permission.ACCESS_FINE_LOCATION
+            )
+        ) {
+            showPermissionRationale { requestLocationPermission() }
+        } else {
+            requestLocationPermission()
+        }
+        false
+    }
+
+    private fun showPermissionRationale(positiveAction: () -> Unit) {
+        AlertDialog.Builder(this)
+            .setTitle("Location permission")
+            .setMessage("We need your permission to find your current location")
+            .setPositiveButton(
+                "OK"
+            ) { _, _ -> positiveAction() }
+            .create()
+            .show()
+    }
+
+    private fun requestLocationPermission() {
+        ActivityCompat.requestPermissions(
+            this,
+            arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+            PERMISSION_CODE_REQUEST_LOCATION
+        )
     }
 
     /**
