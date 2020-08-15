@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".DetailsActivity">
+
+    <ImageView
+        android:id="@+id/tv_poster"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:layout_margin="@dimen/layout_margin"
+        android:contentDescription="Poster"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/title_text"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/layout_margin"
+        app:layout_constraintEnd_toEndOf="@+id/tv_poster"
+        app:layout_constraintStart_toStartOf="@+id/tv_poster"
+        app:layout_constraintTop_toBottomOf="@+id/tv_poster"
+        tools:text="Name" />
+
+    <TextView
+        android:id="@+id/release_text"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/layout_margin"
+        app:layout_constraintEnd_toEndOf="@+id/title_text"
+        app:layout_constraintStart_toStartOf="@+id/title_text"
+        app:layout_constraintTop_toBottomOf="@+id/title_text"
+        tools:text="Release Date" />
+
+    <TextView
+        android:id="@+id/overview_text"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/layout_margin"
+        app:layout_constraintEnd_toEndOf="@+id/release_text"
+        app:layout_constraintStart_toStartOf="@+id/release_text"
+        app:layout_constraintTop_toBottomOf="@+id/release_text"
+        tools:text="Overview" />
+</androidx.constraintlayout.widget.ConstraintLayout>
