@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.popularmovies.model.Movie
-import kotlinx.android.synthetic.main.activity_details.*
 import kotlinx.android.synthetic.main.view_movie_item.view.*
 
 class MovieAdapter(private val movies: List<Movie>, private val clickListener: MovieClickListener) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
