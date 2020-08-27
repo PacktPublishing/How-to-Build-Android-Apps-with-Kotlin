@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:text="Please click the button below to choose your favourite color of the rainbow!"/>
+        tools:text="Please click the button below to choose your favorite color of the rainbow!"/>
 
     <Button
         android:id="@+id/submit_button"

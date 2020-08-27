@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:text="Enter your name and email for a discount code at Your Favourite Restaurant!"/>
+        tools:text="Enter your name and email for a discount code at Your Favorite Restaurant!"/>
 
     <EditText
         android:id="@+id/first_name"

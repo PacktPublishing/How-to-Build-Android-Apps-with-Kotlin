@@ -47,7 +47,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        super.onOptionsItemSelected(item)
         return item.onNavDestinationSelected(findNavController(R.id.nav_host_fragment))
     }
 
