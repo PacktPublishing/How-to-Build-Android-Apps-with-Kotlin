@@ -17,5 +17,5 @@ open class MyApplication : Application() {
         itemGenerator = createItemGenerator()
     }
 
-    open protected fun createItemGenerator(): ItemGenerator = ItemGenerator(timer, stringProvider, 1000, countingIdlingResource)
+    protected open fun createItemGenerator(): ItemGenerator = ItemGenerator(timer, stringProvider, 1000, countingIdlingResource)
 }
