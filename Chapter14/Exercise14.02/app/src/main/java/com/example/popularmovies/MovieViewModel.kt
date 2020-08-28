@@ -1,12 +1,21 @@
 package com.example.popularmovies
 
-import androidx.lifecycle.*
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.map
+import androidx.lifecycle.viewModelScope
+import com.example.popularmovies.database.MovieDatabase
 import com.example.popularmovies.model.Movie
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.*
 
-class MovieViewModel(private val movieRepository: MovieRepository) : ViewModel() {
+class MovieViewModel(application: Application) : AndroidViewModel(application) {
+
+    private val movieRepository: MovieRepository by lazy {
+        MovieRepository(MovieDatabase.getInstance(application.applicationContext))
+    }
 
     private var movies: LiveData<List<Movie>> = movieRepository.getMovies()
 
@@ -26,16 +35,6 @@ class MovieViewModel(private val movieRepository: MovieRepository) : ViewModel()
     private fun fetchPopularMovies() {
         viewModelScope.launch(Dispatchers.IO) {
             movieRepository.fetchMovies()
-        }
-    }
-
-    class Factory(private val movieRepository: MovieRepository) : ViewModelProvider.Factory {
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(MovieViewModel::class.java)) {
-                @Suppress("UNCHECKED_CAST")
-                return MovieViewModel(movieRepository) as T
-            }
-            throw IllegalArgumentException("Unable to create ViewModel")
         }
     }
 }
