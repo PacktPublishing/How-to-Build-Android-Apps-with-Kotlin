@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    lateinit var disposable: Disposable
+    private lateinit var disposable: Disposable
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,6 +61,8 @@ class MainActivity : AppCompatActivity() {
                 )
             }
             .sorted { movie, movie2 -> movie.title.compareTo(movie2.title) }
+            .map { it.copy(title = it.title.toUpperCase()) }
+            .take(4)
             .subscribe({ movie ->
                 movies.add(movie)
                 movieAdapter.notifyDataSetChanged()

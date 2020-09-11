@@ -5,7 +5,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class TVShow(
-    val backdrop_path: String = "",
+    val backdrop_path: String? = "",
     val first_air_date: String = "",
     val id: Int = 0,
     val name: String = "",

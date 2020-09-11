@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    lateinit var disposable: Disposable
+    private lateinit var disposable: Disposable
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

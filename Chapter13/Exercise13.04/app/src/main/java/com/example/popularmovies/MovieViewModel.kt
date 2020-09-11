@@ -1,5 +1,6 @@
 package com.example.popularmovies
 
+import android.util.Log
 import androidx.lifecycle.*
 import com.example.popularmovies.api.MovieService
 import com.example.popularmovies.model.Movie
@@ -38,8 +39,12 @@ class MovieViewModel : ViewModel() {
 
     private fun fetchPopularMovies() {
         viewModelScope.launch {
-            val popularMovies = movieService.getPopularMovies(apiKey)
-            movies.value = popularMovies.results
+            try {
+                val popularMovies = movieService.getPopularMovies(apiKey)
+                movies.value = popularMovies.results
+            } catch (exception: Exception) {
+                Log.d("MovieViewModel", "Exception in fetchPopularMovies: ${exception.message}")
+            }
         }
     }
 }
