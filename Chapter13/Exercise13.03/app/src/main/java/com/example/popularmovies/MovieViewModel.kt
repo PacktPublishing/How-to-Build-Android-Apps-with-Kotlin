@@ -1,5 +1,6 @@
 package com.example.popularmovies
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -28,14 +29,19 @@ class MovieViewModel : ViewModel() {
         }
     }
 
+    private val idLiveData: LiveData<Int> = MutableLiveData()
     fun getMovies(): LiveData<List<Movie>> {
         return movies
     }
 
     private fun fetchPopularMovies() {
         viewModelScope.launch {
-            val popularMovies = movieService.getPopularMovies(apiKey)
-            movies.value = popularMovies.results
+            try {
+                val popularMovies = movieService.getPopularMovies(apiKey)
+                movies.value = popularMovies.results
+            } catch (exception: Exception) {
+                Log.d("MovieViewModel", "Exception in fetchPopularMovies: ${exception.message}")
+            }
         }
     }
 }
