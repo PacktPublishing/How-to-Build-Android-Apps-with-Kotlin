@@ -29,7 +29,6 @@ class MovieViewModel : ViewModel() {
         }
     }
 
-    private val idLiveData: LiveData<Int> = MutableLiveData()
     fun getMovies(): LiveData<List<Movie>> {
         return movies
     }
