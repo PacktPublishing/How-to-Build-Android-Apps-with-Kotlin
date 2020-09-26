@@ -7,20 +7,9 @@ import com.example.tvguide.api.TelevisionService
 import com.example.tvguide.database.TVDao
 import com.example.tvguide.database.TVDatabase
 import com.example.tvguide.model.TVShow
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
-class TVShowRepository(private val tvDatabase: TVDatabase) {
+class TVShowRepository(private val tvService: TelevisionService, private val tvDatabase: TVDatabase) {
     private val apiKey = "your_api_key_here"
-
-    private val retrofit by lazy {
-        Retrofit.Builder()
-            .baseUrl("https://api.themoviedb.org/3/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-    }
-
-    private val tvService by lazy { retrofit.create(TelevisionService::class.java) }
 
     private var tvShows: MutableLiveData<List<TVShow>> = MutableLiveData()
 
@@ -54,7 +43,5 @@ class TVShowRepository(private val tvDatabase: TVDatabase) {
                 Log.d("TVShowRepository", "Exception in fetchTVShowsFromNetwork: ${exception.message}")
             }
         }
-
-        tvShows.postValue(shows)
     }
 }
