@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.popularmovies.model.Movie
 import kotlinx.android.synthetic.main.activity_main.*
@@ -19,17 +20,20 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private val movieViewModel by lazy {
-        ViewModelProvider(this).get(MovieViewModel::class.java)
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         movie_list.adapter = movieAdapter
 
-        movieViewModel.getMovies().observe(this, Observer { popularMovies ->
+        val movieRepository = (application as MovieApplication).movieRepository
+        val movieViewModel = ViewModelProvider(this, object: ViewModelProvider.Factory {
+            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+                return MovieViewModel(movieRepository) as T
+            }
+        }).get(MovieViewModel::class.java)
+
+        movieViewModel.getPopularMovies().observe(this, Observer { popularMovies ->
             movies.addAll(popularMovies)
             movieAdapter.notifyDataSetChanged()
         })

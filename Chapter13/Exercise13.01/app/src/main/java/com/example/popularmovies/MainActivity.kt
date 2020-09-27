@@ -4,31 +4,15 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.example.popularmovies.api.MovieService
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.example.popularmovies.model.Movie
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.core.Observable
-import io.reactivex.rxjava3.disposables.Disposable
-import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
-import retrofit2.Retrofit
-import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
-import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
-    private val apiKey = "your_api_key_here"
 
     private val movies = arrayListOf<Movie>()
-
-    private val retrofit by lazy {
-        Retrofit.Builder()
-            .baseUrl("https://api.themoviedb.org/3/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
-            .build()
-    }
-
-    private val movieService by lazy { retrofit.create(MovieService::class.java) }
 
     private val movieAdapter by lazy {
         MovieAdapter(movies, object : MovieAdapter.MovieClickListener {
@@ -37,8 +21,6 @@ class MainActivity : AppCompatActivity() {
             }
         })
     }
-
-    private lateinit var disposable: Disposable
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,15 +32,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getMovies() {
-        disposable = movieService.getPopularMovies(apiKey)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .flatMap { Observable.fromIterable(it.results) }
-            .subscribe({ movie ->
-                movies.add(movie)
+        val movieService = (application as MovieApplication).movieService
+
+        val movieViewModel = ViewModelProvider(this, object : ViewModelProvider.Factory {
+            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+                return MovieViewModel(movieService) as T
+            }
+        }).get(MovieViewModel::class.java)
+
+        movieViewModel.fetchPopularMovies()
+        movieViewModel.getPopularMovies()
+            .observe(this, Observer { popularMovies ->
+                movies.addAll(popularMovies)
                 movieAdapter.notifyDataSetChanged()
-            }, { error ->
-                Log.d("Popular Movies", "error encountered: ${error.localizedMessage}")
             })
     }
 
@@ -69,8 +55,4 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        disposable.dispose()
-    }
 }

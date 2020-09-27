@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.tvguide.model.TVShow
 import kotlinx.android.synthetic.main.activity_main.*
@@ -20,17 +21,19 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private val tvShowViewModel by lazy {
-        ViewModelProvider(this).get(TVShowViewModel::class.java)
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         tv_show_list.adapter = tvShowAdapter
 
-        tvShowViewModel.tvShows.observe(this, Observer { shows ->
+        val tvShowRepository = (application as TVApplication).tvShowRepository
+        val tvShowViewModel = ViewModelProvider(this, object: ViewModelProvider.Factory {
+            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+                return TVShowViewModel(tvShowRepository) as T
+            }
+        }).get(TVShowViewModel::class.java)
+        tvShowViewModel.getTVShows().observe(this, Observer { shows ->
             tvShows.addAll(shows)
             tvShowAdapter.notifyDataSetChanged()
         })
