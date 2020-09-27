@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.popularmovies.databinding.ActivityMainBinding
 import com.example.popularmovies.model.Movie
@@ -20,19 +21,23 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private val movieViewModel by lazy {
-        ViewModelProvider(this).get(MovieViewModel::class.java)
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        val binding: ActivityMainBinding =
+            DataBindingUtil.setContentView(this, R.layout.activity_main)
+
+        movie_list.adapter = movieAdapter
+
+        val movieRepository = (application as MovieApplication).movieRepository
+        val movieViewModel = ViewModelProvider(this, object: ViewModelProvider.Factory {
+            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+                return MovieViewModel(movieRepository) as T
+            }
+        }).get(MovieViewModel::class.java)
 
         binding.viewModel = movieViewModel
         binding.lifecycleOwner = this
-
-        movie_list.adapter = movieAdapter
     }
 
     private fun openMovieDetails(movie: Movie) {

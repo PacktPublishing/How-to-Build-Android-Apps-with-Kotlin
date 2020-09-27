@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.tvguide.databinding.ActivityMainBinding
 import com.example.tvguide.model.TVShow
@@ -21,16 +22,19 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private val tvShowViewModel by lazy {
-        ViewModelProvider.AndroidViewModelFactory.getInstance(application).create(TVShowViewModel::class.java)
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         tv_show_list.adapter = tvShowAdapter
+
+        val tvShowRepository = (application as TVApplication).tvShowRepository
+        val tvShowViewModel = ViewModelProvider(this, object: ViewModelProvider.Factory {
+            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+                return TVShowViewModel(tvShowRepository) as T
+            }
+        }).get(TVShowViewModel::class.java)
 
         binding.viewModel = tvShowViewModel
         binding.lifecycleOwner = this

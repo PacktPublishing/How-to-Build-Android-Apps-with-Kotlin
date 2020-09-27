@@ -34,7 +34,7 @@ class TVShowAdapter(var tvShows: List<TVShow>, private val clickListener: TVClic
             Glide.with(itemView.context)
                 .load(imagePath)
                 .placeholder(R.mipmap.ic_launcher)
-                .centerCrop()
+                .fitCenter()
                 .into(itemView.tv_poster)
         }
     }
