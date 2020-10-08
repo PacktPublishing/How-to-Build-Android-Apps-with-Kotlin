@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private val movies = arrayListOf<Movie>()
+    private val movies = mutableListOf<Movie>()
 
     private val movieAdapter by lazy {
         MovieAdapter(movies, object : MovieAdapter.MovieClickListener {
@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         }).get(MovieViewModel::class.java)
 
         movieViewModel.fetchPopularMovies()
-        movieViewModel.getPopularMovies()
+        movieViewModel.popularMovies
             .observe(this, Observer { popularMovies ->
                 movies.addAll(popularMovies)
                 movieAdapter.notifyDataSetChanged()

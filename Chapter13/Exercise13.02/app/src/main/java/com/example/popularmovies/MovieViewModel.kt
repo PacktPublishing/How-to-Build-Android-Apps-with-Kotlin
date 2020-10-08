@@ -1,7 +1,6 @@
 package com.example.popularmovies
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.popularmovies.api.MovieService
@@ -9,17 +8,18 @@ import com.example.popularmovies.model.Movie
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.disposables.CompositeDisposable
-import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.*
 
 class MovieViewModel(private val movieService: MovieService) : ViewModel() {
     private val apiKey = "your_api_key_here"
 
-    var popularMovies = MutableLiveData<List<Movie>>()
-    private var disposable = CompositeDisposable()
+    private val popularMoviesLiveData = MutableLiveData<List<Movie>>()
 
-    fun getPopularMovies(): LiveData<List<Movie>> = popularMovies
+    val popularMovies
+        get() = popularMoviesLiveData
+
+    private var disposable = CompositeDisposable()
 
     fun fetchPopularMovies() {
         disposable.add(movieService.getPopularMovies(apiKey)
@@ -36,7 +36,7 @@ class MovieViewModel(private val movieService: MovieService) : ViewModel() {
             .take(4)
             .toList()
             .subscribe({
-                popularMovies.postValue(it)
+                popularMoviesLiveData.postValue(it)
             }, { error ->
                 Log.d("MovieViewModel", "error encountered: ${error.localizedMessage}")
             })

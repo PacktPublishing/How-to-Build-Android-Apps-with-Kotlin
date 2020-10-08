@@ -48,12 +48,12 @@ class MovieViewModelTest {
 
         Mockito.`when`(movieService.getPopularMovies(anyString()))
             .thenReturn(Observable.just(response))
-        movieViewModel.getPopularMovies().observeForever(observer)
+        movieViewModel.popularMovies.observeForever(observer)
         movieViewModel.fetchPopularMovies()
 
         assertEquals(
             movies,
-            movieViewModel.getPopularMovies().value
+            movieViewModel.popularMovies.value
         )
     }
 

@@ -37,7 +37,7 @@ class MovieRepositoryTest {
                 .thenReturn(response)
 
             movieRepository.fetchMovies()
-            val movieLiveData = movieRepository.getMovies()
+            val movieLiveData = movieRepository.movies
             assertEquals(movieLiveData.value, movies)
         }
     }

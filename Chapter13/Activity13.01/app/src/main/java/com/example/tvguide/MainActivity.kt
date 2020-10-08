@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private val tvShows = arrayListOf<TVShow>()
+    private val tvShows = mutableListOf<TVShow>()
 
     private val tvShowAdapter by lazy {
         TVShowAdapter(tvShows, object : TVShowAdapter.TVClickListener {

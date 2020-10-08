@@ -1,7 +1,6 @@
 package com.example.popularmovies
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.lifecycle.MutableLiveData
 import com.example.popularmovies.api.MovieService
 import com.example.popularmovies.model.Movie
 import com.example.popularmovies.model.PopularMoviesResponse
@@ -46,12 +45,12 @@ class MovieViewModelTest {
 
         Mockito.`when`(movieService.getPopularMovies(anyString()))
             .thenReturn(Observable.just(response))
-        movieViewModel.getPopularMovies().observeForever(observer)
+        movieViewModel.popularMovies.observeForever(observer)
         movieViewModel.fetchPopularMovies()
 
         assertEquals(
             movies,
-            movieViewModel.getPopularMovies().value
+            movieViewModel.popularMovies.value
         )
     }
 
