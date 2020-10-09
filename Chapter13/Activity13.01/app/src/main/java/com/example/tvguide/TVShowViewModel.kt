@@ -19,9 +19,8 @@ class TVShowViewModel(private val tvShowRepository: TVShowRepository) : ViewMode
     }
 
     private fun fetchTVShows() {
-        viewModelScope.launch(Dispatchers.IO)  {
+        viewModelScope.launch(Dispatchers.IO) {
             tvShowRepository.fetchTVShows()
         }
     }
-
 }

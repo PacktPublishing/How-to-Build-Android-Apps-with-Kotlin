@@ -32,11 +32,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getMovies() {
-        val movieService = (application as MovieApplication).movieService
+        val movieRepository = (application as MovieApplication).movieRepository
 
         val movieViewModel = ViewModelProvider(this, object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-                return MovieViewModel(movieService) as T
+                return MovieViewModel(movieRepository) as T
             }
         }).get(MovieViewModel::class.java)
 
