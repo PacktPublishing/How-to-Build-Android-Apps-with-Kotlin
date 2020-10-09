@@ -1,14 +1,15 @@
 package com.example.popularmovies
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.example.popularmovies.api.MovieService
 import com.example.popularmovies.model.Movie
 import com.example.popularmovies.model.PopularMoviesResponse
 import io.reactivex.rxjava3.core.Observable
-import org.junit.Assert.assertEquals
 import org.junit.ClassRule
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.mockito.ArgumentMatchers.anyString
 import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito
@@ -16,7 +17,7 @@ import org.mockito.junit.MockitoJUnitRunner
 import java.util.*
 
 @RunWith(MockitoJUnitRunner::class)
-class MovieViewModelTest {
+class MovieRepositoryTest {
     @get:Rule
     val rule = InstantTaskExecutorRule()
 
@@ -27,13 +28,10 @@ class MovieViewModelTest {
     }
 
     @InjectMocks
-    lateinit var movieViewModel: MovieViewModel
-
-    @Mock
     lateinit var movieRepository: MovieRepository
 
     @Mock
-    lateinit var observer: androidx.lifecycle.Observer<List<Movie>>
+    lateinit var movieService: MovieService
 
     @Test
     fun getPopularMovies() {
@@ -41,14 +39,15 @@ class MovieViewModelTest {
         val movies = listOf(Movie(id = 3, release_date = year), Movie(id = 4, release_date = year))
         val response = PopularMoviesResponse(1, movies)
 
-        Mockito.`when`(movieRepository.fetchMovies())
+        Mockito.`when`(movieService.getPopularMovies(anyString()))
             .thenReturn(Observable.just(response))
-        movieViewModel.popularMovies.observeForever(observer)
-        movieViewModel.fetchPopularMovies()
 
-        assertEquals(
-            movies,
-            movieViewModel.popularMovies.value
-        )
+        movieRepository.fetchMovies()
+            .test()
+            .await()
+            .assertNoErrors()
+            .assertValue(response)
     }
+
+
 }

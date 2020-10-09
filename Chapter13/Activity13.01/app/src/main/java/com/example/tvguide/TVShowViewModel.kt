@@ -14,14 +14,13 @@ class TVShowViewModel(private val tvShowRepository: TVShowRepository) : ViewMode
         fetchTVShows()
     }
 
-    fun getTVShows(): LiveData<List<TVShow>> = tvShowRepository.getTVShows().map { shows ->
+    fun getTVShows(): LiveData<List<TVShow>> = tvShowRepository.tvShows.map { shows ->
         shows.sortedBy { it.name }
     }
 
     private fun fetchTVShows() {
-        viewModelScope.launch(Dispatchers.IO)  {
+        viewModelScope.launch(Dispatchers.IO) {
             tvShowRepository.fetchTVShows()
         }
     }
-
 }

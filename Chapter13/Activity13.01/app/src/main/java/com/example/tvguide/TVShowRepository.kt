@@ -9,14 +9,15 @@ import com.example.tvguide.model.TVShow
 class TVShowRepository(private val tvService: TelevisionService) {
     private val apiKey = "your_api_key_here"
 
-    private var tvShows: MutableLiveData<List<TVShow>> = MutableLiveData()
+    private val tvShowsLiveData: MutableLiveData<List<TVShow>> = MutableLiveData()
 
-    fun getTVShows(): LiveData<List<TVShow>> = tvShows
+    val tvShows
+        get() = tvShowsLiveData
 
     suspend fun fetchTVShows() {
         try {
             val shows = tvService.getTVShows(apiKey)
-            tvShows.postValue(shows.results)
+            tvShowsLiveData.postValue(shows.results)
         } catch (exception: Exception) {
             Log.d("TVShowRepository", "Exception in fetchTVShows: ${exception.message}")
         }

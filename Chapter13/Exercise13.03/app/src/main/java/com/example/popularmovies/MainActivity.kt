@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
-    private val movies = arrayListOf<Movie>()
+    private val movies = mutableListOf<Movie>()
 
     private val movieAdapter by lazy {
         MovieAdapter(movies, object : MovieAdapter.MovieClickListener {

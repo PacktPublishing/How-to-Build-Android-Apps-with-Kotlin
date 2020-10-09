@@ -13,7 +13,7 @@ class MovieViewModel(private val movieRepository: MovieRepository) : ViewModel()
         fetchPopularMovies()
     }
 
-    fun getPopularMovies(): LiveData<List<Movie>> = movieRepository.getMovies()
+    fun getPopularMovies(): LiveData<List<Movie>> = movieRepository.movies
 
     private fun fetchPopularMovies() {
         viewModelScope.launch(Dispatchers.IO) {

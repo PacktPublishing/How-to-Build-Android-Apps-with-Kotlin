@@ -35,7 +35,7 @@ class MovieViewModelTest {
         )
         movieLiveData.postValue(popularMovies)
 
-        Mockito.`when`(movieRepository.getMovies())
+        Mockito.`when`(movieRepository.movies)
             .thenReturn(movieLiveData)
 
         assertEquals(

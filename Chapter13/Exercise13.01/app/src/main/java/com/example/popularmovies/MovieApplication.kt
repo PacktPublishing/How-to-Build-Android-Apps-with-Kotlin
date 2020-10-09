@@ -8,7 +8,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 class MovieApplication : Application() {
 
-    lateinit var movieService: MovieService
+    lateinit var movieRepository: MovieRepository
 
     override fun onCreate() {
         super.onCreate()
@@ -18,6 +18,8 @@ class MovieApplication : Application() {
             .addConverterFactory(MoshiConverterFactory.create())
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .build()
-        movieService = retrofit.create(MovieService::class.java)
+        val movieService = retrofit.create(MovieService::class.java)
+
+        movieRepository = MovieRepository(movieService)
     }
 }

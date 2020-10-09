@@ -31,7 +31,7 @@ class TVShowViewModelTest {
         )
         tvShowLiveData.postValue(shows)
 
-        Mockito.`when`(tvShowRepository.getTVShows())
+        Mockito.`when`(tvShowRepository.tvShows)
             .thenReturn(tvShowLiveData)
 
         assertEquals(
