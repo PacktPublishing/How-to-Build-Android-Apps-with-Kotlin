@@ -1,6 +1,7 @@
 package com.example.popularmovies
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.popularmovies.model.Movie
@@ -12,7 +13,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 class MovieViewModel(private val movieRepository: MovieRepository) : ViewModel() {
     private val popularMoviesLiveData = MutableLiveData<List<Movie>>()
 
-    val popularMovies
+    val popularMovies: LiveData<List<Movie>>
         get() = popularMoviesLiveData
 
     private var disposable = CompositeDisposable()

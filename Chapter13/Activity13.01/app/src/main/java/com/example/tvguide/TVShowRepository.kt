@@ -11,7 +11,7 @@ class TVShowRepository(private val tvService: TelevisionService) {
 
     private val tvShowsLiveData: MutableLiveData<List<TVShow>> = MutableLiveData()
 
-    val tvShows
+    val tvShows: LiveData<List<TVShow>>
         get() = tvShowsLiveData
 
     suspend fun fetchTVShows() {
