@@ -7,12 +7,10 @@ import com.example.popularmovies.database.MovieDatabase
 import com.example.popularmovies.model.Movie
 import com.example.popularmovies.model.PopularMoviesResponse
 import kotlinx.coroutines.runBlocking
-import org.junit.Test
-
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Rule
+import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.ArgumentMatchers.any
 import org.mockito.ArgumentMatchers.anyString
 import org.mockito.InjectMocks
 import org.mockito.Mock
@@ -52,7 +50,7 @@ class MovieRepositoryTest {
 
         runBlocking {
             movieRepository.fetchMovies()
-            val movieLiveData = movieRepository.getMovies()
+            val movieLiveData = movieRepository.movies
             assertEquals(movieLiveData.value, cachedMovies)
         }
     }
@@ -79,7 +77,7 @@ class MovieRepositoryTest {
                 .thenReturn(remoteResponse)
 
             movieRepository.fetchMovies()
-            val movieLiveData = movieRepository.getMovies()
+            val movieLiveData = movieRepository.movies
             assertEquals(movieLiveData.value, remoteMovies)
         }
     }

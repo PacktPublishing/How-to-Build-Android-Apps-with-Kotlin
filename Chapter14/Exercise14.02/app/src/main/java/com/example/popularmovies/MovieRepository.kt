@@ -11,9 +11,10 @@ import com.example.popularmovies.model.Movie
 class MovieRepository(private val movieService: MovieService, private val movieDatabase: MovieDatabase) {
     private val apiKey = "your_api_key_here"
 
-    private var movies: MutableLiveData<List<Movie>> = MutableLiveData()
+    private val movieLiveData: MutableLiveData<List<Movie>> = MutableLiveData()
 
-    fun getMovies(): LiveData<List<Movie>> = movies
+    val movies: LiveData<List<Movie>>
+        get() = movieLiveData
 
     suspend fun fetchMovies() {
         val movieDao: MovieDao = movieDatabase.movieDao()
@@ -28,6 +29,6 @@ class MovieRepository(private val movieService: MovieService, private val movieD
             }
         }
 
-        movies.postValue(moviesFetched)
+        movieLiveData.postValue(moviesFetched)
     }
 }
