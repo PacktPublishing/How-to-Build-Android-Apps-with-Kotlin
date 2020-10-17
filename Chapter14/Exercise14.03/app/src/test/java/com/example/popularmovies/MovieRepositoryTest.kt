@@ -52,7 +52,7 @@ class MovieRepositoryTest {
 
         runBlocking {
             movieRepository.fetchMovies()
-            val movieLiveData = movieRepository.getMovies()
+            val movieLiveData = movieRepository.movies
             assertEquals(movieLiveData.value, cachedMovies)
         }
     }
@@ -79,7 +79,7 @@ class MovieRepositoryTest {
                 .thenReturn(remoteResponse)
 
             movieRepository.fetchMovies()
-            val movieLiveData = movieRepository.getMovies()
+            val movieLiveData = movieRepository.movies
             assertEquals(movieLiveData.value, remoteMovies)
         }
     }

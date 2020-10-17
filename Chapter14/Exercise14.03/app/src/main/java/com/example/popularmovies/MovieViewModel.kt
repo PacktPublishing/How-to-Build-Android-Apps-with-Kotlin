@@ -15,7 +15,7 @@ class MovieViewModel(private val movieRepository: MovieRepository) : ViewModel()
         fetchPopularMovies()
     }
 
-    fun getPopularMovies(): LiveData<List<Movie>> = movieRepository.getMovies().map { list ->
+    fun getPopularMovies(): LiveData<List<Movie>> = movieRepository.movies.map { list ->
         list.filter {
             it.release_date.startsWith(
                 Calendar.getInstance().get(Calendar.YEAR).toString()
