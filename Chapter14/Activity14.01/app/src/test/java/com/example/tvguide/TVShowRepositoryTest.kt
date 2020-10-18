@@ -51,7 +51,7 @@ class TVShowRepositoryTest {
 
         runBlocking {
             tvShowRepository.fetchTVShows()
-            val tvShowLiveData = tvShowRepository.getTVShows()
+            val tvShowLiveData = tvShowRepository.tvShows
             assertEquals(tvShowLiveData.value, cachedTVShows)
         }
     }
@@ -78,7 +78,7 @@ class TVShowRepositoryTest {
                 .thenReturn(remoteResponse)
 
             tvShowRepository.fetchTVShows()
-            val liveData = tvShowRepository.getTVShows()
+            val liveData = tvShowRepository.tvShows
             assertEquals(liveData.value, remoteTVShows)
         }
     }
