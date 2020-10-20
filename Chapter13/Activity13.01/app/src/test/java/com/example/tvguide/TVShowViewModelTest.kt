@@ -7,7 +7,6 @@ import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnitRunner
@@ -16,9 +15,6 @@ import org.mockito.junit.MockitoJUnitRunner
 class TVShowViewModelTest {
     @get:Rule
     val rule = InstantTaskExecutorRule()
-
-    @InjectMocks
-    lateinit var tvShowViewModel: TVShowViewModel
 
     @Mock
     lateinit var tvShowRepository: TVShowRepository
@@ -33,6 +29,7 @@ class TVShowViewModelTest {
 
         Mockito.`when`(tvShowRepository.tvShows)
             .thenReturn(tvShowLiveData)
+        val tvShowViewModel = TVShowViewModel(tvShowRepository)
 
         assertEquals(
             tvShowLiveData.value,
