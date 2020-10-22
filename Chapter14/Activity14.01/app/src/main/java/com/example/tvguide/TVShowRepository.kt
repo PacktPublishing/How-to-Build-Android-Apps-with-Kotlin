@@ -11,9 +11,10 @@ import com.example.tvguide.model.TVShow
 class TVShowRepository(private val tvService: TelevisionService, private val tvDatabase: TVDatabase) {
     private val apiKey = "your_api_key_here"
 
-    private var tvShows: MutableLiveData<List<TVShow>> = MutableLiveData()
+    private val tvShowsLiveData: MutableLiveData<List<TVShow>> = MutableLiveData()
 
-    fun getTVShows(): LiveData<List<TVShow>> = tvShows
+    val tvShows: LiveData<List<TVShow>>
+        get() = tvShowsLiveData
 
     suspend fun fetchTVShows() {
         val tvDao: TVDao = tvDatabase.tvDao()
@@ -28,7 +29,7 @@ class TVShowRepository(private val tvService: TelevisionService, private val tvD
             }
         }
 
-        tvShows.postValue(shows)
+        tvShowsLiveData.postValue(shows)
     }
 
     suspend fun fetchTVShowsFromNetwork() {

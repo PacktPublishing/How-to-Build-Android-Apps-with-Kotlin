@@ -8,12 +8,10 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class TVShowWorker(private val context: Context, private val params: WorkerParameters) :
+class TVShowWorker(private val context: Context, params: WorkerParameters) :
     Worker(context, params) {
     override fun doWork(): Result {
-        val tvService = (context as TVApplication).tvService
-
-        val tvShowRepository = TVShowRepository(tvService, TVDatabase.getInstance(applicationContext))
+        val tvShowRepository = (context as TVApplication).tvShowRepository
         CoroutineScope(Dispatchers.IO).launch {
             tvShowRepository.fetchTVShowsFromNetwork()
         }

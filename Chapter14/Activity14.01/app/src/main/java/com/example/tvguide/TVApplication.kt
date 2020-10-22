@@ -13,7 +13,6 @@ import java.util.concurrent.TimeUnit
 
 class TVApplication : Application() {
 
-    lateinit var tvService: TelevisionService
     lateinit var tvShowRepository: TVShowRepository
 
     override fun onCreate() {
@@ -23,7 +22,7 @@ class TVApplication : Application() {
             .baseUrl("https://api.themoviedb.org/3/")
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
-        tvService = retrofit.create(TelevisionService::class.java)
+        val tvService = retrofit.create(TelevisionService::class.java)
 
         tvShowRepository = TVShowRepository(tvService, TVDatabase.getInstance(applicationContext))
 

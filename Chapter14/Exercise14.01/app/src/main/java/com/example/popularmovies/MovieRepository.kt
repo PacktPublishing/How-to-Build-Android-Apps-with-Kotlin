@@ -9,14 +9,15 @@ import com.example.popularmovies.model.Movie
 class MovieRepository(private val movieService: MovieService) {
     private val apiKey = "your_api_key_here"
 
-    private var movies: MutableLiveData<List<Movie>> = MutableLiveData()
+    private val movieLiveData: MutableLiveData<List<Movie>> = MutableLiveData()
 
-    fun getMovies(): LiveData<List<Movie>> = movies
+    val movies: LiveData<List<Movie>>
+        get() = movieLiveData
 
     suspend fun fetchMovies() {
         try {
             val popularMovies = movieService.getPopularMovies(apiKey)
-            movies.postValue(popularMovies.results)
+            movieLiveData.postValue(popularMovies.results)
         } catch (exception: Exception) {
             Log.d("MovieRepository", "Exception in fetchMovies: ${exception.message}")
         }
