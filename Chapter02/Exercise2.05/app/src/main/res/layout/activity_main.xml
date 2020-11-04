@@ -15,8 +15,7 @@
         android:text="@string/header_text_main"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="Please click the button below to choose your favorite color of the rainbow!"/>
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <Button
         android:id="@+id/submit_button"
@@ -26,8 +25,7 @@
         android:text="@string/submit_button_text"
         app:layout_constraintTop_toBottomOf="@id/header_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="CHOOSE COLOR"/>
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
         android:id="@+id/rainbow_color"

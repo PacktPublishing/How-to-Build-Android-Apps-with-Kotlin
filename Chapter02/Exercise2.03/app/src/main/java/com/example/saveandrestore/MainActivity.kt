@@ -25,9 +25,9 @@ class MainActivity : AppCompatActivity() {
         // here we handle the Button onClick event
         discount_button.setOnClickListener {
 
-            val firstName = (first_name as EditText).text.toString()
-            val lastName = (last_name as EditText).text.toString()
-            val email = (email as EditText).text.toString()
+            val firstName = first_name.text.toString()
+            val lastName = last_name.text.toString()
+            val email = email.text.toString()
 
             if (firstName.isBlank() || lastName.isBlank() || email.isEmpty()){
                 Toast.makeText(this, getString(R.string.add_text_validation), Toast.LENGTH_LONG).show()

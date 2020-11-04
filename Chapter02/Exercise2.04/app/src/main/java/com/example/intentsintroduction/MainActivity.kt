@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
         submit_button.setOnClickListener {
 
-            val fullName = (full_name as EditText).text.toString()
+            val fullName = full_name.text.toString()
 
             if (fullName.isNotBlank()) {
 

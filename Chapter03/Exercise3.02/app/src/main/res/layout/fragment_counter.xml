@@ -15,8 +15,7 @@
         android:padding="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Counter"/>
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/counter"
@@ -28,8 +27,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/counter_text"
-        tools:text="0"/>
+        app:layout_constraintTop_toBottomOf="@id/counter_text"/>
 
     <Button
         android:id="@+id/add"
@@ -42,8 +40,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@id/minus"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/counter"
-        tools:text="+"/>
+        app:layout_constraintTop_toBottomOf="@id/counter"/>
 
     <Button
         android:id="@+id/minus"
@@ -56,7 +53,6 @@
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/add"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/counter"
-        tools:text="-"/>
+        app:layout_constraintTop_toBottomOf="@id/counter"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <LinearLayout
@@ -21,8 +21,7 @@
             android:text="@string/header_text_picker"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Rainbow Colors" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/red_button"
@@ -30,8 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/red"
-            android:text="@string/red"
-            tools:text="RED" />
+            android:text="@string/red"/>
 
         <Button
             android:id="@+id/orange_button"
@@ -39,8 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/orange"
-            android:text="@string/orange"
-            tools:text="ORANGE" />
+            android:text="@string/orange"/>
 
         <Button
             android:id="@+id/yellow_button"
@@ -48,8 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/yellow"
-            android:text="@string/yellow"
-            tools:text="YELLOW" />
+            android:text="@string/yellow"/>
 
         <Button
             android:id="@+id/green_button"
@@ -66,8 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/blue"
-            android:text="@string/blue"
-            tools:text="BLUE" />
+            android:text="@string/blue"/>
 
         <Button
             android:id="@+id/indigo_button"
@@ -75,8 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/indigo"
-            android:text="@string/indigo"
-            tools:text="INDIGO" />
+            android:text="@string/indigo" />
 
         <Button
             android:id="@+id/violet_button"
@@ -84,8 +78,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/violet"
-            android:text="@string/violet"
-            tools:text="VIOLET" />
+            android:text="@string/violet" />
 
         <TextView
             style="@style/body"
@@ -94,7 +87,6 @@
             android:text="@string/footer_text_picker"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Click the button above which is your favorite color of the rainbow." />
+            app:layout_constraintTop_toTopOf="parent"/>
     </LinearLayout>
 </ScrollView>

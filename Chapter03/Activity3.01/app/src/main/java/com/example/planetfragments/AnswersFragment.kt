@@ -47,25 +47,26 @@ class AnswersFragment : Fragment(), View.OnClickListener {
         }
     }
 
-    override fun onClick(view: View?) {
+    //TODO("not implemented yet")
+    override fun onClick(v: View?) {
 
         when (questionId) {
             R.id.largest_planet -> {
-                if (view?.id == R.id.jupiter) {
+                if (v?.id == R.id.jupiter) {
                     answer.text = getString(R.string.jupiter_answer, getString(R.string.correct))
                 } else {
                     answer.text = getString(R.string.jupiter_answer, getString(R.string.wrong))
                 }
             }
             R.id.most_moons -> {
-                if (view?.id == R.id.saturn) {
+                if (v?.id == R.id.saturn) {
                     answer.text = getString(R.string.saturn_answer, getString(R.string.correct))
                 } else {
                     answer.text = getString(R.string.saturn_answer, getString(R.string.wrong))
                 }
             }
             R.id.side_spinning -> {
-                if (view?.id == R.id.uranus) {
+                if (v?.id == R.id.uranus) {
                     answer.text = getString(R.string.uranus_answer, getString(R.string.correct))
                 } else {
                     answer.text = getString(R.string.uranus_answer, getString(R.string.wrong))

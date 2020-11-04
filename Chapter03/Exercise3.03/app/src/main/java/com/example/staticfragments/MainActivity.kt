@@ -26,8 +26,9 @@ class MainActivity : AppCompatActivity(), StarSignListener {
                 supportFragmentManager.findFragmentById(R.id.star_sign_detail) as DetailFragment
             detailFragment.setStarSignData(id)
         } else {
-            val detailIntent = Intent(this, DetailActivity::class.java)
-            detailIntent.putExtra(STAR_SIGN_ID, id)
+            val detailIntent = Intent(this,  DetailActivity::class.java).apply {
+                putExtra(STAR_SIGN_ID, id)
+            }
             startActivity(detailIntent)
         }
     }

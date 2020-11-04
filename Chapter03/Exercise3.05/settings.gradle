@@ -1,2 +1,2 @@
-rootProject.name='Jetpack Navigation Fragments'
+rootProject.name='Jetpack Fragments'
 include ':app'

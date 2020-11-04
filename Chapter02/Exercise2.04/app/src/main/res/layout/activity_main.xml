@@ -15,8 +15,7 @@
         android:text="@string/header_text"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="Please enter your name and then we'll get started!"/>
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <EditText
         android:id="@+id/full_name"
@@ -24,7 +23,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="@string/full_name_label"
-        tools:text="First Name:"
         app:layout_constraintTop_toBottomOf="@id/header_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
@@ -37,7 +35,6 @@
         android:text="@string/submit_button_text"
         app:layout_constraintTop_toBottomOf="@id/full_name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="SUBMIT"/>
+        app:layout_constraintStart_toStartOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

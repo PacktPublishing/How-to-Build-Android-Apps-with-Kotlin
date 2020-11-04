@@ -32,8 +32,8 @@ class MainActivity : AppCompatActivity() {
 
         submit_button.setOnClickListener {
 
-            val userName = (user_name as EditText).text.toString()
-            val password = (password as EditText).text.toString()
+            val userName = user_name.text.toString()
+            val password = password.text.toString()
 
             hideKeyboard()
 
