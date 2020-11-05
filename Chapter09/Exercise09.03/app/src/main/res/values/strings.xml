@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="press_me">Press Me</string>
+    <string name="opened_after_x_seconds">Opened after %d seconds</string>
+</resources>

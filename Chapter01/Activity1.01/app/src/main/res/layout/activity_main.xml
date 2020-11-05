@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/color_creator_layout_margin"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/color_creator_title"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/color_creator_layout_margin"
+        style="@style/color_creator_title"
+        android:gravity="center"
+        android:text="@string/color_creator_title"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/color_creator_description"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/color_creator_layout_margin"
+        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:text="@string/color_creator_description"
+        app:layout_constraintTop_toBottomOf="@id/color_creator_title"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/red_channel_wrapper"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/color_creator_layout_margin"
+        android:hint="@string/red_channel"
+        app:layout_constraintTop_toBottomOf="@id/color_creator_description"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/red_channel"
+            android:inputType="textCapCharacters"
+            android:digits="ABCDEFabcdef0123456789"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLength="2" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/green_channel_wrapper"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/color_creator_layout_margin"
+        android:hint="@string/green_channel"
+        app:layout_constraintTop_toBottomOf="@id/red_channel_wrapper"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/green_channel"
+            android:inputType="textCapCharacters"
+            android:digits="ABCDEFabcdef0123456789"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLength="2"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/blue_channel_wrapper"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/color_creator_layout_margin"
+        android:hint="@string/blue_channel"
+        app:layout_constraintTop_toBottomOf="@id/green_channel_wrapper"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/blue_channel"
+            android:inputType="textCapCharacters"
+            android:digits="ABCDEFabcdef0123456789"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLength="2" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/color_creator_layout_margin"
+        android:id="@+id/color_creator_button"
+        android:gravity="center"
+        android:text="@string/color_creator_button_text"
+        app:layout_constraintTop_toBottomOf="@id/blue_channel_wrapper"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/color_creator_display"
+        android:layout_width="match_parent"
+        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:text="@string/color_created_display_panel"
+        android:gravity="center"
+        android:layout_height="@dimen/color_creator_display_panel"
+        android:layout_margin="@dimen/color_creator_layout_margin"
+        app:layout_constraintTop_toBottomOf="@id/color_creator_button"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

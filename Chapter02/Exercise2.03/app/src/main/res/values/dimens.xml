@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="grid_4">4dp</dimen>
+    <dimen name="grid_8">8dp</dimen>
+    <dimen name="grid_12">12dp</dimen>
+    <dimen name="grid_16">16dp</dimen>
+    <dimen name="grid_24">24dp</dimen>
+    <dimen name="grid_32">32dp</dimen>
+    <dimen name="default_text_size">20sp</dimen>
+    <dimen name="discount_code_text_size">20sp</dimen>
+</resources>

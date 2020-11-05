@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/tv_poster"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:contentDescription="Poster"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/backgrounds/scenic" />
+
+    <TextView
+        android:id="@+id/tv_show_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/layout_margin"
+        android:layout_marginEnd="@dimen/layout_margin"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:lines="1"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@id/tv_poster"
+        app:layout_constraintStart_toStartOf="@id/tv_poster"
+        app:layout_constraintTop_toBottomOf="@id/tv_poster"
+        tools:text="TV Show" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

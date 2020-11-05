@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/grid_4"
+    android:layout_marginTop="@dimen/grid_4"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/header_text"
+        android:gravity="center"
+        android:textSize="@dimen/default_text_size"
+        android:paddingStart="@dimen/grid_8"
+        android:paddingEnd="@dimen/grid_8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/header_text"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <EditText
+        android:id="@+id/first_name"
+        android:textSize="@dimen/default_text_size"
+        android:layout_marginStart="@dimen/grid_24"
+        android:layout_marginEnd="@dimen/grid_16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/first_name_label"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@id/header_text"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/last_name"
+        android:textSize="@dimen/default_text_size"
+        android:layout_marginEnd="@dimen/grid_24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/last_name_label"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@id/header_text"
+        app:layout_constraintStart_toEndOf="@id/first_name"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- android:inputType="textEmailAddress" is not enforced, but is a hint to the IME (Input Method Editor)
+usually a keyboard to configure the display for an email - typically by showing the '@' symbol -->
+    <EditText
+        android:id="@+id/email"
+        android:textSize="@dimen/default_text_size"
+        android:layout_marginStart="@dimen/grid_24"
+        android:layout_marginEnd="@dimen/grid_32"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/email_label"
+        android:inputType="textEmailAddress"
+        app:layout_constraintTop_toBottomOf="@id/first_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <Button
+        android:id="@+id/discount_button"
+        android:textSize="@dimen/default_text_size"
+        android:layout_marginTop="@dimen/grid_12"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/discount_code_button"
+        app:layout_constraintTop_toBottomOf="@id/email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/discount_code_confirmation"
+        android:gravity="center"
+        android:textSize="@dimen/default_text_size"
+        android:paddingStart="@dimen/grid_16"
+        android:paddingEnd="@dimen/grid_16"
+        android:layout_marginTop="@dimen/grid_8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/discount_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Your discount code is below, Enjoy!" />
+
+    <TextView
+        android:id="@+id/discount_code"
+        android:gravity="center"
+        android:textSize="@dimen/discount_code_text_size"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/grid_8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/discount_code_confirmation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="XHFG6H9O" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

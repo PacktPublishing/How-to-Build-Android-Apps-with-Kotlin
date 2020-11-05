@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Activity Results</string>
+    <string name="header_text_main">Please click the button below to choose your favorite color of the rainbow!</string>
+    <string name="header_text_picker">Rainbow Colors</string>
+    <string name="footer_text_picker">Click the button above which is your favorite color of the rainbow.</string>
+    <string name="color_chosen_message">%s is your favorite color!</string>
+    <string name="submit_button_text">CHOOSE COLOR</string>
+
+    <string name="red">RED</string>
+    <string name="orange">ORANGE</string>
+    <string name="yellow">YELLOW</string>
+    <string name="green">GREEN</string>
+    <string name="blue">BLUE</string>
+    <string name="indigo">INDIGO</string>
+    <string name="violet">VIOLET</string>
+
+    <string name="unexpected_color">Unexpected color</string>
+
+</resources>

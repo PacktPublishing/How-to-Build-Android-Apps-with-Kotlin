@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">RandomApplication</string>
+    <string name="randomize">Randomize</string>
+</resources>
