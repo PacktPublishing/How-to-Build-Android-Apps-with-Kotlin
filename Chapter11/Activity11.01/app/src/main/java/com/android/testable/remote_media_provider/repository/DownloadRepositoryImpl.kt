@@ -34,8 +34,10 @@ class DownloadRepositoryImpl(
                 override fun onResponse(call: Call<Dog>, response: Response<Dog>) {
                     if (response.isSuccessful) {
                         executor.execute {
-                            dogDao.deleteAll()
-                            dogDao.insertDogs(dogMapper.mapServiceToEntity(response.body()!!))
+                            response.body()?.let {
+                                dogDao.deleteAll()
+                                dogDao.insertDogs(dogMapper.mapServiceToEntity(it))
+                            }
                         }
                     } else {
                         result.postValue(Result.Error())
