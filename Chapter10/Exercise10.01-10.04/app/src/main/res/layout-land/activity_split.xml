@@ -7,16 +7,16 @@
     android:orientation="horizontal"
     tools:context=".SplitActivity">
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/activity_fragment_split_1"
-        class="com.android.testable.viewmodellivedata.SplitFragment1"
+        android:name="com.android.testable.viewmodellivedata.SplitFragmentOne"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1" />
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/activity_fragment_split_2"
-        class="com.android.testable.viewmodellivedata.SplitFragment2"
+        android:name="com.android.testable.viewmodellivedata.SplitFragmentTwo"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1" />

@@ -6,7 +6,14 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/fragment_split_2_text_view"
+        android:id="@+id/fragment_split_one_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/fragment_split_one_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/press_me" />
+
 </LinearLayout>
