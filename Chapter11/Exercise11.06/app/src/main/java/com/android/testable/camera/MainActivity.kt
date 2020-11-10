@@ -1,13 +1,11 @@
 package com.android.testable.camera
 
 import android.content.Intent
-import android.media.MediaScannerConnection
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import java.io.File
+import java.util.concurrent.Executors
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,7 +23,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         providerFileManager =
-            ProviderFileManager(applicationContext, FileHelper(applicationContext))
+            ProviderFileManager(
+                applicationContext,
+                FileHelper(applicationContext),
+                contentResolver,
+                Executors.newSingleThreadExecutor(),
+                MediaContentHelper()
+            )
 
         photo_button.setOnClickListener {
             val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
@@ -46,23 +50,14 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         when (requestCode) {
             REQUEST_IMAGE_CAPTURE -> {
-                scanMedia(photoInfo?.file)
+                providerFileManager.insertImageToStore(photoInfo)
             }
             REQUEST_VIDEO_CAPTURE -> {
-                scanMedia(videoInfo?.file)
+                providerFileManager.insertVideoToStore(videoInfo)
             }
             else -> {
                 super.onActivityResult(requestCode, resultCode, data)
             }
-        }
-    }
-
-
-    private fun scanMedia(file: File?) {
-        MediaScannerConnection.scanFile(
-            this, arrayOf(file?.toString().orEmpty()), null
-        ) { path, uri ->
-            Log.d("TAG TAG TAG ", "$path $uri")
         }
     }
 }

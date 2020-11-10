@@ -34,8 +34,10 @@ class DownloadRepositoryImpl(
                 override fun onResponse(call: Call<Dog>, response: Response<Dog>) {
                     if (response.isSuccessful) {
                         executor.execute {
-                            dogDao.deleteAll()
-                            dogDao.insertDogs(dogMapper.mapServiceToEntity(response.body()!!))
+                            response.body()?.let {
+                                dogDao.deleteAll()
+                                dogDao.insertDogs(dogMapper.mapServiceToEntity(it))
+                            }
                         }
                     } else {
                         result.postValue(Result.Error())
@@ -67,12 +69,14 @@ class DownloadRepositoryImpl(
                     if (response.isSuccessful) {
                         executor.execute {
                             try {
-                                val name = url.substring(url.lastIndexOf("/") + 1)
-                                providerFileHandler.writeStream(
-                                    name,
-                                    response.body()!!.byteStream()
-                                )
-                                result.postValue(Result.Success(Unit))
+                                response.body()?.let {
+                                    val name = url.substring(url.lastIndexOf("/") + 1)
+                                    providerFileHandler.writeStream(
+                                        name,
+                                        response.body()!!.byteStream()
+                                    )
+                                    result.postValue(Result.Success(Unit))
+                                }
                             } catch (e: Exception) {
                                 e.printStackTrace()
                                 result.postValue(Result.Error())

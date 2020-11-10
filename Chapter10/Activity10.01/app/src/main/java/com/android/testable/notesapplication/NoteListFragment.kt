@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_note_list.*
 
@@ -28,7 +27,7 @@ class NoteListFragment : Fragment() {
         val adapter = NoteListAdapter(LayoutInflater.from(context))
         fragment_note_list_recycler_view.adapter = adapter
         val viewModel =
-            ViewModelProviders.of(requireActivity(), object : ViewModelProvider.Factory {
+            ViewModelProvider(requireActivity(), object : ViewModelProvider.Factory {
                 override fun <T : ViewModel?> create(modelClass: Class<T>): T {
                     return NoteListViewModel((requireActivity().application as NotesApplication).noteRepository) as T
                 }

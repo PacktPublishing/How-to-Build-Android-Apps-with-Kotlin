@@ -16,7 +16,7 @@ class PostAdapter(private val layoutInflater: LayoutInflater) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder =
         PostViewHolder(layoutInflater.inflate(R.layout.view_post_row, parent, false))
 
-    override fun getItemCount(): Int = posts.size
+    override fun getItemCount() = posts.size
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         holder.bind(posts[position])

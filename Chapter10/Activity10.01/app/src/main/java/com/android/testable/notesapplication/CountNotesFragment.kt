@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.fragment_count_notes.*
 
 class CountNotesFragment : Fragment() {
@@ -22,7 +22,7 @@ class CountNotesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val viewModel =
-            ViewModelProviders.of(requireActivity()).get(CountNotesViewModel::class.java)
+            ViewModelProvider(requireActivity()).get(CountNotesViewModel::class.java)
         viewModel.getNoteCountLiveData().observe(viewLifecycleOwner, Observer {
             fragment_count_notes_text_view.text = getString(R.string.total, it)
         })

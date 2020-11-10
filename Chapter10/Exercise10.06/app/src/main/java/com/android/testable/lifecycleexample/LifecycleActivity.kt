@@ -9,9 +9,7 @@ import androidx.lifecycle.LifecycleRegistry
 
 class LifecycleActivity : Activity(), LifecycleOwner {
 
-    private val lifecycleRegistry: LifecycleRegistry by lazy {
-        LifecycleRegistry(this)
-    }
+    private val lifecycleRegistry: LifecycleRegistry = LifecycleRegistry(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

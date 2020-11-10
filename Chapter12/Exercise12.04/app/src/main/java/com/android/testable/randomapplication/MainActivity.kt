@@ -1,14 +1,13 @@
 package com.android.testable.randomapplication
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.activity_main.*
-import org.koin.android.scope.currentScope
+import org.koin.android.scope.ScopeActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : ScopeActivity() {
 
-    private val mainViewModel: MainViewModel by currentScope.inject()
+    private val mainViewModel: MainViewModel by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

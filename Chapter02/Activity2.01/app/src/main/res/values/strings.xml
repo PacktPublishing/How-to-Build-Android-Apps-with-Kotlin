@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Login Activity</string>
+    <string name="header_text">Please enter your username and password below to login:</string>
+    <string name="welcome_text">Hello \'%s\' you are now logged in, we hope you enjoy using the app!</string>
+    <string name="login_form_entry_error">Please fill in both username and password fields!</string>
+    <string name="login_error">Either your user name or password is not recognised! Please try again.</string>
+    <string name="username_label">Enter your username:</string>
+    <string name="password_label">Enter your password:</string>
+    <string name="submit_button_text">LOGIN</string>
+</resources>

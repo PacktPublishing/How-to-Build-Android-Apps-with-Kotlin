@@ -16,9 +16,7 @@ class NoteListAdapter(private val inflater: LayoutInflater) :
         return NoteViewHolder(inflater.inflate(R.layout.view_note_item, parent, false))
     }
 
-    override fun getItemCount(): Int {
-        return noteList.size
-    }
+    override fun getItemCount() = noteList.size
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
         holder.bind(noteList[position])
