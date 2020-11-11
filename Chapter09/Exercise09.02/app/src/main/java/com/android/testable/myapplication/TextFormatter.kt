@@ -10,7 +10,7 @@ class TextFormatter(
     fun getSumResult(n: Int, callback: (String) -> Unit) {
         try {
             numberAdder.sum(n) {
-                callback.invoke(
+                callback(
                     context.getString(
                         R.string.the_sum_of_numbers_from_1_to_is,
                         n,
@@ -19,7 +19,7 @@ class TextFormatter(
                 )
             }
         } catch (e: NumberAdder.InvalidNumberException) {
-            callback.invoke(context.getString(R.string.error_invalid_number))
+            callback(context.getString(R.string.error_invalid_number))
         }
     }
 }
