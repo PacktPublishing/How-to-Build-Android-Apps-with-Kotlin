@@ -21,9 +21,9 @@ class MovieViewModel(private val movieRepository: MovieRepository) : ViewModel()
     fun fetchPopularMovies() {
         disposable.add(movieRepository.fetchMovies()
             .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
             .flatMap { Observable.fromIterable(it.results) }
             .toList()
+            .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 popularMoviesLiveData.postValue(it)
             }, { error ->
