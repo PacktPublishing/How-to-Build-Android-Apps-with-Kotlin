@@ -6,7 +6,6 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.example.loginactivity01"
         minSdkVersion 21
