@@ -22,7 +22,6 @@ class MovieViewModel(private val movieRepository: MovieRepository) : ViewModel()
     fun fetchPopularMovies() {
         disposable.add(movieRepository.fetchMovies()
             .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
             .flatMap { Observable.fromIterable(it.results) }
             .filter {
                 it.release_date.startsWith(
@@ -33,6 +32,7 @@ class MovieViewModel(private val movieRepository: MovieRepository) : ViewModel()
             .map { it.copy(title = it.title.toUpperCase(Locale.getDefault())) }
             .take(4)
             .toList()
+            .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 popularMoviesLiveData.postValue(it)
             }, { error ->
