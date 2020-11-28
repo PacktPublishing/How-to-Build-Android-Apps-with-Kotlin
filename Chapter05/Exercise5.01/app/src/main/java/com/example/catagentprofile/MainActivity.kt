@@ -1,10 +1,10 @@
 package com.example.catagentprofile
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.catagentprofile.api.TheCatApiService
-import kotlinx.android.synthetic.main.activity_main.main_server_response as serverResponseView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -12,6 +12,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.scalars.ScalarsConverterFactory
 
 class MainActivity : AppCompatActivity() {
+    private val serverResponseView: TextView
+            by lazy { findViewById(R.id.main_server_response) }
+
     private val retrofit by lazy {
         Retrofit.Builder()
             .baseUrl("https://api.thecatapi.com/v1/")

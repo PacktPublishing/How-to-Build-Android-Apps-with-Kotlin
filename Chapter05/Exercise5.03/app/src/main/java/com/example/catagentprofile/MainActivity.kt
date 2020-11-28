@@ -1,12 +1,12 @@
 package com.example.catagentprofile
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.catagentprofile.api.TheCatApiService
 import com.example.catagentprofile.model.ImageResultData
-import kotlinx.android.synthetic.main.activity_main.main_profile_image as profileImageView
-import kotlinx.android.synthetic.main.activity_main.main_agent_breed_value as agentBreedView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -14,6 +14,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 class MainActivity : AppCompatActivity() {
+    private val agentBreedView: TextView by lazy { findViewById(R.id.main_agent_breed_value) }
+    private val profileImageView: ImageView by lazy { findViewById(R.id.main_profile_image) }
+
     private val retrofit by lazy {
         Retrofit.Builder()
             .baseUrl("https://api.thecatapi.com/v1/")
@@ -46,7 +49,7 @@ class MainActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val imageResults = response.body()
                     val firstImageUrl = imageResults?.firstOrNull()?.imageUrl ?: ""
-                    if (!firstImageUrl.isBlank()) {
+                    if (firstImageUrl.isNotBlank()) {
                         imageLoader.loadImage(firstImageUrl, profileImageView)
                     } else {
                         Log.d("MainActivity", "Missing image URL")
