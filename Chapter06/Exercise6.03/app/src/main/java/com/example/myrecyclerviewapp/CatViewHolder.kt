@@ -1,17 +1,13 @@
 package com.example.myrecyclerviewapp
 
 import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.myrecyclerviewapp.model.CatBreed
 import com.example.myrecyclerviewapp.model.CatUiModel
 import com.example.myrecyclerviewapp.model.Gender
-import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.item_cat.item_cat_biography as catBioView
-import kotlinx.android.synthetic.main.item_cat.item_cat_breed as catBreedView
-import kotlinx.android.synthetic.main.item_cat.item_cat_gender as catGenderView
-import kotlinx.android.synthetic.main.item_cat.item_cat_name as catNameView
-import kotlinx.android.synthetic.main.item_cat.item_cat_photo as catPhotoView
 
 private val FEMALE_SYMBOL by lazy {
     HtmlCompat.fromHtml("&#9793;", HtmlCompat.FROM_HTML_MODE_LEGACY)
@@ -22,10 +18,21 @@ private val MALE_SYMBOL by lazy {
 private const val UNKNOWN_SYMBOL = "?"
 
 class CatViewHolder(
-    override val containerView: View,
+    private val containerView: View,
     private val imageLoader: ImageLoader,
     private val onClickListener: OnClickListener
-) : ViewHolder(containerView), LayoutContainer {
+) : ViewHolder(containerView) {
+    private val catBiographyView: TextView
+            by lazy { containerView.findViewById(R.id.item_cat_biography) }
+    private val catBreedView: TextView
+            by lazy { containerView.findViewById(R.id.item_cat_breed) }
+    private val catGenderView: TextView
+            by lazy { containerView.findViewById(R.id.item_cat_gender) }
+    private val catNameView: TextView
+            by lazy { containerView.findViewById(R.id.item_cat_name) }
+    private val catPhotoView: ImageView
+            by lazy { containerView.findViewById(R.id.item_cat_photo) }
+
     fun bindData(catData: CatUiModel) {
         containerView.setOnClickListener { onClickListener.onClick(catData) }
         imageLoader.loadImage(catData.imageUrl, catPhotoView)
@@ -35,7 +42,7 @@ class CatViewHolder(
             CatBreed.BalineseJavanese -> "Balinese-Javanese"
             CatBreed.ExoticShorthair -> "Exotic Shorthair"
         }
-        catBioView.text = catData.biography
+        catBiographyView.text = catData.biography
         catGenderView.text = when (catData.gender) {
             Gender.Female -> FEMALE_SYMBOL
             Gender.Male -> MALE_SYMBOL
