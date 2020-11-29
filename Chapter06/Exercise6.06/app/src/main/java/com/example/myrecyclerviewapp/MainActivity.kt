@@ -1,18 +1,23 @@
 package com.example.myrecyclerviewapp
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.myrecyclerviewapp.model.CatBreed
 import com.example.myrecyclerviewapp.model.CatUiModel
 import com.example.myrecyclerviewapp.model.Gender
 import com.example.myrecyclerviewapp.model.ListItemUiModel
-import kotlinx.android.synthetic.main.activity_main.recycler_view as recyclerView
-import kotlinx.android.synthetic.main.activity_main.main_add_item_button as addItemButton
 
 class MainActivity : AppCompatActivity() {
+    private val recyclerView: RecyclerView
+            by lazy { findViewById(R.id.recycler_view) }
+    private val addItemButton: View
+            by lazy { findViewById(R.id.main_add_item_button) }
+
     private val listItemsAdapter by lazy {
         ListItemsAdapter(
             layoutInflater,

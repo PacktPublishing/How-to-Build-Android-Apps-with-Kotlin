@@ -3,10 +3,9 @@ package com.example.myrecyclerviewapp.viewholder
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myrecyclerviewapp.model.ListItemUiModel
-import kotlinx.android.extensions.LayoutContainer
 
 abstract class ListItemViewHolder(
     containerView: View
-) : RecyclerView.ViewHolder(containerView), LayoutContainer {
+) : RecyclerView.ViewHolder(containerView) {
     abstract fun bindData(listItem: ListItemUiModel)
 }

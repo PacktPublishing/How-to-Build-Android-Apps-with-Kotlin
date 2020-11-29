@@ -4,13 +4,15 @@ import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.myrecyclerviewapp.model.CatBreed
 import com.example.myrecyclerviewapp.model.CatUiModel
 import com.example.myrecyclerviewapp.model.Gender
 import com.example.myrecyclerviewapp.model.ListItemUiModel
-import kotlinx.android.synthetic.main.activity_main.recycler_view as recyclerView
 
 class MainActivity : AppCompatActivity() {
+    private val recyclerView: RecyclerView
+            by lazy { findViewById(R.id.recycler_view) }
     private val listItemsAdapter by lazy {
         ListItemsAdapter(
             layoutInflater,

@@ -1,17 +1,29 @@
 package com.example.recipebook
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.VERTICAL
 import com.example.recipebook.model.Flavor
 import com.example.recipebook.model.RecipeUiModel
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+    private val recipesList: RecyclerView
+            by lazy { findViewById(R.id.main_recipes_list) }
+    private val addSavoryButton: View
+            by lazy { findViewById(R.id.main_add_savory_button) }
+    private val addSweetButton: View
+            by lazy { findViewById(R.id.main_add_sweet_button) }
+    private val titleView: TextView
+            by lazy { findViewById(R.id.main_recipe_title) }
+    private val descriptionView: TextView
+            by lazy { findViewById(R.id.main_recipe_description) }
+
     private val recipesAdapter by lazy {
         RecipesAdapter(
             layoutInflater,
@@ -31,32 +43,34 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        main_recipes_list.adapter = recipesAdapter
-        main_recipes_list.layoutManager =
-            LinearLayoutManager(this, VERTICAL, false)
+        recipesList.apply {
+            adapter = recipesAdapter
+            layoutManager =
+                LinearLayoutManager(this@MainActivity, VERTICAL, false)
 
-        val itemTouchHelper =
-            ItemTouchHelper(recipesAdapter.swipeToDeleteCallback)
-        itemTouchHelper.attachToRecyclerView(main_recipes_list)
+            val itemTouchHelper =
+                ItemTouchHelper(recipesAdapter.swipeToDeleteCallback)
+            itemTouchHelper.attachToRecyclerView(this)
+        }
 
-        main_add_savory_button.setOnClickListener {
+        addSavoryButton.setOnClickListener {
             addRecipeAndClearForm(Flavor.SAVORY)
         }
 
-        main_add_sweet_button.setOnClickListener {
+        addSweetButton.setOnClickListener {
             addRecipeAndClearForm(Flavor.SWEET)
         }
     }
 
     private fun addRecipeAndClearForm(flavor: Flavor) {
-        val title = main_recipe_title.text.toString().trim()
-        val description = main_recipe_description.text.toString().trim()
+        val title = titleView.text.toString().trim()
+        val description = descriptionView.text.toString().trim()
         if (title.isEmpty() || description.isEmpty()) return
 
         recipesAdapter.addRecipe(
             RecipeUiModel(title, description, flavor)
         )
-        main_recipe_title.setText("")
-        main_recipe_description.setText("")
+        titleView.text = ""
+        descriptionView.text = ""
     }
 }
