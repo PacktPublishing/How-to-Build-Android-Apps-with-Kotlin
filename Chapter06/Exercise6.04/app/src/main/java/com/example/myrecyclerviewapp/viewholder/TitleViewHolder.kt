@@ -12,7 +12,9 @@ class TitleViewHolder(
             by lazy { containerView.findViewById(R.id.item_title_title) }
 
     override fun bindData(listItem: ListItemUiModel) {
-        require(listItem is ListItemUiModel.Title) { "Expected ListItemUiModel.Title" }
+        require(listItem is ListItemUiModel.Title) {
+            "Expected ListItemUiModel.Title"
+        }
 
         titleView.text = listItem.title
     }
