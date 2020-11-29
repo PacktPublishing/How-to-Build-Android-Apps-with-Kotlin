@@ -31,7 +31,7 @@ private const val PERMISSION_CODE_REQUEST_LOCATION = 1
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private val markLocationButton: View
-        by lazy { findViewById(R.id.maps_mark_location_button) }
+            by lazy { findViewById(R.id.maps_mark_location_button) }
 
     private val fusedLocationProviderClient by lazy {
         LocationServices.getFusedLocationProviderClient(this)
@@ -67,15 +67,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 updateMapLocation(userLocation)
                 userMarker = addMarkerAtLocation(userLocation, "You")
             }
-        }
-
-        restoreLocation()?.let { userLocation ->
-            carMarker = addMarkerAtLocation(
-                userLocation,
-                "Your Car",
-                getBitmapDescriptorFromVector(R.drawable.ic_baseline_directions_car_24)
-            )
-            userMarker = addMarkerAtLocation(userLocation, "You")
         }
     }
 
@@ -214,6 +205,15 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val sydney = LatLng(-34.0, 151.0)
         mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+
+        restoreLocation()?.let { userLocation ->
+            carMarker = addMarkerAtLocation(
+                userLocation,
+                "Your Car",
+                getBitmapDescriptorFromVector(R.drawable.ic_baseline_directions_car_24)
+            )
+            userMarker = addMarkerAtLocation(userLocation, "You")
+        }
     }
 
     private fun saveLocation(latLng: LatLng) =
