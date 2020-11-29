@@ -9,6 +9,7 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.location.Location
 import android.os.Bundle
+import android.view.View
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -25,11 +26,13 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
-import kotlinx.android.synthetic.main.activity_maps.maps_mark_location_button
 
 private const val PERMISSION_CODE_REQUEST_LOCATION = 1
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
+    private val markLocationButton: View
+            by lazy { findViewById(R.id.maps_mark_location_button) }
+
     private val fusedLocationProviderClient by lazy {
         LocationServices.getFusedLocationProviderClient(this)
     }
@@ -47,7 +50,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-        maps_mark_location_button.setOnClickListener {
+        markLocationButton.setOnClickListener {
             if (getHasLocationPermission()) {
                 markParkedCar()
             }
@@ -64,15 +67,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 updateMapLocation(userLocation)
                 userMarker = addMarkerAtLocation(userLocation, "You")
             }
-        }
-
-        restoreLocation()?.let { userLocation ->
-            carMarker = addMarkerAtLocation(
-                userLocation,
-                "Your Car",
-                getBitmapDescriptorFromVector(R.drawable.ic_baseline_directions_car_24)
-            )
-            userMarker = addMarkerAtLocation(userLocation, "You")
         }
     }
 
@@ -211,6 +205,15 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val sydney = LatLng(-34.0, 151.0)
         mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+
+        restoreLocation()?.let { userLocation ->
+            carMarker = addMarkerAtLocation(
+                userLocation,
+                "Your Car",
+                getBitmapDescriptorFromVector(R.drawable.ic_baseline_directions_car_24)
+            )
+            userMarker = addMarkerAtLocation(userLocation, "You")
+        }
     }
 
     private fun saveLocation(latLng: LatLng) =
