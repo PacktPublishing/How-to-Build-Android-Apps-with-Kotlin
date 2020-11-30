@@ -1,13 +1,15 @@
 package com.example.mywatterttracker
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.mywatterttracker.WaterTrackingService.Companion.EXTRA_INTAKE_AMOUNT_MILLILITERS
-import kotlinx.android.synthetic.main.activity_main.main_water_button as waterButton
 
 class MainActivity : AppCompatActivity() {
+    private val waterButton: View
+            by lazy { findViewById(R.id.main_water_button) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
