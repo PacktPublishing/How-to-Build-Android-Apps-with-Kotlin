@@ -10,6 +10,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val webView = WebView(this)
+        webView.settings.javaScriptEnabled = true
         setContentView(webView)
         webView.loadUrl("https://www.google.com")
     }
