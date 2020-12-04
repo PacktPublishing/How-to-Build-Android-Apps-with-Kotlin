@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    // Not added by default - add line below
     id 'kotlin-android-extensions'
 }
 
