@@ -19,13 +19,13 @@ class MainActivity : AppCompatActivity() {
             greeting_display.text = ""
 
             //Get the first name TextInputEditText value
-            val firstName = (first_name as EditText).text.toString()
+            val firstName = first_name.text.toString().trim()
 
             //Get the last name TextInputEditText value
-            val lastName = (last_name as EditText).text.toString()
+            val lastName = last_name.text.toString().trim()
 
-            //Check the names are not blank trimming any leading or trailing spaces
-            if (firstName.trim().isNotBlank() && lastName.trim().isNotBlank()) {
+            //Check the names are not empty
+            if (firstName.isNotEmpty() && lastName.isNotEmpty()) {
 
                 //Prepare the name to display
                 val nameToDisplay = firstName.plus(" ").plus(lastName)
