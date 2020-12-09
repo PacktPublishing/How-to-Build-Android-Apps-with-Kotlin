@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
             val lastName = last_name.text.toString()
             val email = email.text.toString()
 
-            if (firstName.isBlank() || lastName.isBlank() || email.isEmpty()){
+            if (firstName.isBlank() || lastName.isBlank() || email.isBlank()){
                 Toast.makeText(this, getString(R.string.add_text_validation), Toast.LENGTH_LONG).show()
             }
             else {
