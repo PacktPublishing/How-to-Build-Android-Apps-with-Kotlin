@@ -4,10 +4,6 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 30
-<<<<<<< HEAD
-    buildToolsVersion "30.0.2"
-=======
->>>>>>> master
 
     defaultConfig {
         applicationId "com.example.passwordgenerator"
