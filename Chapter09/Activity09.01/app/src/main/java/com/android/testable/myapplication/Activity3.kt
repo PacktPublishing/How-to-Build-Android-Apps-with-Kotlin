@@ -18,6 +18,7 @@ class Activity3 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_3)
-        activity_3_text_view.text = (application as MyApplication).stringProvider.provideYouClickedString(intent.getParcelableExtra<Item>(EXTRA_ITEM).text)
+        val text = intent.getParcelableExtra<Item>(EXTRA_ITEM)?.text.orEmpty()
+        activity_3_text_view.text = (application as MyApplication).stringProvider.provideYouClickedString(text)
     }
 }
