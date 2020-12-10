@@ -20,7 +20,6 @@ class DetailFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
         val starSignId = arguments?.getInt(STAR_SIGN_ID, 0) ?: 0
         setStarSignData(starSignId)
     }
