@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
 
         movieViewModel.fetchPopularMovies()
         movieViewModel.popularMovies
-            .observe(this, Observer { popularMovies ->
+            .observe(this, { popularMovies ->
                 movies.addAll(popularMovies)
                 movieAdapter.notifyDataSetChanged()
             })

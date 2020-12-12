@@ -7,10 +7,10 @@ import com.example.popularmovies.model.Movie
 import kotlinx.android.synthetic.main.activity_details.*
 
 class DetailsActivity : AppCompatActivity() {
-    private val imageUrl = "https://image.tmdb.org/t/p/w185/"
 
     companion object {
         const val EXTRA_MOVIE = "movie"
+        const val IMAGE_URL = "https://image.tmdb.org/t/p/w185/"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,9 +23,9 @@ class DetailsActivity : AppCompatActivity() {
             release_text.text = release_date.take(4)
 
             overview_text.text = "Overview: $overview"
-            val imagePath = imageUrl + poster_path
+
             Glide.with(this@DetailsActivity)
-                .load(imagePath)
+                .load("$IMAGE_URL$poster_path")
                 .placeholder(R.mipmap.ic_launcher)
                 .fitCenter()
                 .into(movie_poster)

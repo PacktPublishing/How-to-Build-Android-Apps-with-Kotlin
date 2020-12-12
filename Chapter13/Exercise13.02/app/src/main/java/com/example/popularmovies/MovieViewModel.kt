@@ -21,23 +21,15 @@ class MovieViewModel(private val movieRepository: MovieRepository) : ViewModel()
 
     fun fetchPopularMovies() {
         disposable.add(movieRepository.fetchMovies()
-            .subscribeOn(Schedulers.io())
-            .flatMap { Observable.fromIterable(it.results) }
-            .filter {
-                it.release_date.startsWith(
-                    Calendar.getInstance().get(Calendar.YEAR).toString()
-                )
-            }
-            .sorted { movie, movie2 -> movie.title.compareTo(movie2.title) }
-            .map { it.copy(title = it.title.toUpperCase(Locale.getDefault())) }
-            .take(4)
-            .toList()
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-                popularMoviesLiveData.postValue(it)
-            }, { error ->
-                Log.d("MovieViewModel", "error encountered: ${error.localizedMessage}")
-            })
+                .subscribeOn(Schedulers.io())
+                .flatMap { Observable.fromIterable(it.results) }
+                .toList()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    popularMoviesLiveData.postValue(it)
+                }, { error ->
+                    Log.d("MovieViewModel", "error encountered: ${error.localizedMessage}")
+                })
         )
     }
 

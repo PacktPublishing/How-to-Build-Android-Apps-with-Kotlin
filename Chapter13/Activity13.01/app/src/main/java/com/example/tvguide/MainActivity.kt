@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
                 return TVShowViewModel(tvShowRepository) as T
             }
         }).get(TVShowViewModel::class.java)
-        tvShowViewModel.getTVShows().observe(this, Observer { shows ->
+        tvShowViewModel.getTVShows().observe(this, { shows ->
             tvShows.addAll(shows)
             tvShowAdapter.notifyDataSetChanged()
         })

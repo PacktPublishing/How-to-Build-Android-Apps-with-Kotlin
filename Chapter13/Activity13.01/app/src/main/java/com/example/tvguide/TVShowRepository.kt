@@ -9,7 +9,7 @@ import com.example.tvguide.model.TVShow
 class TVShowRepository(private val tvService: TelevisionService) {
     private val apiKey = "your_api_key_here"
 
-    private val tvShowsLiveData: MutableLiveData<List<TVShow>> = MutableLiveData()
+    private val tvShowsLiveData = MutableLiveData<List<TVShow>>()
 
     val tvShows: LiveData<List<TVShow>>
         get() = tvShowsLiveData
