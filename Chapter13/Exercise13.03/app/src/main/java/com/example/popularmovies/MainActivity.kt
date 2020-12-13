@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
             }
         }).get(MovieViewModel::class.java)
 
-        movieViewModel.getPopularMovies().observe(this, Observer { popularMovies ->
+        movieViewModel.popularMovies.observe(this, { popularMovies ->
             movies.addAll(popularMovies
                 .filter {
                     it.release_date.startsWith(

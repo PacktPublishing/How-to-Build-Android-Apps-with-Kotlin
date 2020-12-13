@@ -9,7 +9,7 @@ import com.example.popularmovies.model.Movie
 class MovieRepository(private val movieService: MovieService) {
     private val apiKey = "your_api_key_here"
 
-    private val movieLiveData: MutableLiveData<List<Movie>> = MutableLiveData()
+    private val movieLiveData = MutableLiveData<List<Movie>>()
 
     val movies: LiveData<List<Movie>>
         get() = movieLiveData
