@@ -2,10 +2,8 @@ package com.example.colors
 
 import android.graphics.Color
 import android.os.Bundle
-import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.colors.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
