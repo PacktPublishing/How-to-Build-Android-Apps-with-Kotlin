@@ -19,7 +19,4 @@
     <string name="uranus_answer">%s Uranus spins on its side with its axis at nearly a right angle to the sun.</string>
     <string name="correct">CORRECT!</string>
     <string name="wrong">WRONG!</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
