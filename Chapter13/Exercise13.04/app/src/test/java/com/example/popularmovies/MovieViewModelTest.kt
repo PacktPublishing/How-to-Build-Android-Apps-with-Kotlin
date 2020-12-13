@@ -37,7 +37,7 @@ class MovieViewModelTest {
 
         assertEquals(
             movieLiveData.value,
-            movieViewModel.getPopularMovies().getOrAwaitValue()
+            movieViewModel.popularMovies.getOrAwaitValue()
         )
     }
 
