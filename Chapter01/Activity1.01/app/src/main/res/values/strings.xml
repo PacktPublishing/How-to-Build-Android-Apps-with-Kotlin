@@ -9,6 +9,5 @@
     <string name="blue_channel">Blue Channel</string>
     <string name="color_creator_button_text">Create RGB Color</string>
     <string name="color_created_display_panel">Created color display panel</string>
-    <string name="invalid_characters_found">Invalid Characters Found</string>
 
 </resources>

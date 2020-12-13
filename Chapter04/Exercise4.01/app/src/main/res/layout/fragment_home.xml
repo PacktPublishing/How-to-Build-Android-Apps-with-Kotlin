@@ -13,6 +13,7 @@
         android:layout_marginBottom="8dp"
         android:text="@string/home_fragment"
         android:textAlignment="center"
+        android:layout_gravity="center_horizontal"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
