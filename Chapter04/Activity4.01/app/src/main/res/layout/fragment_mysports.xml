@@ -11,6 +11,7 @@
         android:layout_height="140dp"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:text="@string/football"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,6 +23,7 @@
         android:layout_height="140dp"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:text="@string/basketball"
         app:layout_constraintStart_toEndOf="@id/football"
         app:layout_constraintTop_toTopOf="parent" />
@@ -33,6 +35,7 @@
         android:layout_height="140dp"
         android:layout_marginTop="4dp"
         android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:text="@string/hockey"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/football" />

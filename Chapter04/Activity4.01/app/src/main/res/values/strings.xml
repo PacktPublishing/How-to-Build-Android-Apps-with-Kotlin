@@ -9,7 +9,6 @@
 
     <string name="home_fragment">Home Fragment</string>
     <string name="account_fragment">Account Fragment</string>
-    <string name="mysports_fragment">My Sports Fragment</string>
     <string name="profile_fragment">Profile Fragment</string>
     <string name="football">Football</string>
     <string name="basketball">Basketball</string>
