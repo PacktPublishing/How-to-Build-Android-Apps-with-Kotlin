@@ -2,7 +2,6 @@ package com.example.intentsintroduction
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -17,22 +16,24 @@ class MainActivity : AppCompatActivity() {
 
         submit_button.setOnClickListener {
 
-            val fullName = full_name.text.toString()
+            val fullName = full_name.text.toString().trim()
 
-            if (fullName.isNotBlank()) {
+            if (fullName.isNotEmpty()) {
 
-                //Set the name of the activity to launch
-                Intent(this, WelcomeActivity::class.java).also { welcomeIntent ->
-                    //Add the data
-                    welcomeIntent.putExtra(FULL_NAME_KEY, fullName)
-                    //Launch
-                    startActivity(welcomeIntent)
-                }
+                //Set the name of the Activity to launch
+                Intent(this, WelcomeActivity::class.java)
+                    .also { welcomeIntent ->
+                        //Add the data
+                        welcomeIntent.putExtra(FULL_NAME_KEY, fullName)
+                        //Launch
+                        startActivity(welcomeIntent)
+                    }
 
             } else {
-                Toast.makeText(this, getString(R.string.full_name_label), Toast.LENGTH_LONG).show()
+                Toast.makeText(this, getString(
+                    R.string.full_name_label),
+                    Toast.LENGTH_LONG).show()
             }
-
         }
     }
 }

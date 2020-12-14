@@ -25,11 +25,11 @@ class MainActivity : AppCompatActivity() {
         // here we handle the Button onClick event
         discount_button.setOnClickListener {
 
-            val firstName = first_name.text.toString()
-            val lastName = last_name.text.toString()
+            val firstName = first_name.text.toString().trim()
+            val lastName = last_name.text.toString().trim()
             val email = email.text.toString()
 
-            if (firstName.isBlank() || lastName.isBlank() || email.isBlank()){
+            if (firstName.isEmpty() || lastName.isEmpty() || email.isEmpty()){
                 Toast.makeText(this, getString(R.string.add_text_validation), Toast.LENGTH_LONG).show()
             }
             else {
@@ -46,23 +46,27 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+    override fun onRestoreInstanceState(
+        savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         Log.d(TAG, "onRestoreInstanceState")
 
         //Get the discount code or an empty string if it hasn't been set
         discount_code.text = savedInstanceState.getString(DISCOUNT_CODE,"")
         //Get the discount confirmation message or an empty string if it hasn't been set
-        discount_code_confirmation.text = savedInstanceState.getString(DISCOUNT_CONFIRMATION_MESSAGE,"")
-
+        discount_code_confirmation.text =
+            savedInstanceState.getString(
+                DISCOUNT_CONFIRMATION_MESSAGE,"")
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         Log.d(TAG, "onSaveInstanceState")
 
-        outState.putString(DISCOUNT_CODE, discount_code.text.toString())
-        outState.putString(DISCOUNT_CONFIRMATION_MESSAGE, discount_code_confirmation.text.toString())
+        outState.putString(DISCOUNT_CODE,
+            discount_code.text.toString())
+        outState.putString(DISCOUNT_CONFIRMATION_MESSAGE,
+            discount_code_confirmation.text.toString())
     }
 
     private fun clearInputFields() {

@@ -16,9 +16,6 @@ class WelcomeActivity : AppCompatActivity() {
             //Set the welcome message
             val fullName = it.getStringExtra(FULL_NAME_KEY)
             welcome_text.text = getString(R.string.welcome_text, fullName)
-
         }
-
-
     }
 }
