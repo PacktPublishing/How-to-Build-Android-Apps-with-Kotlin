@@ -8,7 +8,7 @@
     <LinearLayout
         style="@style/page"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         tools:context=".RainbowColorPickerActivity">
@@ -28,7 +28,7 @@
             style="@style/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/red"
+            android:backgroundTint="@color/red"
             android:text="@string/red"/>
 
         <Button
@@ -36,7 +36,7 @@
             style="@style/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/orange"
+            android:backgroundTint="@color/orange"
             android:text="@string/orange"/>
 
         <Button
@@ -44,7 +44,7 @@
             style="@style/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/yellow"
+            android:backgroundTint="@color/yellow"
             android:text="@string/yellow"/>
 
         <Button
@@ -52,16 +52,15 @@
             style="@style/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/green"
-            android:text="@string/green"
-            tools:text="GREEN" />
+            android:backgroundTint="@color/green"
+            android:text="@string/green" />
 
         <Button
             android:id="@+id/blue_button"
             style="@style/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/blue"
+            android:backgroundTint="@color/blue"
             android:text="@string/blue"/>
 
         <Button
@@ -69,7 +68,7 @@
             style="@style/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/indigo"
+            android:backgroundTint="@color/indigo"
             android:text="@string/indigo" />
 
         <Button
@@ -77,7 +76,7 @@
             style="@style/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/violet"
+            android:backgroundTint="@color/violet"
             android:text="@string/violet" />
 
         <TextView

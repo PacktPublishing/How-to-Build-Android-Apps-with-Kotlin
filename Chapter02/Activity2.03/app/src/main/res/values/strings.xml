@@ -7,5 +7,4 @@
     <string name="username_label">Enter your username:</string>
     <string name="password_label">Enter your password:</string>
     <string name="submit_button_text">LOGIN</string>
-    <string name="back_button_text">GO BACK</string>
 </resources>
