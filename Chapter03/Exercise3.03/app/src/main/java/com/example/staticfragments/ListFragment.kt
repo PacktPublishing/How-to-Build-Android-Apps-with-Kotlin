@@ -52,9 +52,9 @@ class ListFragment : Fragment(), View.OnClickListener {
         }
     }
 
-    override fun onClick(view: View?) {
+    override fun onClick(v: View?) {
 
-        view?.let { starSign ->
+        v?.let { starSign ->
             starSignListener.onSelected(starSign.id)
         }
     }

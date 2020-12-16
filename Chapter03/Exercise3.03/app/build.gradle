@@ -9,7 +9,7 @@ android {
     compileSdkVersion 30
 
     defaultConfig {
-        applicationId "com.example.fragmentstablets"
+        applicationId "com.example.staticfragments"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
