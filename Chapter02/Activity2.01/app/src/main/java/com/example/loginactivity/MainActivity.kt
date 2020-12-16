@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
 import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
 import android.widget.Toast
 import androidx.core.view.isVisible
 import kotlinx.android.synthetic.main.activity_main.*
@@ -32,12 +31,12 @@ class MainActivity : AppCompatActivity() {
 
         submit_button.setOnClickListener {
 
-            val userName = user_name.text.toString()
-            val password = password.text.toString()
+            val userName = user_name.text.toString().trim()
+            val password = password.text.toString().trim()
 
             hideKeyboard()
 
-            if (userName.isNotBlank() && password.isNotBlank()) {
+            if (userName.isNotEmpty() && password.isNotEmpty()) {
 
                 //Set the name of the activity to launch
                 Intent(this, MainActivity::class.java).also { loginIntent ->
@@ -55,6 +54,24 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
+    }
+
+    private fun setLoggedIn(userName: String) {
+        loggedInUser = userName
+        val welcomeMessage = getString(R.string.welcome_text, userName)
+        user_name.isVisible = false
+        password.isVisible = false
+        submit_button.isVisible = false
+        header.text = welcomeMessage
+    }
+
+    private fun hasEnteredCorrectCredentials(
+        userNameForm: String,
+        passwordForm: String
+    ): Boolean {
+        return userNameForm.contentEquals(USER_NAME_CORRECT_VALUE) && passwordForm.contentEquals(
+            PASSWORD_CORRECT_VALUE
+        )
     }
 
     override fun onNewIntent(intent: Intent?) {
@@ -96,28 +113,9 @@ class MainActivity : AppCompatActivity() {
         isLoggedIn = savedInstanceState.getBoolean(IS_LOGGED_IN, false)
         loggedInUser = savedInstanceState.getString(LOGGED_IN_USERNAME, "")
 
-        if (isLoggedIn && loggedInUser.isNotBlank()) {
+        if (isLoggedIn && loggedInUser.isNotEmpty()) {
             setLoggedIn(loggedInUser)
         }
-    }
-
-
-    private fun setLoggedIn(userName: String) {
-        loggedInUser = userName
-        val welcomeMessage = getString(R.string.welcome_text, userName)
-        user_name.isVisible = false
-        password.isVisible = false
-        submit_button.isVisible = false
-        header.text = welcomeMessage
-    }
-
-    private fun hasEnteredCorrectCredentials(
-        userNameForm: String,
-        passwordForm: String
-    ): Boolean {
-        return userNameForm.contentEquals(USER_NAME_CORRECT_VALUE) && passwordForm.contentEquals(
-            PASSWORD_CORRECT_VALUE
-        )
     }
 
     private fun hideKeyboard() {
