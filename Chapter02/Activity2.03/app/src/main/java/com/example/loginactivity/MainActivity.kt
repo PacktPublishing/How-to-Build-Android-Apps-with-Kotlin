@@ -30,12 +30,12 @@ class MainActivity : AppCompatActivity() {
 
         submit_button.setOnClickListener {
 
-            val userName = (user_name as EditText).text.toString()
-            val passWord = (password as EditText).text.toString()
+            val userName = user_name.text.toString().trim()
+            val passWord = password.text.toString().trim()
 
             hideKeyboard()
 
-            if (userName.isNotBlank() && passWord.isNotBlank()) {
+            if (userName.isNotEmpty() && passWord.isNotEmpty()) {
 
                 //Set the name of the activity to launch
                 Intent(this, WelcomeActivity::class.java).also { welcomeIntent ->
