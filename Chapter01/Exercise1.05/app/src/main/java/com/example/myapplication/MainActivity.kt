@@ -30,10 +30,11 @@ class MainActivity : AppCompatActivity() {
                     " ${getString(R.string.welcome_to_the_app)} ${nameToDisplay}!"
             } else {
 
-                val toast =
-                    Toast.makeText(this, getString(R.string.please_enter_a_name), Toast.LENGTH_LONG)
-                toast.setGravity(Gravity.CENTER, 0, 0)
-                toast.show()
+            Toast.makeText(this, getString(R.string.please_enter_a_name), Toast.LENGTH_LONG).
+                apply{
+                    setGravity(Gravity.CENTER, 0, 0)
+                    show()
+                }
             }
         }
     }
