@@ -25,7 +25,7 @@
     <fragment
         android:id="@+id/nav_recent"
         android:name="com.example.navigationdrawer.RecentFragment"
-        android:label="@string/recent"
+        android:label="@string/recents"
         tools:layout="@layout/fragment_recent" />
 
     <fragment
