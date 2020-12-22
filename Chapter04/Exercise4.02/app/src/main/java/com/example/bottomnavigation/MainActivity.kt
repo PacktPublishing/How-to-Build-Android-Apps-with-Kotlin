@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity() {
         //Creating top level destinations and adding them to bottom navigation
         appBarConfiguration = AppBarConfiguration(setOf(
             R.id.nav_home, R.id.nav_tickets, R.id.nav_offers, R.id.nav_rewards))
-
         setupActionBarWithNavController(navController, appBarConfiguration)
         nav_view?.setupWithNavController(navController)
     }
