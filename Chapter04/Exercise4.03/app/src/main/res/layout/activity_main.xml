@@ -22,6 +22,9 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:tabIndicatorHeight="4dp"
+            app:tabIndicatorColor="@color/teal_200"
+            app:tabRippleColor="@android:color/transparent"
             android:background="?attr/colorPrimary" />
 
     </com.google.android.material.appbar.AppBarLayout>

@@ -18,6 +18,5 @@ class MainActivity : AppCompatActivity() {
 
         tabs?.tabMode = TabLayout.MODE_FIXED
         tabs?.setupWithViewPager(view_pager)
-        tabs.tabRippleColor = null
     }
 }

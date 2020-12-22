@@ -6,13 +6,13 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 
 private val TAB_GENRES_SCROLLABLE = listOf(
-        R.string.action,
-        R.string.comedy,
-        R.string.drama,
-        R.string.sci_fi,
-        R.string.family,
-        R.string.crime,
-        R.string.history
+    R.string.action,
+    R.string.comedy,
+    R.string.drama,
+    R.string.sci_fi,
+    R.string.family,
+    R.string.crime,
+    R.string.history
 )
 
 private val TAB_GENRES_FIXED = listOf(
