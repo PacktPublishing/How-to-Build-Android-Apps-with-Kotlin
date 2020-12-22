@@ -2,8 +2,8 @@ package com.example.tvguide
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.tvguide.model.TVShow
@@ -36,6 +36,9 @@ class MainActivity : AppCompatActivity() {
         tvShowViewModel.getTVShows().observe(this, { shows ->
             tvShows.addAll(shows)
             tvShowAdapter.notifyDataSetChanged()
+        })
+        tvShowViewModel.getError().observe(this, { error ->
+            Toast.makeText(this, error, Toast.LENGTH_LONG).show()
         })
     }
 

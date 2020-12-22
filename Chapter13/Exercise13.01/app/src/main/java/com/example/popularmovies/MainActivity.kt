@@ -3,6 +3,7 @@ package com.example.popularmovies
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
@@ -46,6 +47,9 @@ class MainActivity : AppCompatActivity() {
                 movies.addAll(popularMovies)
                 movieAdapter.notifyDataSetChanged()
             })
+        movieViewModel.error.observe(this, { error ->
+            Toast.makeText(this, error, Toast.LENGTH_LONG).show()
+        })
     }
 
     private fun openMovieDetails(movie: Movie) {
