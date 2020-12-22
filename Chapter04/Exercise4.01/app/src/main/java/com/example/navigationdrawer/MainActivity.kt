@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        val navHost = findNavController(R.id.nav_host_fragment)
+        val navController = findNavController(R.id.nav_host_fragment)
 
         //Creating top level destinations and adding them to the draw
         appBarConfiguration = AppBarConfiguration(
@@ -27,9 +27,9 @@ class MainActivity : AppCompatActivity() {
             ), drawer_layout
         )
 
-        setupActionBarWithNavController(navHost, appBarConfiguration)
+        setupActionBarWithNavController(navController, appBarConfiguration)
 
-        nav_view?.setupWithNavController(navHost)
+        nav_view?.setupWithNavController(navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {
