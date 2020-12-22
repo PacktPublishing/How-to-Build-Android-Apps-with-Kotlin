@@ -18,5 +18,4 @@
         <item name="strokeColor">@color/purple_700</item>
         <item name="strokeWidth">2dp</item>
     </style>
-
 </resources>
