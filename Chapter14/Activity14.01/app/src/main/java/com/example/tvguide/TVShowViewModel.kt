@@ -18,6 +18,8 @@ class TVShowViewModel(private val tvShowRepository: TVShowRepository) : ViewMode
         shows.sortedBy { it.name }
     }
 
+    fun getError(): LiveData<String> = tvShowRepository.error
+
     private fun fetchTVShows() {
         viewModelScope.launch(Dispatchers.IO) {
             tvShowRepository.fetchTVShows()

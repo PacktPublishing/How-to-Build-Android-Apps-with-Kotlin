@@ -29,10 +29,8 @@ class MovieAdapter(var movies: List<Movie>, private val clickListener: MovieClic
         fun bind(movie: Movie) {
             itemView.movie_title.text = movie.title
 
-            val imagePath = imageUrl + movie.poster_path
-
             Glide.with(itemView.context)
-                .load(imagePath)
+                .load("$imageUrl${movie.poster_path}")
                 .placeholder(R.mipmap.ic_launcher)
                 .fitCenter()
                 .into(itemView.movie_poster)

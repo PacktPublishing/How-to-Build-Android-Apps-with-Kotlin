@@ -29,10 +29,8 @@ class TVShowAdapter(var tvShows: List<TVShow>, private val clickListener: TVClic
         fun bind(show: TVShow) {
             itemView.tv_show_title.text = show.name
 
-            val imagePath = imageUrl + show.poster_path
-
             Glide.with(itemView.context)
-                .load(imagePath)
+                .load("$imageUrl${show.poster_path}")
                 .placeholder(R.mipmap.ic_launcher)
                 .fitCenter()
                 .into(itemView.tv_poster)

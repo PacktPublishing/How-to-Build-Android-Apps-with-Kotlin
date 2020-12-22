@@ -2,6 +2,7 @@ package com.example.tvguide
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModel
@@ -38,6 +39,9 @@ class MainActivity : AppCompatActivity() {
 
         binding.viewModel = tvShowViewModel
         binding.lifecycleOwner = this
+        tvShowViewModel.getError().observe(this, { error ->
+            Toast.makeText(this, error, Toast.LENGTH_LONG).show()
+        })
     }
 
     private fun openShowDetails(tvShow: TVShow) {
