@@ -13,10 +13,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         generate_button.setOnClickListener {
-            if (length_text.text.toString().isNullOrBlank() || length_text.text.toString()
-                    .toInt() < 6
-            ) {
-                Snackbar.make(it, "Length must be six and above", Snackbar.LENGTH_SHORT).show()
+            val length = length_text.text.toString().toInt()
+            if (length < 6 || length > 20) {
+                Snackbar.make(it, "Length must be from 6 to 20", Snackbar.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 

@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_output.*
-import kotlin.random.Random
 
 class OutputActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,7 +1,7 @@
 package com.example.tipcalculator
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_output.*
 import java.math.BigDecimal
 
