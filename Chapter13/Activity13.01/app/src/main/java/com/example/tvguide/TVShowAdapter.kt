@@ -3,10 +3,11 @@ package com.example.tvguide
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.tvguide.model.TVShow
-import kotlinx.android.synthetic.main.view_tv_show_item.view.*
 
 class TVShowAdapter(private val tvShows: List<TVShow>, private val clickListener: TVClickListener) : RecyclerView.Adapter<TVShowAdapter.TVShowViewHolder>() {
 
@@ -25,15 +26,21 @@ class TVShowAdapter(private val tvShows: List<TVShow>, private val clickListener
 
     class TVShowViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val imageUrl = "https://image.tmdb.org/t/p/w185/"
+        private val titleText: TextView by lazy {
+            itemView.findViewById(R.id.tv_show_title)
+        }
+        private val poster: ImageView by lazy {
+            itemView.findViewById(R.id.tv_poster)
+        }
 
         fun bind(show: TVShow) {
-            itemView.tv_show_title.text = show.name
+            titleText.text = show.name
 
             Glide.with(itemView.context)
                 .load("$imageUrl${show.poster_path}")
                 .placeholder(R.mipmap.ic_launcher)
                 .fitCenter()
-                .into(itemView.tv_poster)
+                .into(poster)
         }
     }
 

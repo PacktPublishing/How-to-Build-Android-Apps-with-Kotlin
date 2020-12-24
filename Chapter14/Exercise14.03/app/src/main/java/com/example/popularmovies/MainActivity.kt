@@ -7,9 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import com.example.popularmovies.databinding.ActivityMainBinding
 import com.example.popularmovies.model.Movie
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private val movies = mutableListOf<Movie>()
@@ -26,12 +26,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val binding: ActivityMainBinding =
-            DataBindingUtil.setContentView(this, R.layout.activity_main)
+                DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        movie_list.adapter = movieAdapter
+        val recyclerView: RecyclerView = findViewById(R.id.movie_list)
+        recyclerView.adapter = movieAdapter
 
         val movieRepository = (application as MovieApplication).movieRepository
-        val movieViewModel = ViewModelProvider(this, object: ViewModelProvider.Factory {
+        val movieViewModel = ViewModelProvider(this, object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
                 return MovieViewModel(movieRepository) as T
             }

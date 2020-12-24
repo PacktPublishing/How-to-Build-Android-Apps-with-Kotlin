@@ -6,8 +6,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import com.example.tvguide.model.TVShow
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,7 +25,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        tv_show_list.adapter = tvShowAdapter
+        val tvShowRecyclerView: RecyclerView = findViewById(R.id.tv_show_list)
+        tvShowRecyclerView.adapter = tvShowAdapter
 
         val tvShowRepository = (application as TVApplication).tvShowRepository
         val tvShowViewModel = ViewModelProvider(this, object: ViewModelProvider.Factory {

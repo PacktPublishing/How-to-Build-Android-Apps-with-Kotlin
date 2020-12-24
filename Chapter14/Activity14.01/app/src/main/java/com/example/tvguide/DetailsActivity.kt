@@ -2,9 +2,10 @@ package com.example.tvguide
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
+import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.example.tvguide.model.TVShow
-import kotlinx.android.synthetic.main.activity_details.*
 
 class DetailsActivity : AppCompatActivity() {
 
@@ -17,17 +18,22 @@ class DetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
 
+        val titleText: TextView = findViewById(R.id.title_text)
+        val releaseText: TextView = findViewById(R.id.release_text)
+        val overviewText: TextView = findViewById(R.id.overview_text)
+        val poster: ImageView = findViewById(R.id.tv_poster)
+
         val tvShow = intent.getParcelableExtra<TVShow>(EXTRA_TV_SHOW)
         tvShow?.run {
-            title_text.text = name
-            release_text.text = "First Air Date: ${first_air_date.take(4)}"
-            overview_text.text = "Overview: $overview"
+            titleText.text = name
+            releaseText.text = "First Air Date: ${first_air_date.take(4)}"
+            overviewText.text = "Overview: $overview"
 
             Glide.with(this@DetailsActivity)
                 .load("$IMAGE_URL$poster_path")
                 .placeholder(R.mipmap.ic_launcher)
                 .fitCenter()
-                .into(tv_poster)
+                .into(poster)
         }
     }
 }
