@@ -3,10 +3,11 @@ package com.example.popularmovies
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.popularmovies.model.Movie
-import kotlinx.android.synthetic.main.view_movie_item.view.*
 
 class MovieAdapter(var movies: List<Movie>, private val clickListener: MovieClickListener) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
@@ -25,17 +26,21 @@ class MovieAdapter(var movies: List<Movie>, private val clickListener: MovieClic
 
     class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val imageUrl = "https://image.tmdb.org/t/p/w185/"
+        private val titleText: TextView by lazy {
+            itemView.findViewById(R.id.movie_title)
+        }
+        private val poster: ImageView by lazy {
+            itemView.findViewById(R.id.movie_poster)
+        }
 
         fun bind(movie: Movie) {
-            itemView.movie_title.text = movie.title
-
-            val imagePath = imageUrl + movie.poster_path
+            titleText.text = movie.title
 
             Glide.with(itemView.context)
-                .load(imagePath)
-                .placeholder(R.mipmap.ic_launcher)
-                .fitCenter()
-                .into(itemView.movie_poster)
+                    .load("$imageUrl${movie.poster_path}")
+                    .placeholder(R.mipmap.ic_launcher)
+                    .fitCenter()
+                    .into(poster)
         }
     }
 

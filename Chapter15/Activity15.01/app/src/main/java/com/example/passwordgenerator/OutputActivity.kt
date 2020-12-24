@@ -4,11 +4,11 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.os.Bundle
+import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_output.*
-import kotlin.random.Random
 
 class OutputActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,34 +20,41 @@ class OutputActivity : AppCompatActivity() {
         val numbers: Boolean = intent?.getBooleanExtra("numbers", false) ?: false
         val special: Boolean = intent?.getBooleanExtra("special", false) ?: false
 
-        password1_text.text = generatePassword(
+        val password1: TextView = findViewById(R.id.password1_text)
+        password1.text = generatePassword(
             length = length,
             addUpperCase = upperCase,
             addNumbers = numbers,
             addSpecial = special
         )
-        password2_text.text = generatePassword(
+        val password2: TextView = findViewById(R.id.password2_text)
+        password2.text = generatePassword(
             length = length,
             addUpperCase = upperCase,
             addNumbers = numbers,
             addSpecial = special
         )
-        password3_text.text = generatePassword(
+        val password3: TextView = findViewById(R.id.password3_text)
+        password3.text = generatePassword(
             length = length,
             addUpperCase = upperCase,
             addNumbers = numbers,
             addSpecial = special
         )
-
+        val button: Button = findViewById(R.id.button)
         button.setOnClickListener {
             val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
 
-            val password = if (password1_text.isVisible) {
-                password1_text.text.toString()
-            } else if (password2_text.isVisible) {
-                password2_text.text.toString()
-            } else {
-                password3_text.text.toString()
+            val password = when {
+                password1.isVisible -> {
+                    password1.text.toString()
+                }
+                password2.isVisible -> {
+                    password2.text.toString()
+                }
+                else -> {
+                    password3.text.toString()
+                }
             }
 
             val clip: ClipData = ClipData.newPlainText("password", password)

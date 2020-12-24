@@ -2,12 +2,12 @@ package com.example.popularmovies
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import com.example.popularmovies.model.Movie
-import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -25,7 +25,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        movie_list.adapter = movieAdapter
+        val recyclerView: RecyclerView = findViewById(R.id.movie_list)
+        recyclerView.adapter = movieAdapter
 
         val movieRepository = (application as MovieApplication).movieRepository
         val movieViewModel = ViewModelProvider(this, object : ViewModelProvider.Factory {
@@ -44,6 +45,9 @@ class MainActivity : AppCompatActivity() {
                 .sortedBy { it.title }
             )
             movieAdapter.notifyDataSetChanged()
+        })
+        movieViewModel.getError().observe(this, { error ->
+            Toast.makeText(this, error, Toast.LENGTH_LONG).show()
         })
     }
 

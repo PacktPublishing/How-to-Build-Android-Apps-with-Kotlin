@@ -1,6 +1,5 @@
 package com.example.popularmovies
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,9 +10,13 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 
 class MovieViewModel(private val movieRepository: MovieRepository) : ViewModel() {
     private val popularMoviesLiveData = MutableLiveData<List<Movie>>()
+    private val errorLiveData = MutableLiveData<String>()
 
     val popularMovies: LiveData<List<Movie>>
         get() = popularMoviesLiveData
+
+    val error: LiveData<String>
+        get() = errorLiveData
 
     private var disposable = CompositeDisposable()
 
@@ -25,7 +28,7 @@ class MovieViewModel(private val movieRepository: MovieRepository) : ViewModel()
             .subscribe({
                 popularMoviesLiveData.postValue(it)
             }, { error ->
-                Log.d("MovieViewModel", "error encountered: ${error.localizedMessage}")
+                errorLiveData.postValue("An error occurred: ${error.message}")
             })
         )
     }

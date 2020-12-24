@@ -1,6 +1,5 @@
 package com.example.tvguide
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.tvguide.api.TelevisionService
@@ -11,10 +10,14 @@ import com.example.tvguide.model.TVShow
 class TVShowRepository(private val tvService: TelevisionService, private val tvDatabase: TVDatabase) {
     private val apiKey = "your_api_key_here"
 
-    private val tvShowsLiveData: MutableLiveData<List<TVShow>> = MutableLiveData()
+    private val tvShowsLiveData = MutableLiveData<List<TVShow>>()
+    private val errorLiveData = MutableLiveData<String>()
 
     val tvShows: LiveData<List<TVShow>>
         get() = tvShowsLiveData
+
+    val error: LiveData<String>
+        get() = errorLiveData
 
     suspend fun fetchTVShows() {
         val tvDao: TVDao = tvDatabase.tvDao()
@@ -25,7 +28,7 @@ class TVShowRepository(private val tvService: TelevisionService, private val tvD
                 shows = tvResponse.results
                 tvDao.addTVShows(shows)
             } catch (exception: Exception) {
-                Log.d("TVShowRepository", "Exception in fetchTVShows: ${exception.message}")
+                errorLiveData.postValue("An error occurred: ${exception.message}")
             }
         }
 
@@ -41,7 +44,7 @@ class TVShowRepository(private val tvService: TelevisionService, private val tvD
                 shows = tvResponse.results
                 tvDao.addTVShows(shows)
             } catch (exception: Exception) {
-                Log.d("TVShowRepository", "Exception in fetchTVShowsFromNetwork: ${exception.message}")
+                errorLiveData.postValue("An error occurred: ${exception.message}")
             }
         }
     }

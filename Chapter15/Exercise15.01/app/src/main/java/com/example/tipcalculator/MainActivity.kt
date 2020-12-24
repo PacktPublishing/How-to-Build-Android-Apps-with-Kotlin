@@ -4,18 +4,22 @@ import android.app.ActivityOptions
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_main.*
+import android.widget.Button
+import android.widget.EditText
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        compute_button.setOnClickListener {
+        val amountText: EditText = findViewById(R.id.amount_text)
+        val percentText: EditText = findViewById(R.id.percent_text)
+        val computeButton: Button = findViewById(R.id.compute_button)
+        computeButton.setOnClickListener {
             val amount =
-                if (amount_text.text.toString().isNotBlank()) amount_text.text.toString() else "0"
+                if (amountText.text.toString().isNotBlank()) amountText.text.toString() else "0"
             val percent =
-                if (percent_text.text.toString().isNotBlank()) percent_text.text.toString() else "0"
+                if (percentText.text.toString().isNotBlank()) percentText.text.toString() else "0"
             val intent = Intent(this, OutputActivity::class.java).apply {
                 putExtra("amount", amount)
                 putExtra("percent", percent)

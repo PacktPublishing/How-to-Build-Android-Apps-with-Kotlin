@@ -17,12 +17,14 @@ class MovieViewModel(private val movieRepository: MovieRepository) : ViewModel()
 
     val popularMovies: LiveData<List<Movie>>
         get() = movieRepository.movies.map { list ->
-        list.filter {
-            it.release_date.startsWith(
-                Calendar.getInstance().get(Calendar.YEAR).toString()
-            )
-        }.sortedBy { it.title }
-    }
+            list.filter {
+                it.release_date.startsWith(
+                        Calendar.getInstance().get(Calendar.YEAR).toString()
+                )
+            }.sortedBy { it.title }
+        }
+
+    fun getError(): LiveData<String> = movieRepository.error
 
     private fun fetchPopularMovies() {
         viewModelScope.launch(Dispatchers.IO) {
