@@ -22,12 +22,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         submit_button.setOnClickListener {
-
-            //Set the name of the activity to launch passing in request code
-            Intent(this, RainbowColorPickerActivity::class.java).also { rainbowColorPickerIntent ->
-                startActivityForResult(rainbowColorPickerIntent, PICK_RAINBOW_COLOR_INTENT)
-            }
+        //Set the name of the Activity to launch passing in request code
+            Intent(this, RainbowColorPickerActivity::class.java)
+                .also { rainbowColorPickerIntent ->
+                    startActivityForResult(
+                        rainbowColorPickerIntent,
+                        PICK_RAINBOW_COLOR_INTENT
+                    )
+                }
         }
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

@@ -22,8 +22,8 @@ const val PASSWORD_CORRECT_VALUE = "somepassword"
 
 class MainActivity : AppCompatActivity() {
 
-    var isLoggedIn = false
-    var loggedInUser = ""
+    private var isLoggedIn = false
+    private var loggedInUser = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,17 +74,17 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-    override fun onNewIntent(intent: Intent?) {
-        super.onNewIntent(intent)
+    override fun onNewIntent(newIntent: Intent?) {
+        super.onNewIntent(newIntent)
 
         //Set the new Intent to the one to process
-        setIntent(intent)
+        intent = newIntent
 
         //Get the intent which started this activity
-        intent.let { loginIntent ->
+        intent?.let { loginIntent ->
 
-            val userNameForm = loginIntent?.getStringExtra(USER_NAME_KEY) ?: ""
-            val passwordForm = loginIntent?.getStringExtra(PASSWORD_KEY) ?: ""
+            val userNameForm = loginIntent.getStringExtra(USER_NAME_KEY) ?: ""
+            val passwordForm = loginIntent.getStringExtra(PASSWORD_KEY) ?: ""
 
             val loggedInCorrectly =
                 hasEnteredCorrectCredentials(userNameForm.trim(), passwordForm.trim())

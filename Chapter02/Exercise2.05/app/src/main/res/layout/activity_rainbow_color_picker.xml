@@ -28,7 +28,7 @@
             style="@style/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/red"
+            android:background="@color/red"
             android:text="@string/red"/>
 
         <Button
@@ -36,7 +36,7 @@
             style="@style/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/orange"
+            android:background="@color/orange"
             android:text="@string/orange"/>
 
         <Button
@@ -44,7 +44,7 @@
             style="@style/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/yellow"
+            android:background="@color/yellow"
             android:text="@string/yellow"/>
 
         <Button
@@ -52,7 +52,7 @@
             style="@style/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/green"
+            android:background="@color/green"
             android:text="@string/green" />
 
         <Button
@@ -60,7 +60,7 @@
             style="@style/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/blue"
+            android:background="@color/blue"
             android:text="@string/blue"/>
 
         <Button
@@ -68,7 +68,7 @@
             style="@style/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/indigo"
+            android:background="@color/indigo"
             android:text="@string/indigo" />
 
         <Button
@@ -76,7 +76,7 @@
             style="@style/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/violet"
+            android:background="@color/violet"
             android:text="@string/violet" />
 
         <TextView

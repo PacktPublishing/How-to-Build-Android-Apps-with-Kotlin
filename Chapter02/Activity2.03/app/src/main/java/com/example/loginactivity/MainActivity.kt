@@ -20,9 +20,8 @@ const val LOGGED_IN_USERNAME = "LOGGED_IN_USERNAME"
 
 class MainActivity : AppCompatActivity() {
 
-    var isLoggedIn = false
-    var loggedInUser = ""
-
+    private var isLoggedIn = false
+    private var loggedInUser = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

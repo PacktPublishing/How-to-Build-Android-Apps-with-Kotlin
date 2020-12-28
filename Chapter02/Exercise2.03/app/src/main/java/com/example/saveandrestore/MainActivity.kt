@@ -9,12 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
-private const val DISCOUNT_CONFIRMATION_MESSAGE = "DISCOUNT_CONFIRMATION_MESSAGE"
-private const val DISCOUNT_CODE = "DISCOUNT_CODE"
-
 class MainActivity : AppCompatActivity() {
-
-    private val TAG = "MainActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +51,7 @@ class MainActivity : AppCompatActivity() {
         discount_code_confirmation.text =
             savedInstanceState.getString(
                 DISCOUNT_CONFIRMATION_MESSAGE,"")
+
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -68,6 +64,7 @@ class MainActivity : AppCompatActivity() {
             discount_code_confirmation.text.toString())
     }
 
+
     private fun clearInputFields() {
         first_name.text.clear()
         last_name.text.clear()
@@ -79,5 +76,11 @@ class MainActivity : AppCompatActivity() {
             val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
         }
+    }
+
+    companion object {
+        private const val TAG = "MainActivity"
+        private const val DISCOUNT_CONFIRMATION_MESSAGE = "DISCOUNT_CONFIRMATION_MESSAGE"
+        private const val DISCOUNT_CODE = "DISCOUNT_CODE"
     }
 }
