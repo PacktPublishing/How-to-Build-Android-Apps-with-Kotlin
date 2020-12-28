@@ -36,7 +36,6 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/last_name"
         android:textSize="@dimen/default_text_size"
         android:layout_marginEnd="@dimen/grid_24"
         android:layout_marginRight="@dimen/grid_24"
@@ -88,7 +87,7 @@
         app:layout_constraintTop_toBottomOf="@id/discount_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:text="Your discount code is below, Enjoy!" />
+        tools:text="Hey John Smith! Here is your discount code" />
 
     <TextView
         android:id="@+id/discount_code"

@@ -17,6 +17,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:text="Welcome full name of user, we hope you enjoy using the app!"/>
+        tools:text="Welcome John Smith, we hope you enjoy using the app!"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
