@@ -21,7 +21,11 @@ class ListFragment : Fragment(), View.OnClickListener {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        starSignListener = context as StarSignListener
+        if (context is StarSignListener) {
+            starSignListener = context
+        } else {
+            throw RuntimeException("Must implement StarSignListener")
+        }
     }
 
     override fun onCreateView(

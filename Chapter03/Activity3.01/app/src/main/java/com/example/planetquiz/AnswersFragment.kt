@@ -1,4 +1,4 @@
-package com.example.planetfragments
+package com.example.planetquiz
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,9 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_answers.*
-
-const val QUESTION_ID = "QUESTION_ID"
-const val NO_QUESTION_SET = 0
 
 class AnswersFragment : Fragment(), View.OnClickListener {
 
@@ -47,7 +44,6 @@ class AnswersFragment : Fragment(), View.OnClickListener {
         }
     }
 
-    //TODO("not implemented yet")
     override fun onClick(v: View?) {
 
         when (questionId) {
@@ -76,6 +72,9 @@ class AnswersFragment : Fragment(), View.OnClickListener {
     }
 
     companion object {
+
+        private const val QUESTION_ID = "QUESTION_ID"
+        private const val NO_QUESTION_SET = 0
 
         @JvmStatic
         fun newInstance(questionId: Int) =

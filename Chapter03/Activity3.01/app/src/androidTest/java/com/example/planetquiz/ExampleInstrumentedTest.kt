@@ -1,4 +1,4 @@
-package com.example.planetfragments
+package com.example.planetquiz
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

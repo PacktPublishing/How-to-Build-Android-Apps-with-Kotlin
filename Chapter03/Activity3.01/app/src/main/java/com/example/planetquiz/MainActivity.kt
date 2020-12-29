@@ -1,4 +1,4 @@
-package com.example.planetfragments
+package com.example.planetquiz
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
