@@ -30,7 +30,7 @@
         app:layout_constraintTop_toBottomOf="@id/counter_text"/>
 
     <Button
-        android:id="@+id/add"
+        android:id="@+id/plus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/plus"
@@ -51,7 +51,7 @@
         android:paddingEnd="30dp"
         android:textSize="44sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/add"
+        app:layout_constraintStart_toEndOf="@id/plus"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/counter"/>
 

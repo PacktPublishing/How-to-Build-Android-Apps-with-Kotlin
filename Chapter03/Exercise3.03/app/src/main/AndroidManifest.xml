@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.staticfragments">
+    package="com.example.dualpanelayouts">
 
     <application
         android:allowBackup="true"
@@ -9,8 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.StaticFragments">
-        <activity android:name="com.example.staticfragments.DetailActivity"></activity>
-        <activity android:name="com.example.staticfragments.MainActivity">
+        <activity android:name="com.example.dualpanelayouts.DetailActivity"></activity>
+        <activity android:name="com.example.dualpanelayouts.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

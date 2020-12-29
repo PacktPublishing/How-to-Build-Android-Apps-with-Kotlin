@@ -12,18 +12,21 @@
         android:textStyle="bold"
         android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        tools:text="Aquarius"/>
 
     <TextView
         android:id="@+id/symbol"
         style="@style/StarSignTextView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        tools:text="Water Carrier"/>
 
     <TextView
         android:id="@+id/date_range"
         style="@style/StarSignTextView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        tools:text="Date Range: January 20 - February 18" />
 
 </LinearLayout>
