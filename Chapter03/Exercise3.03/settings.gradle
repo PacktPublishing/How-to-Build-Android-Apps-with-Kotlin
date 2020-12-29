@@ -1,2 +1,2 @@
-rootProject.name='Static Fragments'
+rootProject.name='Dual Pane Layouts'
 include ':app'

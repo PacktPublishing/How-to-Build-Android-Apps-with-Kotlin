@@ -1,4 +1,4 @@
-package com.example.staticfragments
+package com.example.dualpanelayouts
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

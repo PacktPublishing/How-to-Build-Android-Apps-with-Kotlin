@@ -42,7 +42,7 @@ class CounterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        add.setOnClickListener {
+        plus.setOnClickListener {
             var counterValue = counter.text.toString().toInt()
             counter.text = (++counterValue).toString()
         }

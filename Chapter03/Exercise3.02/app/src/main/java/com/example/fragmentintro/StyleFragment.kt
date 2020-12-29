@@ -44,15 +44,15 @@ class StyleFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         bold_button.setOnClickListener {
-            if (hello_world.typeface.isItalic) hello_world.setTypeface(hello_world.typeface, Typeface.BOLD_ITALIC) else hello_world.setTypeface(null, Typeface.BOLD)
+            if (hello_world.typeface?.isItalic == true) hello_world.setTypeface(hello_world.typeface, Typeface.BOLD_ITALIC) else hello_world.setTypeface(null, Typeface.BOLD)
         }
 
         italic_button.setOnClickListener {
-            if (hello_world.typeface.isBold) hello_world.setTypeface(hello_world.typeface, Typeface.BOLD_ITALIC) else hello_world.setTypeface(null, Typeface.ITALIC)
+            if (hello_world.typeface?.isBold == true) hello_world.setTypeface(hello_world.typeface, Typeface.BOLD_ITALIC) else hello_world.setTypeface(null, Typeface.ITALIC)
         }
 
         reset_button.setOnClickListener {
-            hello_world.setTypeface(Typeface.create(hello_world.typeface, Typeface.NORMAL), Typeface.NORMAL)
+            hello_world.setTypeface(null, Typeface.NORMAL)
         }
     }
 

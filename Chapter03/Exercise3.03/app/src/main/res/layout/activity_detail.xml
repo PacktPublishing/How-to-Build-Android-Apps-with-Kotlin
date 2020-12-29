@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/star_sign_detail"
-        android:name="com.example.staticfragments.DetailFragment"
+        android:name="com.example.dualpanelayouts.DetailFragment"
         android:layout_height="match_parent"
         android:layout_width="match_parent"/>
 

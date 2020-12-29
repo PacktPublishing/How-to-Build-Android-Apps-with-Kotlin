@@ -9,7 +9,7 @@ android {
     compileSdkVersion 30
 
     defaultConfig {
-        applicationId "com.example.staticfragments"
+        applicationId "com.example.com.example.dualpanelayouts"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
