@@ -1,4 +1,4 @@
-package com.example.planetfragments
+package com.example.planetquiz
 
 import org.junit.Test
 

@@ -4,9 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
-
-const val STAR_SIGN_ID = "STAR_SIGN_ID"
-
 class MainActivity : AppCompatActivity(), StarSignListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {

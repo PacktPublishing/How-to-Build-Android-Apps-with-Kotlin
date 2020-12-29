@@ -1,4 +1,4 @@
-package com.example.planetfragments
+package com.example.planetquiz
 
 import android.content.Context
 import android.os.Bundle
@@ -18,7 +18,11 @@ class QuestionsFragment : Fragment(), View.OnClickListener {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        answersListener = context as AnswersListener
+        if (context is AnswersListener) {
+            answersListener = context
+        } else {
+            throw RuntimeException("Must implement AnswersListener")
+        }
     }
 
     override fun onCreateView(
@@ -39,9 +43,9 @@ class QuestionsFragment : Fragment(), View.OnClickListener {
         }
     }
 
-    override fun onClick(view: View?) {
+    override fun onClick(v: View?) {
 
-        view?.let { question ->
+        v?.let { question ->
             answersListener.onSelected(question.id)
         }
     }

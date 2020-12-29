@@ -20,11 +20,14 @@ private const val ARG_PARAM2 = "param2"
  */
 class MainFragment : Fragment() {
 
-    private val TAG = "MainFragment"
-
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        Log.d(TAG, "onAttach")
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,11 +36,6 @@ class MainFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        Log.d(TAG, "onAttach")
     }
 
     override fun onCreateView(
@@ -49,7 +47,7 @@ class MainFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_main, container, false)
     }
-    
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.d(TAG, "onViewCreated")
@@ -96,8 +94,10 @@ class MainFragment : Fragment() {
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
+        private const val TAG = "MainFragment"
+
+        /**	        private const val TAG = "MainFragment"
+         * Use this factory method to create a new instance of	        //Rest of the companion object code follows
          * this fragment using the provided parameters.
          *
          * @param param1 Parameter 1.
@@ -114,5 +114,4 @@ class MainFragment : Fragment() {
                 }
             }
     }
-
 }
