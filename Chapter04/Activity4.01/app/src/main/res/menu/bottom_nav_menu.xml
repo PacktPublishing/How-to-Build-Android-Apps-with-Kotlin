@@ -20,6 +20,4 @@
         android:id="@+id/nav_mysports"
         android:title="@string/mysports"
         android:icon="@drawable/mysports"/>
-
 </menu>
-
