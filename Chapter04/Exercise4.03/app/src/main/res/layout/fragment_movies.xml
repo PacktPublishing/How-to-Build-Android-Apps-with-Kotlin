@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MoviesFragment"
-    android:background="@color/white">
+    tools:context=".MoviesFragment">
 
     <TextView
         android:id="@+id/movie_genre"
