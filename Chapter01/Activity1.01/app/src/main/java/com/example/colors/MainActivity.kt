@@ -2,19 +2,21 @@ package com.example.colors
 
 import android.graphics.Color
 import android.os.Bundle
+import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import com.google.android.material.textfield.TextInputEditText
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        color_creator_button.setOnClickListener {
-            var redChannelText = red_channel.text.toString()
-            var greenChannelText = green_channel.text.toString()
-            var blueChannelText = blue_channel.text.toString()
+        findViewById<Button>(R.id.color_creator_button)?.setOnClickListener {
+            var redChannelText = findViewById<TextInputEditText>(R.id.red_channel)?.text.toString()
+            var greenChannelText = findViewById<TextInputEditText>(R.id.green_channel)?.text.toString()
+            var blueChannelText = findViewById<TextInputEditText>(R.id.blue_channel)?.text.toString()
 
             // Check that all fields are filled in and show error message if not.
             if (redChannelText.isEmpty() or greenChannelText.isEmpty() or blueChannelText.isEmpty()) {
@@ -28,8 +30,7 @@ class MainActivity : AppCompatActivity() {
                 val colorToDisplay = redChannelText.plus(greenChannelText).plus(blueChannelText)
 
                 val colorAsInt = Color.parseColor("#".plus(colorToDisplay))
-                color_creator_display.setBackgroundColor(colorAsInt)
-
+                findViewById<TextView>(R.id.color_creator_display)?.setBackgroundColor(colorAsInt)
             }
         }
     }
