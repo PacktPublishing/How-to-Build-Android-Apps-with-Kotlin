@@ -9,7 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.fragment_note_list.*
+import androidx.recyclerview.widget.RecyclerView
 
 class NoteListFragment : Fragment() {
 
@@ -23,9 +23,10 @@ class NoteListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        fragment_note_list_recycler_view.layoutManager = LinearLayoutManager(context)
+        val recyclerView = view.findViewById<RecyclerView>(R.id.fragment_note_list_recycler_view)
+        recyclerView.layoutManager = LinearLayoutManager(context)
         val adapter = NoteListAdapter(LayoutInflater.from(context))
-        fragment_note_list_recycler_view.adapter = adapter
+        recyclerView.adapter = adapter
         val viewModel =
             ViewModelProvider(requireActivity(), object : ViewModelProvider.Factory {
                 override fun <T : ViewModel?> create(modelClass: Class<T>): T {

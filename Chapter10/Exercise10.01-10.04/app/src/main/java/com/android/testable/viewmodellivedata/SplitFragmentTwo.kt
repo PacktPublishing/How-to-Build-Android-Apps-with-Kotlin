@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import kotlinx.android.synthetic.main.fragment_split_two.*
 
 class SplitFragmentTwo : Fragment() {
 
@@ -28,6 +28,7 @@ class SplitFragmentTwo : Fragment() {
     }
 
     private fun updateText(total: Int) {
-        fragment_split_two_text_view.text = getString(R.string.total, total)
+        view?.findViewById<TextView>(R.id.fragment_split_two_text_view)?.text =
+            getString(R.string.total, total)
     }
 }

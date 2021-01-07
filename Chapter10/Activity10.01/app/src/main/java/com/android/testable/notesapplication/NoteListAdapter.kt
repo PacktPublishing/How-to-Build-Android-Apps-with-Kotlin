@@ -3,9 +3,8 @@ package com.android.testable.notesapplication
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.view_note_item.view.*
 
 class NoteListAdapter(private val inflater: LayoutInflater) :
     RecyclerView.Adapter<NoteListAdapter.NoteViewHolder>() {
@@ -28,11 +27,14 @@ class NoteListAdapter(private val inflater: LayoutInflater) :
         notifyDataSetChanged()
     }
 
-    inner class NoteViewHolder(override val containerView: View) :
-        RecyclerView.ViewHolder(containerView), LayoutContainer {
+    inner class NoteViewHolder(containerView: View) :
+        RecyclerView.ViewHolder(containerView) {
+
+        private val noteTextView: TextView =
+            containerView.findViewById<TextView>(R.id.view_note_list_text_view)
 
         fun bind(note: Note) {
-            containerView.view_note_list_text_view.text = note.text
+            noteTextView.text = note.text
         }
     }
 }
