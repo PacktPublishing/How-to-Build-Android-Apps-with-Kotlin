@@ -1,11 +1,13 @@
 package com.android.testable.sharedpreferences
 
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,11 +24,11 @@ class MainActivity : AppCompatActivity() {
         }).get(PreferenceViewModel::class.java)
 
         preferenceViewModel.getText().observe(this, Observer {
-            activity_main_text_view.text = it
+            findViewById<TextView>(R.id.activity_main_text_view).text = it
         })
 
-        activity_main_button.setOnClickListener {
-            preferenceViewModel.saveText(activity_main_edit_text.text.toString())
+        findViewById<Button>(R.id.activity_main_button).setOnClickListener {
+            preferenceViewModel.saveText(findViewById<EditText>(R.id.activity_main_edit_text).text.toString())
         }
     }
 }

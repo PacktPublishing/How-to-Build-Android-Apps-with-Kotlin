@@ -4,8 +4,8 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
 import java.util.concurrent.Executors
 
 private const val REQUEST_CODE_CREATE_DOC = 10
@@ -27,11 +27,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        activity_main_file_provider.setOnClickListener {
+        findViewById<Button>(R.id.activity_main_file_provider).setOnClickListener {
             val newFileName = "Copied.txt"
             providerFileManager.writeStream(newFileName, assetFileManager.getMyAppFileInputStream())
         }
-        activity_main_saf.setOnClickListener {
+        findViewById<Button>(R.id.activity_main_saf).setOnClickListener {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                 val intent = Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
                     addCategory(Intent.CATEGORY_OPENABLE)

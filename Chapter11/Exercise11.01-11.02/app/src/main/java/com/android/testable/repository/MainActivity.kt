@@ -8,8 +8,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.android.testable.repository.repository.Result
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,8 +20,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         postAdapter = PostAdapter(LayoutInflater.from(this))
-        activity_main_recycler_view.adapter = postAdapter
-        activity_main_recycler_view.layoutManager = LinearLayoutManager(this)
+        val recyclerView = findViewById<RecyclerView>(R.id.activity_main_recycler_view)
+        recyclerView.adapter = postAdapter
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
         val postRepository = (application as RepositoryApplication).postRepository
         val postViewModel = ViewModelProvider(this, object : ViewModelProvider.Factory {

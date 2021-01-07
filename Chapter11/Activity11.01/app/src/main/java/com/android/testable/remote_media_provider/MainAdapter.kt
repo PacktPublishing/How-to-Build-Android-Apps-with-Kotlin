@@ -3,10 +3,9 @@ package com.android.testable.remote_media_provider
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.android.testable.remote_media_provider.repository.DogUi
-import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.view_dog_item.view.*
 
 class MainAdapter(
     private val layoutInflater: LayoutInflater,
@@ -30,8 +29,11 @@ class MainAdapter(
         this.notifyDataSetChanged()
     }
 
-    inner class DogViewHolder(override val containerView: View) :
-        RecyclerView.ViewHolder(containerView), LayoutContainer {
+    inner class DogViewHolder(containerView: View) :
+        RecyclerView.ViewHolder(containerView) {
+
+        private val urlTextView: TextView =
+            containerView.findViewById<TextView>(R.id.view_dog_item_url_text_view)
 
         init {
             containerView.setOnClickListener {
@@ -43,7 +45,7 @@ class MainAdapter(
         }
 
         fun bind(dog: DogUi) {
-            containerView.view_dog_item_url_text_view.text = dog.url
+            urlTextView.text = dog.url
         }
     }
 }

@@ -5,10 +5,10 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.provider.MediaStore
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import kotlinx.android.synthetic.main.activity_main.*
 import java.util.concurrent.Executors
 
 class MainActivity : AppCompatActivity() {
@@ -37,14 +37,14 @@ class MainActivity : AppCompatActivity() {
                 MediaContentHelper()
             )
 
-        photo_button.setOnClickListener {
+        findViewById<Button>(R.id.photo_button).setOnClickListener {
             isCapturingVideo = false
             checkStoragePermission {
                 openImageCapture()
             }
         }
 
-        video_button.setOnClickListener {
+        findViewById<Button>(R.id.video_button).setOnClickListener {
             isCapturingVideo = true
             checkStoragePermission {
                 openVideoCapture()
