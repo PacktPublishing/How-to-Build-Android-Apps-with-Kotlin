@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.activity_main.*
+import androidx.recyclerview.widget.RecyclerView
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
@@ -22,8 +22,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         postAdapter = PostAdapter(LayoutInflater.from(this))
-        activity_main_recycler_view.adapter = postAdapter
-        activity_main_recycler_view.layoutManager = LinearLayoutManager(this)
+        val recyclerView = findViewById<RecyclerView>(R.id.activity_main_recycler_view)
+        recyclerView.adapter = postAdapter
+        recyclerView.layoutManager = LinearLayoutManager(this)
         val viewModel = ViewModelProvider(this, factory).get(PostViewModel::class.java)
         viewModel.getPosts().observe(this, Observer {
             postAdapter.updatePosts(it)

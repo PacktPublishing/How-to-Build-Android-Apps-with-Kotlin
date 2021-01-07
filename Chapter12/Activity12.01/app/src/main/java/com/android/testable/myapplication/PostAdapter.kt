@@ -3,10 +3,9 @@ package com.android.testable.myapplication
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.android.testable.myapplication.api.Post
-import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.view_post_row.view.*
 
 class PostAdapter(private val layoutInflater: LayoutInflater) :
     RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
@@ -28,12 +27,16 @@ class PostAdapter(private val layoutInflater: LayoutInflater) :
         this.notifyDataSetChanged()
     }
 
-    inner class PostViewHolder(override val containerView: View) :
-        RecyclerView.ViewHolder(containerView), LayoutContainer {
+    inner class PostViewHolder(containerView: View) : RecyclerView.ViewHolder(containerView) {
+
+        private val titleTextView: TextView =
+            containerView.findViewById<TextView>(R.id.view_post_row_title)
+        private val bodyTextView: TextView =
+            containerView.findViewById<TextView>(R.id.view_post_row_body)
 
         fun bind(post: Post) {
-            containerView.view_post_row_body.text = post.body
-            containerView.view_post_row_title.text = post.title
+            bodyTextView.text = post.body
+            titleTextView.text = post.title
         }
     }
 }
