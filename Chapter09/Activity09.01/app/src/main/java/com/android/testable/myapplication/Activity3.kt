@@ -3,8 +3,8 @@ package com.android.testable.myapplication
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_3.*
 
 class Activity3 : AppCompatActivity() {
 
@@ -19,6 +19,6 @@ class Activity3 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_3)
         val text = intent.getParcelableExtra<Item>(EXTRA_ITEM)?.text.orEmpty()
-        activity_3_text_view.text = (application as MyApplication).stringProvider.provideYouClickedString(text)
+        findViewById<TextView>(R.id.activity_3_text_view).text = (application as MyApplication).stringProvider.provideYouClickedString(text)
     }
 }

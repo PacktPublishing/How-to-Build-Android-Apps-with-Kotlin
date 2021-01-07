@@ -3,9 +3,8 @@ package com.android.testable.myapplication
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.item.view.*
 
 class ItemAdapter(
     private val layoutInflater: LayoutInflater,
@@ -32,7 +31,9 @@ class ItemAdapter(
         return items.size
     }
 
-    inner class ItemViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
+    inner class ItemViewHolder(containerView: View) : RecyclerView.ViewHolder(containerView) {
+
+        private val itemTextView: TextView = containerView.findViewById(R.id.item_text_view)
 
         init {
             containerView.setOnClickListener {
@@ -44,7 +45,7 @@ class ItemAdapter(
         }
 
         fun bind(item: Item) {
-            containerView.item_text_view.text = item.text
+            itemTextView.text = item.text
         }
     }
 }

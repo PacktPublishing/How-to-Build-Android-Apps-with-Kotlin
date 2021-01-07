@@ -31,7 +31,7 @@ class FlowTest {
 
     @Test
     fun verifyFlow() {
-        onView(withId(R.id.button)).perform(click())
-        onView(withId(R.id.text_view)).check(matches(withText(myApplication.getString(R.string.opened_after_x_seconds, 1))))
+        onView(withId(R.id.activity_1_button)).perform(click())
+        onView(withId(R.id.activity_2_text_view)).check(matches(withText(myApplication.getString(R.string.opened_after_x_seconds, 1))))
     }
 }

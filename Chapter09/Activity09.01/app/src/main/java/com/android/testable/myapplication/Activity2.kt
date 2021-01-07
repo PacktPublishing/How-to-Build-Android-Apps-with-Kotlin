@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.activity_2.*
+import androidx.recyclerview.widget.RecyclerView
 
 class Activity2 : AppCompatActivity() {
 
@@ -20,11 +20,12 @@ class Activity2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_2)
-        activity_2_recycler_view.layoutManager = LinearLayoutManager(this)
+        val recyclerView = findViewById<RecyclerView>(R.id.activity_2_recycler_view)
+        recyclerView.layoutManager = LinearLayoutManager(this)
         adapter= ItemAdapter(LayoutInflater.from(this)) {
             startActivity(Activity3.newIntent(this, it))
         }
-        activity_2_recycler_view.adapter = adapter
+        recyclerView.adapter = adapter
         (application as MyApplication).itemGenerator.generateItemsAsync(intent.getIntExtra(EXTRA_ITEM_COUNT, 0)) {
             runOnUiThread {
                 adapter.addItems(it)
