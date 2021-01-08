@@ -2,8 +2,8 @@ package com.example.dualpanelayouts
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
 
 const val STAR_SIGN_ID = "STAR_SIGN_ID"
 
@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity(), StarSignListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        isDualPane = star_sign_detail?.isInLayout ?: false
+        isDualPane = findViewById<View>(R.id.star_sign_detail) != null
     }
 
     override fun onSelected(id: Int) {

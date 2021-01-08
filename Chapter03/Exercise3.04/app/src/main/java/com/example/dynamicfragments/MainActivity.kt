@@ -2,7 +2,7 @@ package com.example.dynamicfragments
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import androidx.fragment.app.FragmentContainerView
 
 class MainActivity : AppCompatActivity(), StarSignListener {
 
@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity(), StarSignListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        fragment_container?.let { frameLayout ->
+        findViewById<FragmentContainerView>(R.id.fragment_container)?.let { frameLayout ->
 
             val listFragment = ListFragment()
 
@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity(), StarSignListener {
 
     override fun onSelected(starSignId: Int) {
 
-        fragment_container?.let {frameLayout ->
+        findViewById<FragmentContainerView>(R.id.fragment_container)?.let {frameLayout ->
 
             val detailFragment = DetailFragment.newInstance(starSignId)
 

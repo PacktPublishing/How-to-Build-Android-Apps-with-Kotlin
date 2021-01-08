@@ -2,7 +2,7 @@ package com.example.planetquiz
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_main.*
+import androidx.fragment.app.FragmentContainerView
 
 class MainActivity : AppCompatActivity(), AnswersListener {
 
@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity(), AnswersListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        fragment_container?.let { frameLayout ->
+        findViewById<FragmentContainerView>(R.id.fragment_container)?.let { frameLayout ->
 
             val questionsFragment = QuestionsFragment()
 
@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity(), AnswersListener {
 
     override fun onSelected(questionId: Int) {
 
-        fragment_container?.let {frameLayout ->
+        findViewById<FragmentContainerView>(R.id.fragment_container)?.let {frameLayout ->
 
             val answersFragment = AnswersFragment.newInstance(questionId)
 

@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.fragment_list.*
 
 /**
  * A simple [Fragment] subclass.
@@ -39,19 +38,19 @@ class ListFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val starSigns = listOf(
-            aquarius,
-            pisces,
-            aries,
-            taurus,
-            gemini,
-            cancer,
-            leo,
-            virgo,
-            libra,
-            scorpio,
-            sagittarius,
-            capricorn
+        val starSigns = listOf<View>(
+            view.findViewById(R.id.aquarius),
+            view.findViewById(R.id.pisces),
+            view.findViewById(R.id.aries),
+            view.findViewById(R.id.taurus),
+            view.findViewById(R.id.gemini),
+            view.findViewById(R.id.cancer),
+            view.findViewById(R.id.leo),
+            view.findViewById(R.id.virgo),
+            view.findViewById(R.id.libra),
+            view.findViewById(R.id.scorpio),
+            view.findViewById(R.id.sagittarius),
+            view.findViewById(R.id.capricorn)
         )
 
         starSigns.forEach {
