@@ -4,12 +4,38 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
+
+    private val discountButton by lazy {
+        findViewById<Button>(R.id.discount_button)
+    }
+
+    private val firstName by lazy {
+        findViewById<EditText>(R.id.first_name)
+    }
+
+    private val lastName by lazy {
+        findViewById<EditText>(R.id.last_name)
+    }
+
+    private val email by lazy {
+        findViewById<EditText>(R.id.email)
+    }
+
+    private val discountCodeConfirmation by lazy {
+        findViewById<TextView>(R.id.discount_code_confirmation)
+    }
+
+    private val discountCode by lazy {
+        findViewById<TextView>(R.id.discount_code)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,10 +43,10 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "onCreate")
 
         // here we handle the Button onClick event
-        discount_button.setOnClickListener {
+        discountButton.setOnClickListener {
 
-            val firstName = first_name.text.toString().trim()
-            val lastName = last_name.text.toString().trim()
+            val firstName = firstName.text.toString().trim()
+            val lastName = lastName.text.toString().trim()
             val email = email.text.toString()
 
             if (firstName.isEmpty() || lastName.isEmpty() || email.isEmpty()){
@@ -29,10 +55,10 @@ class MainActivity : AppCompatActivity() {
             else {
                 val fullName = firstName.plus(" ").plus(lastName)
 
-                discount_code_confirmation.text =
+                discountCodeConfirmation.text =
                     getString(R.string.discount_code_confirmation, fullName)
                 // Generates discount code
-                discount_code.text = UUID.randomUUID().toString().take(8).toUpperCase()
+                discountCode.text = UUID.randomUUID().toString().take(8).toUpperCase()
 
                 hideKeyboard()
                 clearInputFields()
@@ -46,9 +72,9 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "onRestoreInstanceState")
 
         //Get the discount code or an empty string if it hasn't been set
-        discount_code.text = savedInstanceState.getString(DISCOUNT_CODE,"")
+        discountCode.text = savedInstanceState.getString(DISCOUNT_CODE,"")
         //Get the discount confirmation message or an empty string if it hasn't been set
-        discount_code_confirmation.text =
+        discountCodeConfirmation.text =
             savedInstanceState.getString(
                 DISCOUNT_CONFIRMATION_MESSAGE,"")
 
@@ -59,15 +85,16 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "onSaveInstanceState")
 
         outState.putString(DISCOUNT_CODE,
-            discount_code.text.toString())
+            discountCode.text.toString())
         outState.putString(DISCOUNT_CONFIRMATION_MESSAGE,
-            discount_code_confirmation.text.toString())
+            discountCodeConfirmation.text.toString())
     }
 
 
+
     private fun clearInputFields() {
-        first_name.text.clear()
-        last_name.text.clear()
+        firstName.text.clear()
+        lastName.text.clear()
         email.text.clear()
     }
 

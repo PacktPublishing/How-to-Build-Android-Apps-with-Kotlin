@@ -6,7 +6,6 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.numbers.*
 
 class ActivityThree : AppCompatActivity() {
 
@@ -34,9 +33,9 @@ class ActivityThree : AppCompatActivity() {
             }
         }
 
-        number1.setOnClickListener(buttonClickListener)
-        number2.setOnClickListener(buttonClickListener)
-        number3.setOnClickListener(buttonClickListener)
+        findViewById<View>(R.id.number1).setOnClickListener(buttonClickListener)
+        findViewById<View>(R.id.number2).setOnClickListener(buttonClickListener)
+        findViewById<View>(R.id.number3).setOnClickListener(buttonClickListener)
     }
 
     override fun onNewIntent(intent: Intent?) {

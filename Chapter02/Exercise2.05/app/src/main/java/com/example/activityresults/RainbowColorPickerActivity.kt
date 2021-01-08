@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_rainbow_color_picker.*
 
 class RainbowColorPickerActivity : AppCompatActivity() {
 
@@ -31,13 +30,13 @@ class RainbowColorPickerActivity : AppCompatActivity() {
             }
         }
 
-        red_button.setOnClickListener(colorPickerClickListener)
-        orange_button.setOnClickListener(colorPickerClickListener)
-        yellow_button.setOnClickListener(colorPickerClickListener)
-        green_button.setOnClickListener(colorPickerClickListener)
-        blue_button.setOnClickListener(colorPickerClickListener)
-        indigo_button.setOnClickListener(colorPickerClickListener)
-        violet_button.setOnClickListener(colorPickerClickListener)
+        findViewById<View>(R.id.red_button).setOnClickListener(colorPickerClickListener)
+        findViewById<View>(R.id.orange_button).setOnClickListener(colorPickerClickListener)
+        findViewById<View>(R.id.yellow_button).setOnClickListener(colorPickerClickListener)
+        findViewById<View>(R.id.green_button).setOnClickListener(colorPickerClickListener)
+        findViewById<View>(R.id.blue_button).setOnClickListener(colorPickerClickListener)
+        findViewById<View>(R.id.indigo_button).setOnClickListener(colorPickerClickListener)
+        findViewById<View>(R.id.violet_button).setOnClickListener(colorPickerClickListener)
     }
 
     private fun setRainbowColor(colorName: String, color: Int) {

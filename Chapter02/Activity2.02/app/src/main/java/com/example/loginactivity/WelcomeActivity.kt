@@ -1,15 +1,23 @@
 package com.example.loginactivity
 
 import android.os.Bundle
+import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import kotlinx.android.synthetic.main.activity_main.header
-import kotlinx.android.synthetic.main.activity_welcome.*
 
 class WelcomeActivity : AppCompatActivity() {
 
     var isLoggedIn = false
     var loggedInUser = ""
+
+    private val header by lazy {
+        findViewById<TextView>(R.id.header)
+    }
+
+    private val backButton by lazy {
+        findViewById<Button>(R.id.back_button)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,8 +37,8 @@ class WelcomeActivity : AppCompatActivity() {
                 isLoggedIn = true
             } else {
                 header.text = getString(R.string.login_error)
-                back_button.isVisible = true
-                back_button.setOnClickListener {
+                backButton.isVisible = true
+                backButton.setOnClickListener {
                     //Finishes this activity and so goes back to the previous activity
                     finish()
                 }
@@ -59,7 +67,7 @@ class WelcomeActivity : AppCompatActivity() {
     private fun setLoggedIn(userName: String) {
         loggedInUser = userName
         val welcomeMessage = getString(R.string.welcome_text, userName)
-        back_button.isVisible = false
+        backButton.isVisible = false
         header.text = welcomeMessage
     }
 

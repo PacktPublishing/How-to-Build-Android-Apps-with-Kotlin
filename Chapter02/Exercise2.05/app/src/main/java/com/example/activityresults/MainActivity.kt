@@ -5,9 +5,10 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
-import kotlinx.android.synthetic.main.activity_main.*
 
 
 const val PICK_RAINBOW_COLOR_INTENT = 1  // The request code
@@ -21,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        submit_button.setOnClickListener {
+        findViewById<Button>(R.id.submit_button).setOnClickListener {
         //Set the name of the Activity to launch passing in request code
             Intent(this, RainbowColorPickerActivity::class.java)
                 .also { rainbowColorPickerIntent ->
@@ -43,9 +44,11 @@ class MainActivity : AppCompatActivity() {
             val colorName = data?.getStringExtra(RAINBOW_COLOR_NAME) ?: ""
             val colorMessage = getString(R.string.color_chosen_message, colorName)
 
-            rainbow_color.setBackgroundColor(ContextCompat.getColor(this, backgroundColor))
-            rainbow_color.text = colorMessage
-            rainbow_color.isVisible = true
+            val rainbowColor = findViewById<TextView>(R.id.rainbow_color)
+
+            rainbowColor.setBackgroundColor(ContextCompat.getColor(this, backgroundColor))
+            rainbowColor.text = colorMessage
+            rainbowColor.isVisible = true
         }
     }
 
