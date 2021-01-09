@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.tvguide.model.TVShow
 
-class TVShowAdapter(var tvShows: List<TVShow>, private val clickListener: TVClickListener) : RecyclerView.Adapter<TVShowAdapter.TVShowViewHolder>() {
+class TVShowAdapter(private val clickListener: TVClickListener) : RecyclerView.Adapter<TVShowAdapter.TVShowViewHolder>() {
+
+    private val tvShows = mutableListOf<TVShow>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TVShowViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.view_tv_show_item, parent, false)
@@ -22,6 +24,12 @@ class TVShowAdapter(var tvShows: List<TVShow>, private val clickListener: TVClic
         val tvShow = tvShows[position]
         holder.bind(tvShow)
         holder.itemView.setOnClickListener { clickListener.onShowClick(tvShow) }
+    }
+
+    fun addTVShows(shows: List<TVShow>) {
+        val index = tvShows.size
+        tvShows.addAll(shows)
+        notifyItemRangeInserted(index, shows.size)
     }
 
     class TVShowViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

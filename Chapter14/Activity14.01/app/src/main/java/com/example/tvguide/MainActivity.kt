@@ -13,10 +13,8 @@ import com.example.tvguide.model.TVShow
 
 class MainActivity : AppCompatActivity() {
 
-    private val tvShows = mutableListOf<TVShow>()
-
     private val tvShowAdapter by lazy {
-        TVShowAdapter(tvShows, object : TVShowAdapter.TVClickListener {
+        TVShowAdapter(object : TVShowAdapter.TVClickListener {
             override fun onShowClick(show: TVShow) {
                 openShowDetails(show)
             }
