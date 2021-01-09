@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
-import kotlinx.android.synthetic.main.activity_main.*
+import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(setOf(
             R.id.nav_home, R.id.nav_tickets, R.id.nav_offers, R.id.nav_rewards))
         setupActionBarWithNavController(navController, appBarConfiguration)
-        nav_view?.setupWithNavController(navController)
+        findViewById<NavigationView>(R.id.nav_view)?.setupWithNavController(navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {
