@@ -18,8 +18,10 @@ class MovieViewModel(private val movieRepository: MovieRepository) : ViewModel()
     val popularMovies: LiveData<List<Movie>>
         get() = movieRepository.movies.map { list ->
             list.filter {
+                val cal = Calendar.getInstance()
+                cal.add(Calendar.MONTH, -1)
                 it.release_date.startsWith(
-                        Calendar.getInstance().get(Calendar.YEAR).toString()
+                        "${cal.get(Calendar.YEAR)}-${cal.get(Calendar.MONTH) + 1}"
                 )
             }.sortedBy { it.title }
         }

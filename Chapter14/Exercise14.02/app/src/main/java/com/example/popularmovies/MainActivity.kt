@@ -12,10 +12,8 @@ import com.example.popularmovies.databinding.ActivityMainBinding
 import com.example.popularmovies.model.Movie
 
 class MainActivity : AppCompatActivity() {
-    private val movies = mutableListOf<Movie>()
-
     private val movieAdapter by lazy {
-        MovieAdapter(movies, object : MovieAdapter.MovieClickListener {
+        MovieAdapter(object : MovieAdapter.MovieClickListener {
             override fun onMovieClick(movie: Movie) {
                 openMovieDetails(movie)
             }

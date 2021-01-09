@@ -11,10 +11,8 @@ import com.example.tvguide.model.TVShow
 
 class MainActivity : AppCompatActivity() {
 
-    private val tvShows = mutableListOf<TVShow>()
-
     private val tvShowAdapter by lazy {
-        TVShowAdapter(tvShows, object : TVShowAdapter.TVClickListener {
+        TVShowAdapter(object : TVShowAdapter.TVClickListener {
             override fun onShowClick(show: TVShow) {
                 openShowDetails(show)
             }
@@ -35,8 +33,7 @@ class MainActivity : AppCompatActivity() {
             }
         }).get(TVShowViewModel::class.java)
         tvShowViewModel.getTVShows().observe(this, { shows ->
-            tvShows.addAll(shows)
-            tvShowAdapter.notifyDataSetChanged()
+            tvShowAdapter.addTVShows(shows)
         })
         tvShowViewModel.getError().observe(this, { error ->
             Toast.makeText(this, error, Toast.LENGTH_LONG).show()

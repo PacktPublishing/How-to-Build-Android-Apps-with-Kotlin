@@ -11,10 +11,8 @@ import com.example.popularmovies.model.Movie
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
-    private val movies = mutableListOf<Movie>()
-
     private val movieAdapter by lazy {
-        MovieAdapter(movies, object : MovieAdapter.MovieClickListener {
+        MovieAdapter(object : MovieAdapter.MovieClickListener {
             override fun onMovieClick(movie: Movie) {
                 openMovieDetails(movie)
             }
@@ -36,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         }).get(MovieViewModel::class.java)
 
         movieViewModel.popularMovies.observe(this, { popularMovies ->
-            movies.addAll(popularMovies
+            movieAdapter.addMovies(popularMovies
                 .filter {
                     it.release_date.startsWith(
                         Calendar.getInstance().get(Calendar.YEAR).toString()
@@ -44,7 +42,6 @@ class MainActivity : AppCompatActivity() {
                 }
                 .sortedBy { it.title }
             )
-            movieAdapter.notifyDataSetChanged()
         })
         movieViewModel.getError().observe(this, { error ->
             Toast.makeText(this, error, Toast.LENGTH_LONG).show()

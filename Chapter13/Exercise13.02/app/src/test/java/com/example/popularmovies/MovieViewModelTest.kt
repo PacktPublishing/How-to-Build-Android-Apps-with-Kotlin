@@ -37,18 +37,21 @@ class MovieViewModelTest {
 
     @Test
     fun getPopularMovies() {
-        val year = Calendar.getInstance().get(Calendar.YEAR).toString()
-        val movies = listOf(Movie(id = 3, release_date = year), Movie(id = 4, release_date = year))
+        val calendar = Calendar.getInstance()
+        calendar.add(Calendar.MONTH, -1)
+        val releaseDate = "${calendar.get(Calendar.YEAR)}-${calendar.get(Calendar.MONTH) + 1}"
+
+        val movies = listOf(Movie(id = 3, release_date = releaseDate), Movie(id = 4, release_date = releaseDate))
         val response = PopularMoviesResponse(1, movies)
 
         Mockito.`when`(movieRepository.fetchMovies())
-            .thenReturn(Observable.just(response))
+                .thenReturn(Observable.just(response))
         movieViewModel.popularMovies.observeForever(observer)
         movieViewModel.fetchPopularMovies()
 
         assertEquals(
-            movies,
-            movieViewModel.popularMovies.value
+                movies,
+                movieViewModel.popularMovies.value
         )
     }
 }

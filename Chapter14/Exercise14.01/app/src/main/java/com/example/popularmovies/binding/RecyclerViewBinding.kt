@@ -8,6 +8,5 @@ import com.example.popularmovies.model.Movie
 @BindingAdapter("list")
 fun bindMovies(view: RecyclerView, movies: List<Movie>?) {
     val adapter = view.adapter as MovieAdapter
-    adapter.movies = movies ?: emptyList()
-    adapter.notifyDataSetChanged()
+    adapter.addMovies(movies ?: emptyList())
 }
