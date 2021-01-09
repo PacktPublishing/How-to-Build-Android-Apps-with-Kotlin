@@ -11,10 +11,8 @@ import com.example.popularmovies.model.Movie
 
 class MainActivity : AppCompatActivity() {
 
-    private val movies = mutableListOf<Movie>()
-
     private val movieAdapter by lazy {
-        MovieAdapter(movies, object : MovieAdapter.MovieClickListener {
+        MovieAdapter(object : MovieAdapter.MovieClickListener {
             override fun onMovieClick(movie: Movie) {
                 openMovieDetails(movie)
             }
@@ -43,8 +41,7 @@ class MainActivity : AppCompatActivity() {
         movieViewModel.fetchPopularMovies()
         movieViewModel.popularMovies
             .observe(this, { popularMovies ->
-                movies.addAll(popularMovies)
-                movieAdapter.notifyDataSetChanged()
+                movieAdapter.addMovies(popularMovies)
             })
         movieViewModel.error.observe(this, { error ->
             Toast.makeText(this, error, Toast.LENGTH_LONG).show()
