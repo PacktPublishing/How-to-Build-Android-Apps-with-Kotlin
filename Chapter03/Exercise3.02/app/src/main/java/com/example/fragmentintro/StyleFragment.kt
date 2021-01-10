@@ -6,7 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.fragment_style.*
+import android.widget.Button
+import android.widget.TextView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -43,16 +44,21 @@ class StyleFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        bold_button.setOnClickListener {
-            if (hello_world.typeface?.isItalic == true) hello_world.setTypeface(hello_world.typeface, Typeface.BOLD_ITALIC) else hello_world.setTypeface(null, Typeface.BOLD)
+        val boldButton = view.findViewById<Button>(R.id.bold_button)
+        val italicButton = view.findViewById<Button>(R.id.italic_button)
+        val resetButton = view.findViewById<Button>(R.id.reset_button)
+        val helloWorldTextView = view.findViewById<TextView>(R.id.hello_world)
+
+        boldButton.setOnClickListener {
+            if (helloWorldTextView.typeface?.isItalic == true) helloWorldTextView.setTypeface(helloWorldTextView.typeface, Typeface.BOLD_ITALIC) else helloWorldTextView.setTypeface(null, Typeface.BOLD)
         }
 
-        italic_button.setOnClickListener {
-            if (hello_world.typeface?.isBold == true) hello_world.setTypeface(hello_world.typeface, Typeface.BOLD_ITALIC) else hello_world.setTypeface(null, Typeface.ITALIC)
+        italicButton.setOnClickListener {
+            if (helloWorldTextView.typeface?.isBold == true) helloWorldTextView.setTypeface(helloWorldTextView.typeface, Typeface.BOLD_ITALIC) else helloWorldTextView.setTypeface(null, Typeface.ITALIC)
         }
 
-        reset_button.setOnClickListener {
-            hello_world.setTypeface(null, Typeface.NORMAL)
+        resetButton.setOnClickListener {
+            helloWorldTextView.setTypeface(null, Typeface.NORMAL)
         }
     }
 

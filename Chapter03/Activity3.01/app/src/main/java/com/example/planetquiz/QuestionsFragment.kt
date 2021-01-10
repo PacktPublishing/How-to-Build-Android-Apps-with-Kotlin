@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.fragment_questions.*
 
 interface AnswersListener {
     fun onSelected(questionId: Int)
@@ -36,7 +35,11 @@ class QuestionsFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val planets = listOf(most_moons, largest_planet, side_spinning)
+        val planets = listOf<View>(
+            view.findViewById(R.id.most_moons),
+            view.findViewById(R.id.largest_planet),
+            view.findViewById(R.id.side_spinning)
+        )
 
         planets.forEach {
             it.setOnClickListener(this)
