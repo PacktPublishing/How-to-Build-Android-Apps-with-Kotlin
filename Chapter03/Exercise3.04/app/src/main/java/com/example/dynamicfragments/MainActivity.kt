@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity(), StarSignListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        if (savedInstanceState == null ) {
+        if (savedInstanceState == null) {
 
             findViewById<FragmentContainerView>(R.id.fragment_container)?.let { frameLayout ->
 
