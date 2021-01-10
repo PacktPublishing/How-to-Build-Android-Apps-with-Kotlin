@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity(), AnswersListener {
 
             supportFragmentManager.beginTransaction()
                 .replace(frameLayout.id, answersFragment)
-                .addToBackStack("name")
+                .addToBackStack(null)
                 .commit()
         }
     }
