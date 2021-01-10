@@ -7,7 +7,7 @@ android {
     compileSdkVersion 30
 
     defaultConfig {
-        applicationId "com.example.dynamicfragments"
+        applicationId "com.example.planetquiz"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1

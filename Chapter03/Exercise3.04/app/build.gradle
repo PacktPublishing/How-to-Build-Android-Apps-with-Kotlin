@@ -8,7 +8,7 @@ android {
     compileSdkVersion 30
 
     defaultConfig {
-        applicationId "com.example.fragmentstablets"
+        applicationId "com.example.dynamicfragments"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1

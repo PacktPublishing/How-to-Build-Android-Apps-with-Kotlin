@@ -10,12 +10,15 @@ class MainActivity : AppCompatActivity(), StarSignListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        findViewById<FragmentContainerView>(R.id.fragment_container)?.let { frameLayout ->
+        if (savedInstanceState == null) {
 
-            val listFragment = ListFragment()
+            findViewById<FragmentContainerView>(R.id.fragment_container)?.let { frameLayout ->
 
-            supportFragmentManager.beginTransaction()
-                .add(frameLayout.id, listFragment).commit()
+                val listFragment = ListFragment()
+
+                supportFragmentManager.beginTransaction()
+                    .add(frameLayout.id, listFragment).commit()
+            }
         }
     }
 

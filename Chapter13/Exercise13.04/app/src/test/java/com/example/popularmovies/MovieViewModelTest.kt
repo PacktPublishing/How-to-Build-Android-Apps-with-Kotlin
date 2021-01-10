@@ -22,11 +22,15 @@ class MovieViewModelTest {
 
     @Test
     fun getPopularMovies() {
+        val calendar = Calendar.getInstance()
+        calendar.add(Calendar.MONTH, -1)
+        val releaseDate = "${calendar.get(Calendar.YEAR)}-${calendar.get(Calendar.MONTH) + 1}"
+
         val movieLiveData = MutableLiveData<List<Movie>>()
         val popularMovies = listOf(
             Movie(
                 title = "Title",
-                release_date = Calendar.getInstance().get(Calendar.YEAR).toString()
+                release_date = releaseDate
             )
         )
         movieLiveData.postValue(popularMovies)

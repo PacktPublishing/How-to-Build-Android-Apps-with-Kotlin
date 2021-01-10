@@ -8,6 +8,5 @@ import com.example.tvguide.model.TVShow
 @BindingAdapter("list")
 fun bindTVShows(view: RecyclerView, tvShows: List<TVShow>?) {
     val adapter = view.adapter as TVShowAdapter
-    adapter.tvShows = tvShows ?: emptyList()
-    adapter.notifyDataSetChanged()
+    adapter.addTVShows(tvShows ?: emptyList())
 }

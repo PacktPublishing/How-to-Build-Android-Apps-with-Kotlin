@@ -10,12 +10,15 @@ class MainActivity : AppCompatActivity(), AnswersListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        findViewById<FragmentContainerView>(R.id.fragment_container)?.let { frameLayout ->
+        if (savedInstanceState == null ) {
 
-            val questionsFragment = QuestionsFragment()
+            findViewById<FragmentContainerView>(R.id.fragment_container)?.let { frameLayout ->
 
-            supportFragmentManager.beginTransaction()
-                .add(frameLayout.id, questionsFragment).commit()
+                val questionsFragment = QuestionsFragment()
+
+                supportFragmentManager.beginTransaction()
+                    .add(frameLayout.id, questionsFragment).commit()
+            }
         }
     }
 
