@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     tools:context=".CounterFragment">
 
     <TextView
@@ -11,8 +11,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/counter_text"
+        android:paddingTop="10dp"
         android:textSize="44sp"
-        android:padding="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
@@ -22,12 +22,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/zero"
-        android:textSize="60sp"
-        android:padding="20dp"
+        android:textSize="54sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/counter_text"/>
+        app:layout_constraintTop_toBottomOf="@id/counter_text"
+        app:layout_constraintBottom_toTopOf="@id/plus"/>
 
     <Button
         android:id="@+id/plus"
@@ -36,11 +36,12 @@
         android:text="@string/plus"
         android:paddingStart="30dp"
         android:paddingEnd="30dp"
-        android:textSize="44sp"
+        android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@id/minus"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/counter"/>
+        app:layout_constraintTop_toBottomOf="@id/counter"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <Button
         android:id="@+id/minus"
@@ -49,10 +50,11 @@
         android:text="@string/minus"
         android:paddingStart="30dp"
         android:paddingEnd="30dp"
-        android:textSize="44sp"
+        android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/plus"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/counter"/>
+        app:layout_constraintTop_toBottomOf="@id/counter"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
