@@ -10,17 +10,14 @@ import androidx.fragment.app.Fragment
 
 class DetailFragment : Fragment() {
 
-    private val starSign by lazy {
-        view?.findViewById<TextView>(R.id.star_sign)
-    }
+    private val starSign: TextView?
+        get() = view?.findViewById(R.id.star_sign)
 
-    private val symbol by lazy {
-        view?.findViewById<TextView>(R.id.symbol)
-    }
+    private val symbol: TextView?
+        get() = view?.findViewById(R.id.symbol)
 
-    private val dateRange by lazy {
-        view?.findViewById<TextView>(R.id.date_range)
-    }
+    private val dateRange: TextView?
+        get() = view?.findViewById(R.id.date_range)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
