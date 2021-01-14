@@ -22,17 +22,14 @@ const val PASSWORD_CORRECT_VALUE = "somepassword"
 
 class MainActivity : AppCompatActivity() {
 
-    private val submitButton by lazy {
-        findViewById<Button>(R.id.submit_button)
-    }
+    private val submitButton: Button
+        get() = findViewById(R.id.submit_button)
 
-    private val userName by lazy {
-        findViewById<EditText>(R.id.user_name)
-    }
+    private val userName: EditText
+        get() = findViewById(R.id.user_name)
 
-    private val password by lazy {
-        findViewById<EditText>(R.id.password)
-    }
+    private val password: EditText
+        get() = findViewById(R.id.password)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

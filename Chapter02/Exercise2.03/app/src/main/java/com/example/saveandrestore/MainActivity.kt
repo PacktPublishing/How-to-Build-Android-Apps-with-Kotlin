@@ -13,29 +13,23 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
-    private val discountButton by lazy {
-        findViewById<Button>(R.id.discount_button)
-    }
+    private val discountButton: Button
+        get() = findViewById(R.id.discount_button)
 
-    private val firstName by lazy {
-        findViewById<EditText>(R.id.first_name)
-    }
+    private val firstName: EditText
+        get() = findViewById(R.id.first_name)
 
-    private val lastName by lazy {
-        findViewById<EditText>(R.id.last_name)
-    }
+    private val lastName: EditText
+        get() = findViewById(R.id.last_name)
 
-    private val email by lazy {
-        findViewById<EditText>(R.id.email)
-    }
+    private val email: EditText
+        get() = findViewById(R.id.email)
 
-    private val discountCodeConfirmation by lazy {
-        findViewById<TextView>(R.id.discount_code_confirmation)
-    }
+    private val discountCodeConfirmation: TextView
+        get() = findViewById(R.id.discount_code_confirmation)
 
-    private val discountCode by lazy {
-        findViewById<TextView>(R.id.discount_code)
-    }
+    private val discountCode: TextView
+        get() = findViewById(R.id.discount_code)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -11,13 +11,11 @@ class WelcomeActivity : AppCompatActivity() {
     var isLoggedIn = false
     var loggedInUser = ""
 
-    private val header by lazy {
-        findViewById<TextView>(R.id.header)
-    }
+    private val header: TextView
+        get() = findViewById(R.id.header)
 
-    private val backButton by lazy {
-        findViewById<Button>(R.id.back_button)
-    }
+    private val backButton: Button
+        get() = findViewById(R.id.back_button)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
