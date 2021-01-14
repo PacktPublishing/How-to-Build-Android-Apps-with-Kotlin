@@ -27,9 +27,8 @@ class TVShowAdapter(private val clickListener: TVClickListener) : RecyclerView.A
     }
 
     fun addTVShows(shows: List<TVShow>) {
-        val index = tvShows.size
         tvShows.addAll(shows)
-        notifyItemRangeInserted(index, shows.size)
+        notifyItemRangeInserted(0, shows.size)
     }
 
     class TVShowViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

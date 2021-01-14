@@ -27,9 +27,8 @@ class MovieAdapter(private val clickListener: MovieClickListener) : RecyclerView
     }
 
     fun addMovies(movieList: List<Movie>) {
-        val index = movies.size
         movies.addAll(movieList)
-        notifyItemRangeInserted(index, movieList.size)
+        notifyItemRangeInserted(0, movieList.size)
     }
 
     class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
