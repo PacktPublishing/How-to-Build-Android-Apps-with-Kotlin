@@ -2,8 +2,8 @@ package com.example.tabnavigation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -11,11 +11,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        setSupportActionBar(toolbar)
+        setSupportActionBar(findViewById(R.id.toolbar))
+        val viewPager = findViewById<ViewPager>(R.id.view_pager)
+        val tabs = findViewById<TabLayout>(R.id.tabs)
 
-        view_pager.adapter = MovieGenresPagerAdapter(this, supportFragmentManager)
+        viewPager.adapter = MovieGenresPagerAdapter(this, supportFragmentManager)
 
         tabs?.tabMode = TabLayout.MODE_FIXED
-        tabs?.setupWithViewPager(view_pager)
+        tabs?.setupWithViewPager(viewPager)
     }
 }

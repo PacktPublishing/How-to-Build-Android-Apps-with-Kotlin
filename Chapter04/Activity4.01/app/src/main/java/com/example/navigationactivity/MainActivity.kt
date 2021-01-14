@@ -8,7 +8,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import kotlinx.android.synthetic.main.activity_main.*
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(setOf(
             R.id.nav_home, R.id.nav_account, R.id.nav_profile, R.id.nav_mysports))
         setupActionBarWithNavController(navController, appBarConfiguration)
-        nav_view?.setupWithNavController(navController)
+        findViewById<BottomNavigationView>(R.id.nav_view)?.setupWithNavController(navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {
