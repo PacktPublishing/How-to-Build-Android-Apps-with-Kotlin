@@ -12,11 +12,11 @@ class AnswersFragment : Fragment(), View.OnClickListener {
     var questionId: Int = NO_QUESTION_SET
 
     private val headerText: TextView?
-        get() = view?.findViewById<TextView>(R.id.header_text)
+        get() = view?.findViewById(R.id.header_text)
 
     private val answer: TextView?
-        get() = view?.findViewById<TextView>(R.id.answer)
-
+        get() = view?.findViewById(R.id.answer)
+    
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
