@@ -2,9 +2,10 @@ package com.example.intentsintroduction
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
 
 const val FULL_NAME_KEY = "FULL_NAME_KEY"
 
@@ -14,9 +15,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        submit_button.setOnClickListener {
+        findViewById<Button>(R.id.submit_button).setOnClickListener {
 
-            val fullName = full_name.text.toString().trim()
+            val fullName = findViewById<EditText>(R.id.full_name).text.toString().trim()
 
             if (fullName.isNotEmpty()) {
 

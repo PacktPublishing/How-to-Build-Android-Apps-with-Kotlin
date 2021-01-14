@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import kotlinx.android.synthetic.main.letters.*
 
 class ActivityC : AppCompatActivity() {
 
@@ -35,8 +34,8 @@ class ActivityC : AppCompatActivity() {
             }
         }
 
-        letterA.setOnClickListener(buttonClickListener)
-        letterB.setOnClickListener(buttonClickListener)
-        letterC.setOnClickListener(buttonClickListener)
+        findViewById<View>(R.id.letterA).setOnClickListener(buttonClickListener)
+        findViewById<View>(R.id.letterB).setOnClickListener(buttonClickListener)
+        findViewById<View>(R.id.letterC).setOnClickListener(buttonClickListener)
     }
 }

@@ -2,7 +2,7 @@ package com.example.intentsintroduction
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_welcome.*
+import android.widget.TextView
 
 class WelcomeActivity : AppCompatActivity() {
 
@@ -15,7 +15,8 @@ class WelcomeActivity : AppCompatActivity() {
 
             //Set the welcome message
             val fullName = it.getStringExtra(FULL_NAME_KEY)
-            welcome_text.text = getString(R.string.welcome_text, fullName)
+            findViewById<TextView>(R.id.welcome_text).text =
+                getString(R.string.welcome_text, fullName)
         }
     }
 }

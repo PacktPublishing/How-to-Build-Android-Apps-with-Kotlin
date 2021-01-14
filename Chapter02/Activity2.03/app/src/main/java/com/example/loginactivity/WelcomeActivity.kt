@@ -3,10 +3,6 @@ package com.example.loginactivity
 import android.app.Activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
-import kotlinx.android.synthetic.main.activity_main.header
-import kotlinx.android.synthetic.main.activity_welcome.*
-
 
 //This is done as an example for simplicity and user/pwd credentials should never be stored in an app
 const val USER_NAME_CORRECT_VALUE = "someusername"
@@ -14,7 +10,6 @@ const val PASSWORD_CORRECT_VALUE = "somepassword"
 const val LOGIN_REQUEST_CODE = 1
 
 class WelcomeActivity : AppCompatActivity() {
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

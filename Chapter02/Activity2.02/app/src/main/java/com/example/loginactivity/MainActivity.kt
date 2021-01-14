@@ -2,14 +2,13 @@ package com.example.loginactivity
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.core.view.isVisible
-import kotlinx.android.synthetic.main.activity_main.*
+import androidx.appcompat.app.AppCompatActivity
 
 const val USER_NAME_KEY = "USER_NAME_KEY"
 const val PASSWORD_KEY = "PASSWORD_KEY"
@@ -23,13 +22,22 @@ const val PASSWORD_CORRECT_VALUE = "somepassword"
 
 class MainActivity : AppCompatActivity() {
 
+    private val submitButton: Button
+        get() = findViewById(R.id.submit_button)
+
+    private val userName: EditText
+        get() = findViewById(R.id.user_name)
+
+    private val password: EditText
+        get() = findViewById(R.id.password)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        submit_button.setOnClickListener {
+        submitButton.setOnClickListener {
 
-            val userName = user_name.text.toString().trim()
+            val userName = userName.text.toString().trim()
             val passWord = password.text.toString().trim()
 
             hideKeyboard()
@@ -43,15 +51,18 @@ class MainActivity : AppCompatActivity() {
                     welcomeIntent.putExtra(PASSWORD_KEY, passWord)
 
                     //Reset text fields to blank
-                    user_name.text.clear()
-                    password.text.clear()
+                    this.userName.text.clear()
+                    this.password.text.clear()
 
                     //Launch
                     startActivity(welcomeIntent)
                 }
-
             } else {
-                val toast = Toast.makeText(this, getString(R.string.login_form_entry_error), Toast.LENGTH_LONG)
+                val toast = Toast.makeText(
+                    this,
+                    getString(R.string.login_form_entry_error),
+                    Toast.LENGTH_LONG
+                )
                 toast.setGravity(Gravity.CENTER, 0, 0)
                 toast.show()
             }

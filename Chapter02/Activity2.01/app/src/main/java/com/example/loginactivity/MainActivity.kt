@@ -6,9 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.isVisible
-import kotlinx.android.synthetic.main.activity_main.*
 
 const val USER_NAME_KEY = "USER_NAME_KEY"
 const val PASSWORD_KEY = "PASSWORD_KEY"
@@ -25,13 +27,25 @@ class MainActivity : AppCompatActivity() {
     private var isLoggedIn = false
     private var loggedInUser = ""
 
+    private val submitButton: Button
+        get() = findViewById(R.id.submit_button)
+
+    private val userName: EditText
+        get() = findViewById(R.id.user_name)
+
+    private val password: EditText
+        get() = findViewById(R.id.password)
+
+    private val header: TextView
+        get() = findViewById(R.id.header)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        submit_button.setOnClickListener {
+        submitButton.setOnClickListener {
 
-            val userName = user_name.text.toString().trim()
+            val userName = userName.text.toString().trim()
             val password = password.text.toString().trim()
 
             hideKeyboard()
@@ -56,12 +70,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setLoggedIn(userName: String) {
-        loggedInUser = userName
-        val welcomeMessage = getString(R.string.welcome_text, userName)
-        user_name.isVisible = false
+    private fun setLoggedIn(loggedInUserName: String) {
+        loggedInUser = loggedInUserName
+        val welcomeMessage = getString(R.string.welcome_text, loggedInUserName)
+        userName.isVisible = false
         password.isVisible = false
-        submit_button.isVisible = false
+        submitButton.isVisible = false
         header.text = welcomeMessage
     }
 
