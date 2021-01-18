@@ -43,18 +43,18 @@ class MainActivity : AppCompatActivity() {
 
         submitButton.setOnClickListener {
 
-            val userName = userName.text.toString().trim()
-            val passWord = password.text.toString().trim()
+            val userNameForm = userName.text.toString().trim()
+            val passwordForm = password.text.toString().trim()
 
             hideKeyboard()
 
-            if (userName.isNotEmpty() && passWord.isNotEmpty()) {
+            if (userNameForm.isNotEmpty() && passwordForm.isNotEmpty()) {
 
                 //Set the name of the activity to launch
                 Intent(this, WelcomeActivity::class.java).also { welcomeIntent ->
                     //Add the data
-                    welcomeIntent.putExtra(USER_NAME_KEY, userName)
-                    welcomeIntent.putExtra(PASSWORD_KEY, passWord)
+                    welcomeIntent.putExtra(USER_NAME_KEY, userNameForm)
+                    welcomeIntent.putExtra(PASSWORD_KEY, passwordForm)
 
                     //Reset text fields to blank
                     this.userName.text.clear()
