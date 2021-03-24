@@ -1,8 +1,8 @@
 # How to Build Android Apps with Kotlin
-[![GitHub issues](https://img.shields.io/github/issues/PacktWorkshops/How-to-Build-Android-Apps-with-Kotlin.svg)](https://github.com/PacktWorkshops/How-to-Build-Android-Apps-with-Kotlin/issues)
-[![GitHub forks](https://img.shields.io/github/forks/PacktWorkshops/How-to-Build-Android-Apps-with-Kotlin.svg)](https://github.com/PacktWorkshops/How-to-Build-Android-Apps-with-Kotlin/network)
-[![GitHub stars](https://img.shields.io/github/stars/PacktWorkshops/How-to-Build-Android-Apps-with-Kotlin.svg)](https://github.com/PacktWorkshops/How-to-Build-Android-Apps-with-Kotlin/stargazers)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightblue.svg)](https://github.com/PacktWorkshops/How-to-Build-Android-Apps-with-Kotlin/pulls)
+[![GitHub issues](https://img.shields.io/github/issues/PacktPublishing/How-to-Build-Android-Apps-with-Kotlin.svg)](https://github.com/PacktPublishing/How-to-Build-Android-Apps-with-Kotlin/issues)
+[![GitHub forks](https://img.shields.io/github/forks/PacktPublishing/How-to-Build-Android-Apps-with-Kotlin.svg)](https://github.com/PacktPublishing/How-to-Build-Android-Apps-with-Kotlin/network)
+[![GitHub stars](https://img.shields.io/github/stars/PacktPublishing/How-to-Build-Android-Apps-with-Kotlin.svg)](https://github.com/PacktPublishing/How-to-Build-Android-Apps-with-Kotlin/stargazers)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightblue.svg)](https://github.com/PacktPublishing/How-to-Build-Android-Apps-with-Kotlin/pulls)
 
 This is the repository for [How to Build Android Apps with Kotlin](https://www.amazon.com/Build-Android-Apps-Kotlin-hands-ebook/dp/B08M3M8LY5?utm_source=github&utm_medium=repsitory&utm_campaign=978-1-83898-411-3&utm_term=Android&utm_content=How%20to%20Build%20Android%20Apps%20with%20Kotlin), published by [Packt](https://www.packtpub.com/?utm_source=github). It contains all the supporting project files necessary to work through the course from start to finish.
 
