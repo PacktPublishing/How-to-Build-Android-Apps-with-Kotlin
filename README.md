@@ -31,3 +31,7 @@ You'll also need the following software installed in advance:
 * Use standard libraries for dependency injection and data parsing 
 * Apply the repository pattern to retrieve data from outside sources 
 * Publish your app on the Google Play store 
+### Download a free PDF
+
+ <i>If you have already purchased a print or Kindle version of this book, you can get a DRM-free PDF version at no cost.<br>Simply click on the link to claim your free PDF.</i>
+<p align="center"> <a href="https://packt.link/free-ebook/9781838984113">https://packt.link/free-ebook/9781838984113 </a> </p>
