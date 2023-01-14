@@ -31,7 +31,7 @@ private const val PERMISSION_CODE_REQUEST_LOCATION = 1
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private val markLocationButton: View
-            by lazy { findViewById(R.id.maps_mark_location_button) }
+        by lazy { findViewById(R.id.maps_mark_location_button) }
 
     private val fusedLocationProviderClient by lazy {
         LocationServices.getFusedLocationProviderClient(this)
@@ -167,9 +167,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 val canvas = Canvas(bitmap)
                 drawableWithTint.draw(canvas)
                 bitmap
-            }
+            } ?: return null
         return BitmapDescriptorFactory.fromBitmap(bitmap).also {
-            bitmap?.recycle()
+            bitmap.recycle()
         }
     }
 
