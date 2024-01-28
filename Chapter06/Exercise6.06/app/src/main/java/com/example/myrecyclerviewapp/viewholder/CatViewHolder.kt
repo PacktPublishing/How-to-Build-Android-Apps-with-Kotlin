@@ -12,7 +12,7 @@ import com.example.myrecyclerviewapp.model.Gender
 import com.example.myrecyclerviewapp.model.ListItemUiModel
 
 private val FEMALE_SYMBOL by lazy {
-    HtmlCompat.fromHtml("&#9793;", HtmlCompat.FROM_HTML_MODE_LEGACY)
+    HtmlCompat.fromHtml("&#9792;", HtmlCompat.FROM_HTML_MODE_LEGACY)
 }
 private val MALE_SYMBOL by lazy {
     HtmlCompat.fromHtml("&#9794;", HtmlCompat.FROM_HTML_MODE_LEGACY)
